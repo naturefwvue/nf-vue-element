@@ -1,7 +1,12 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">原生基础组件</router-link> |
+    <router-link :to="{name:'eleBase'}">ele基础组件</router-link> |
+    <router-link :to="{name:'eleForm'}">表单组件</router-link> |
+    <router-link :to="{name:'eleFind'}">查询组件</router-link> |
+    <router-link :to="{name:'eleBase'}">列表组件</router-link> |
+    <router-link :to="{name:'eleBase'}">列表组件</router-link> |
+    <router-link :to="{name:'eleBase'}">增删改查</router-link> |
   </div>
   <router-view/>
 </template>
