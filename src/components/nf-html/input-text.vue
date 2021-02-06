@@ -19,11 +19,11 @@
     <datalist v-if="typeof(meta.optionKey)!=='undefined'" :id="meta.optionKey">
       <option :key="item.value" v-for="item in meta.optionList" :label="item.title" :value="item.value" />
     </datalist>
-  {{meta}}
+    {{test}}22--{{modelValue}}
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, toRefs } from 'vue'
 
 const metaProp = {
   type: Object,
@@ -76,16 +76,26 @@ const metaProp = {
 }
 
 export default {
-  name: 'html-input-text',
+  name: 'nf-html-form-input-text',
   model: {
     prop: 'modelValue',
     event: 'input'
   },
   props: {
+    test: String,
     modelValue: String,
     meta: metaProp
   },
-  setup () {
+  emits: ['enlarge-text'],
+  setup (props, context) {
+    const myProps = toRefs(props)
+    console.log('props:', props)
+    console.log('myProps:', myProps)
+
+    myProps.meta.value.placeholder = '内部修改'
+    myProps.test.value = '内部修改1111'
+    console.log('myProps.test:', myProps.test)
+
     const v = ref(1)
     const type = {
       100: 'textarea', // 多行文本框
@@ -115,9 +125,17 @@ export default {
       191: 'selects', // 列表框 多选
       192: 'selectMore' // 联动下拉列表框
     }
+
+    const myInput = (e) => {
+      console.log(e)
+      console.log(context)
+      context.emit('update:modelValue', e.target.value)
+    }
+
     return {
       v,
-      type
+      type,
+      myInput
     }
   }
 }
