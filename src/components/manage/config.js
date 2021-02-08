@@ -1,5 +1,5 @@
 // 表单域控件类型
-const config = {
+const formControlType = {
   100: 'textarea', // 多行文本框
   101: 'text', // 单行文本框
   102: 'password', // 密码
@@ -7,29 +7,28 @@ const config = {
   104: 'email', // 电子邮件
   105: 'url', // url
   106: 'search', // 搜索
-  107: 'text', // 当前登录人
-  120: 'fulltext', // 富文本编辑器
-  131: 'number', // 数字
-  132: 'range', // 滑块
-  140: 'date', // 日期
-  141: 'datetime-local', // 日期时间
-  142: 'time', // 时间
-  143: 'month', // 年月
-  144: 'week', // 年周
-  150: 'file', // 上传文件
-  151: 'file', // 上传图片
-  160: 'color', // 颜色
-  170: 'text', // 弹窗选择记录
-  180: 'checkbox', // 勾选
-  182: 'checkboxs', // 多选组
-  183: 'radios', // 单选组
-  190: 'select', // 下拉列表框 单选
-  191: 'selects', // 列表框 多选
-  192: 'selectMore' // 联动下拉列表框
+  107: 'color', // 颜色
+  108: 'text', // 弹窗选择记录
+  110: 'date', // 日期
+  111: 'datetime-local', // 日期时间
+  112: 'time', // 时间
+  113: 'week', // 年月
+  114: 'month', // 年周
+  120: 'number', // 数字
+  121: 'range', // 滑块
+  130: 'file', // 上传文件
+  131: 'file', // 上传图片
+  140: 'fulltext', // 富文本编辑器
+  150: 'checkbox', // 勾选
+  152: 'checkboxs', // 多选组
+  153: 'radios', // 单选组
+  170: 'select', // 下拉列表框 单选
+  171: 'selects', // 列表框 多选
+  172: 'selectMore' // 联动下拉列表框
 }
 
 // 表单域控件属性
-const metaProp = {
+const metaInput = {
   type: Object,
   default: () => {
     return {
@@ -80,6 +79,6 @@ const metaProp = {
 }
 
 export default {
-  config,
-  metaProp
+  formControlType,
+  metaInput
 }

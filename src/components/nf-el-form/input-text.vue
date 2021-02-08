@@ -1,9 +1,9 @@
 <template>
   <!---->
-  <input :id="'c' + meta.controlId"
-    :type="type[meta.controlType]"
-    :name="'c' + meta.controlId"
+  <el-input :id="'c' + meta.controlId"
     :value="modelValue"
+    @input="myInput"
+    :name="'c' + meta.controlId"
     :disabled="meta.disabled"
     :readonly="meta.readonly"
     :class="meta.class"
@@ -13,17 +13,15 @@
     :maxlength="meta.maxlength"
     :autocomplete="meta.autocomplete"
     :list="meta.optionKey"
-    @input="myInput"
-    :key="'ckey_'+meta.controlId">
-    <!--文本框的备选项-->
-    <datalist v-if="typeof(meta.optionKey)!=='undefined'" :id="meta.optionKey">
-      <option :key="item.value" v-for="item in meta.optionList" :label="item.title" :value="item.value" />
-    </datalist>
+    :key="'ckey_'+meta.controlId"
+  >
+  </el-input>{{modelValue}}
 </template>
 
 <script>
-// 定义属性
-const metaInput = {
+import { defineComponent, ref } from 'vue'
+
+const metaProp = {
   type: Object,
   default: () => {
     return {
@@ -73,55 +71,29 @@ const metaInput = {
   }
 }
 
-// 定义类型
-const type = {
-  100: 'textarea', // 多行文本框
-  101: 'text', // 单行文本框
-  102: 'password', // 密码
-  103: 'tel', // 电话
-  104: 'email', // 电子邮件
-  105: 'url', // url
-  106: 'search', // 搜索
-  107: 'color', // 颜色
-  108: 'text', // 弹窗选择记录
-  110: 'date', // 日期
-  111: 'datetime-local', // 日期时间
-  112: 'time', // 时间
-  113: 'week', // 年月
-  114: 'month', // 年周
-  120: 'number', // 数字
-  121: 'range', // 滑块
-  130: 'file', // 上传文件
-  131: 'file', // 上传图片
-  140: 'fulltext', // 富文本编辑器
-  150: 'checkbox', // 勾选
-  152: 'checkboxs', // 多选组
-  153: 'radios', // 单选组
-  170: 'select', // 下拉列表框 单选
-  171: 'selects', // 列表框 多选
-  172: 'selectMore' // 联动下拉列表框
-}
-
-export default {
-  name: 'nf-h5-form-text',
+export default defineComponent({
+  name: 'nf-html-form-text',
   props: {
     modelValue: String,
-    meta: metaInput
+    meta: metaProp
   },
   emits: ['input'],
   setup (props, context) {
-    console.log(props)
-    // 提交数据
+    console.log('props:', props)
+
+    const v = ref(1)
+
     const myInput = (e) => {
       console.log(e)
-      console.log(context)
-      context.emit('update:modelValue', e.target.value)
+      console.log(props)
+      context.emit('update:modelValue', e)
+      console.log(props)
     }
 
     return {
-      type,
+      v,
       myInput
     }
   }
-}
+})
 </script>
