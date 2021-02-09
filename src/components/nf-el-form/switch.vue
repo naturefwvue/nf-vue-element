@@ -1,15 +1,12 @@
-<!--单行文本-->
+<!--开关，单选-->
 <template>
-  <el-input
+  <el-switch
     v-model="value"
-    @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="meta.maxlength"
-    :placeholder="meta.placeholder"
+    active-text="按月付费"
+    inactive-text=""
+    @change="myInput"
   >
-  </el-input>
+  </el-switch>
 </template>
 
 <script>
@@ -17,9 +14,9 @@ import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-switch',
   props: {
-    modelValue: String,
+    modelValue: Boolean,
     meta: metaInput
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],

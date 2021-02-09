@@ -1,15 +1,13 @@
-<!--单行文本-->
+<!--下拉选择-->
 <template>
-  <el-input
-    v-model="value"
-    @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="meta.maxlength"
-    :placeholder="meta.placeholder"
-  >
-  </el-input>
+<el-select v-model="value" placeholder="请选择">
+    <el-option
+      v-for="item in meta.options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
 </template>
 
 <script>
@@ -17,7 +15,7 @@ import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-select',
   props: {
     modelValue: String,
     meta: metaInput

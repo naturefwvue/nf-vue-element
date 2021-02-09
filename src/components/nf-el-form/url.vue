@@ -7,7 +7,7 @@
     @input="myInput"
   >
     <template #prepend>
-      <el-select style="width: 230px;" v-model="select" placeholder="请选择">
+      <el-select style="width: 90px;" v-model="select" placeholder="请选择">
         <el-option label="Http://" value="Http://"></el-option>
         <el-option label="Https://" value="Https://"></el-option>
       </el-select>
@@ -19,6 +19,7 @@
 <script>
 import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
+import { ref } from 'vue'
 
 export default {
   name: 'nf-el-from-url',
@@ -30,8 +31,10 @@ export default {
   setup (props, context) {
     const { value, myInput } = inputManage(props, context)
 
+    const select = ref('')
     return {
       value,
+      select,
       myInput
     }
   }

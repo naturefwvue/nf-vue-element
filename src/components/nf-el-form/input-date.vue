@@ -1,15 +1,11 @@
-<!--单行文本-->
+<!--日期-->
 <template>
-  <el-input
+  <el-date-picker
     v-model="value"
-    @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="meta.maxlength"
-    :placeholder="meta.placeholder"
+    type="date"
+    @change="myInput"
   >
-  </el-input>
+  </el-date-picker>
 </template>
 
 <script>
@@ -17,7 +13,7 @@ import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-date',
   props: {
     modelValue: String,
     meta: metaInput

@@ -1,15 +1,14 @@
-<!--单行文本-->
+<!--数字滑块-->
 <template>
-  <el-input
+  <el-slider
     v-model="value"
-    @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="meta.maxlength"
-    :placeholder="meta.placeholder"
+    @change="myInput"
+    :min="18"
+    :max="70"
+    label="描述文字"
+    :step="1"
   >
-  </el-input>
+  </el-slider>
 </template>
 
 <script>
@@ -17,7 +16,7 @@ import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-range',
   props: {
     modelValue: String,
     meta: metaInput

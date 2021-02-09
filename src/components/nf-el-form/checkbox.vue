@@ -1,23 +1,19 @@
-<!--单行文本-->
+<!--多选组-->
 <template>
-  <el-input
-    v-model="value"
-    @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="meta.maxlength"
-    :placeholder="meta.placeholder"
-  >
-  </el-input>
+  <el-checkbox-group v-model="checks" @change="myInput">
+    <el-checkbox :label="3">备选项</el-checkbox>
+    <el-checkbox :label="6">备选项</el-checkbox>
+    <el-checkbox :label="9">备选项</el-checkbox>
+  </el-checkbox-group>
 </template>
 
 <script>
 import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
+import { ref } from 'vue'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-checkbox',
   props: {
     modelValue: String,
     meta: metaInput
@@ -26,9 +22,12 @@ export default {
   setup (props, context) {
     const { value, myInput } = inputManage(props, context)
 
+    const checks = ref([])
+
     return {
       value,
-      myInput
+      myInput,
+      checks
     }
   }
 }

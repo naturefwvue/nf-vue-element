@@ -1,15 +1,16 @@
-<!--单行文本-->
+<!--数字-->
 <template>
-  <el-input
-    v-model="value"
-    @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="meta.maxlength"
+  <el-input-number
     :placeholder="meta.placeholder"
+    :maxlength="meta.maxlength"
+    v-model="value"
+    @change="myInput"
+    :min="18"
+    :max="70"
+    label="描述文字"
+    :step="1"
   >
-  </el-input>
+  </el-input-number>
 </template>
 
 <script>
@@ -17,7 +18,7 @@ import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-number',
   props: {
     modelValue: String,
     meta: metaInput
