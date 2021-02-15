@@ -4,8 +4,8 @@
 import { ref, watch } from 'vue'
 
 const inputManage = (props, context) => {
-  // 绑定控件的值
-  const value = ref('')
+  // 设置默认值
+  const value = ref(props.meta.defaultValue)
 
   // 监听属性，给 value 赋值
   watch(() => props.modelValue, (v1, v2) => {

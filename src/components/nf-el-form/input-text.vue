@@ -3,11 +3,20 @@
   <el-input
     v-model="value"
     @input="myInput"
-    :rows="12"
-    :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
+    :id="meta.controlId"
+    :name="'c' + meta.controlId"
+    :disabled="meta.disabled"
+    :readonly="meta.readonly"
     :maxlength="meta.maxlength"
+    :minlength="meta.minlength"
     :placeholder="meta.placeholder"
+    :autofocus="meta.autofocus"
+    :autocomplete="meta.autocomplete"
+    :title="meta.title"
+    :show-word-limit="meta.ele.show_word_limit"
+    :clearable="meta.ele.clearable"
+    :validate_event="meta.ele.validate_event"
+    :resize="meta.ele.resize"
   >
   </el-input>
 </template>
@@ -17,7 +26,7 @@ import inputManage from '../manage/inputManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-text',
   props: {
     modelValue: String,
     meta: metaInput

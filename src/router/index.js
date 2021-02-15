@@ -21,6 +21,11 @@ const routes = [
     path: '/eleFind',
     name: 'eleFind',
     component: () => import('../views/eleFind.vue')
+  },
+  {
+    path: '/helpForm',
+    name: 'helpForm',
+    component: () => import('../views/helpForm.vue')
   }
 ]
 

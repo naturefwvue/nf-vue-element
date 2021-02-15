@@ -1,15 +1,15 @@
 // 表单域控件类型
 const formControlType = {
-  100: 'textarea', // 多行文本框
-  101: 'text', // 单行文本框
-  102: 'password', // 密码
-  103: 'tel', // 电话
-  104: 'email', // 电子邮件
-  105: 'url', // url
-  106: 'search', // 搜索
-  107: 'color', // 颜色
+  100: 'textarea', // 多行文本框 input-text
+  101: 'text', // 单行文本框 input-text
+  102: 'password', // 密码 input-password
+  103: 'tel', // 电话 input-text
+  104: 'email', // 电子邮件 input-text
+  105: 'url', // url input-url
+  106: 'search', // 搜索 input-text
+  107: 'color', // 颜色 input-color
   108: 'text', // 弹窗选择记录
-  110: 'date', // 日期
+  110: 'date', // 日期 input-date
   111: 'datetime-local', // 日期时间
   112: 'time', // 时间
   113: 'week', // 年月
@@ -27,14 +27,15 @@ const formControlType = {
   172: 'selectMore' // 联动下拉列表框
 }
 
-// 表单域控件属性
-const metaInput = {
+// 表单域，文本类控件属性
+const metaText = {
   type: Object,
   default: () => {
     return {
       // 通用
       controlId: Number, // 编号，区别同一个表单里的其他控件
       colName: String, // 字段名称
+      label: String, // 中文名称
       controlType: Number, // 用类型编号表示type
       isClear: {
         // isClear  连续添加时是否恢复默认值
@@ -62,23 +63,55 @@ const metaInput = {
       pattern: String, // 用正则做验证。
       class: {
         type: String,
-        default: 'ant-input ant-input-sm'
+        default: ''
       },
       placeholder: String,
       title: String, // 提示信息
       size: Number, // 字符宽度
       maxlength: Number, // 最大字符数
+      minlength: Number, // 最小字符数
       autocomplete: { // off
         type: String,
         default: 'on'
       },
       optionKey: String, // 备选文字标识
-      optionItem: Object // 备选的选项
+      optionItem: Object, // 备选的选项
+      // 多行文本
+      rows: Number, // 行数
+      autosize: Object, // 自适应内容高度
+      // 数字
+      max: Number,
+      min: Number,
+      step: Number,
+      ele: {
+        type: Object,
+        default: () => {
+          return {
+            show_word_limit: { // 是否显示输入字数统计 text和area有效
+              type: Boolean,
+              default: true
+            },
+            clearable: { // 是否显示清空标记
+              type: Boolean,
+              default: true
+            },
+            show_password: { // 是否显示切换密码图标
+              type: Boolean,
+              default: true
+            },
+            validate_event: { // 输入时是否触发表单的校验
+              type: Boolean,
+              default: true
+            },
+            resize: String // none, both, horizontal, vertical
+          }
+        }
+      }
     }
   }
 }
 
 export default {
   formControlType,
-  metaInput
+  metaText // 文本类的属性
 }

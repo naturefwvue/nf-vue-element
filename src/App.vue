@@ -7,6 +7,7 @@
     <router-link :to="{name:'eleBase'}">列表组件</router-link> |
     <router-link :to="{name:'eleBase'}">列表组件</router-link> |
     <router-link :to="{name:'eleBase'}">增删改查</router-link> |
+    <router-link :to="{name:'helpForm'}">表单辅助</router-link> |
   </div>
   <router-view/>
 </template>
@@ -19,7 +20,6 @@
   text-align: left;
   color: #2c3e50;
 }
-
 #nav {
   padding: 30px;
 }

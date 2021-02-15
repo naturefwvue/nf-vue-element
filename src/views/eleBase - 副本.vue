@@ -1,6 +1,56 @@
 <template>
+  <!--直接使用el-row、el-col-->
+  <div class="home">
+    <el-row>
+      <el-col :span="6" :style="formTitleStyle">
+        文本框：
+      </el-col>
+      <el-col :span="18">
+        <eltext v-model="model.name" :meta="metaText"/>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="6" :style="formTitleStyle">
+        多行文本框：
+      </el-col>
+      <el-col :span="18" :style="formTitleStyle">
+        <elarea v-model="model.contact" :meta="metaText" @input="myChange"/>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="6" :style="formTitleStyle">
+        URL：
+      </el-col>
+      <el-col :span="18">
+        <elurl v-model="model.url" :meta="metaText" @input="myChange"/>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="6" :style="formTitleStyle">
+        数字：
+      </el-col>
+      <el-col :span="18">
+        <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="6" :style="formTitleStyle">
+        ：
+      </el-col>
+      <el-col :span="18">
+
+      </el-col>
+    </el-row>
+    <br>
+    <div style="text-align:left;padding-left:100px;">
+      表单值：<br>
+      <template v-for="(item, key) in model" :key="key">
+        {{key}}：{{item}}<br>
+      </template>
+    </div>
+  </div>
   <!--直接使用el-form-->
-  <div style="width:500px;">
+  <div>
     <el-form ref="form" :model="model" label-width="80px">
       <el-form-item label="活动名称">
         <eltext v-model="model.name" :meta="metaText"/>
@@ -39,14 +89,6 @@
       </el-form-item>
     </el-form>
     <component :is="'elurl'" v-model="model.url" :meta="metaText" @input="myChange"></component>
-  </div>
-  <div class="home">
-    <div style="text-align:left;padding-left:100px;">
-      表单值：<br>
-      <template v-for="(item, key) in model" :key="key">
-        {{key}}：{{item}}<br>
-      </template>
-    </div>
   </div>
   <!--使用el-form的v-for-->
 
