@@ -13,12 +13,14 @@
     :autofocus="meta.autofocus"
     :autocomplete="meta.autocomplete"
     :title="meta.title"
+  >
+  </el-input>
+  <!--
     :show-word-limit="meta.ele.show_word_limit"
     :clearable="meta.ele.clearable"
     :validate_event="meta.ele.validate_event"
     :resize="meta.ele.resize"
-  >
-  </el-input>
+  -->
 </template>
 
 <script>

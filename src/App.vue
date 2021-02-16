@@ -5,8 +5,6 @@
     <router-link :to="{name:'eleForm'}">表单组件</router-link> |
     <router-link :to="{name:'eleFind'}">查询组件</router-link> |
     <router-link :to="{name:'eleBase'}">列表组件</router-link> |
-    <router-link :to="{name:'eleBase'}">列表组件</router-link> |
-    <router-link :to="{name:'eleBase'}">增删改查</router-link> |
     <router-link :to="{name:'helpForm'}">表单辅助</router-link> |
   </div>
   <router-view/>

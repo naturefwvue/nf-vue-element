@@ -96,18 +96,17 @@
 
 <script>
 import { reactive, ref } from 'vue'
-// import mytext from '@/components/nf-html/input-text2.vue'
-import eltext from '@/components/nf-el-form/input-text.vue'
-import elarea from '@/components/nf-el-form/textarea.vue'
-import elurl from '@/components/nf-el-form/url.vue'
-import elnumber from '@/components/nf-el-form/input-number.vue'
-import elrange from '@/components/nf-el-form/input-range.vue'
-import eldate from '@/components/nf-el-form/input-date.vue'
-import eltime from '@/components/nf-el-form/input-time.vue'
-import elradios from '@/components/nf-el-form/radios.vue'
-import elcheckbox from '@/components/nf-el-form/checkbox.vue'
-import elselect from '@/components/nf-el-form/select.vue'
-import elswitch from '@/components/nf-el-form/switch.vue'
+import eltext from '@/components/nf-el-form/t-text.vue'
+import elarea from '@/components/nf-el-form/t-area.vue'
+import elurl from '@/components/nf-el-form/t-url.vue'
+import elnumber from '@/components/nf-el-form/n-number.vue'
+import elrange from '@/components/nf-el-form/n-range.vue'
+import eldate from '@/components/nf-el-form/d-date.vue'
+import eltime from '@/components/nf-el-form/d-time.vue'
+import elradios from '@/components/nf-el-form/s-radios.vue'
+import elcheckbox from '@/components/nf-el-form/s-checkbox.vue'
+import elselect from '@/components/nf-el-form/s-select.vue'
+import elswitch from '@/components/nf-el-form/s-switch.vue'
 
 export default {
   name: 'eleBase',
