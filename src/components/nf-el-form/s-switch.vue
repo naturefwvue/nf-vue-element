@@ -2,9 +2,10 @@
 <template>
   <el-switch
     v-model="value"
-    active-text="按月付费"
+    active-text="on"
     inactive-text=""
     @change="mySubmit"
+    :disabled="meta.disabled"
   >
   </el-switch>
 </template>

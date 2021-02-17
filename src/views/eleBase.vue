@@ -17,6 +17,7 @@
       <el-form-item label="活动网址">
         <elurl v-model="model.url" :meta="metaText" @input="myChange"/>
       </el-form-item>
+      <!--
       <el-form-item label="年龄要求">
         <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
       </el-form-item>
@@ -42,7 +43,7 @@
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
         <el-button>取消</el-button>
-      </el-form-item>
+      </el-form-item>-->
     </el-form>
     <component :is="'elurl'" v-model="model.url" :meta="metaText" @input="myChange"></component>
   </div>
@@ -61,31 +62,31 @@
 <script>
 import { reactive, ref } from 'vue'
 import eltext from '@/components/nf-el-form/t-text.vue'
-import elarea from '@/components/nf-el-form/t-area.vue'
 import elurl from '@/components/nf-el-form/t-url.vue'
 import elnumber from '@/components/nf-el-form/n-number.vue'
-import elrange from '@/components/nf-el-form/n-range.vue'
-import eldate from '@/components/nf-el-form/d-date.vue'
-import eltime from '@/components/nf-el-form/d-time.vue'
-import elradios from '@/components/nf-el-form/s-radios.vue'
-import elcheckbox from '@/components/nf-el-form/s-checkbox.vue'
-import elselect from '@/components/nf-el-form/s-select.vue'
-import elswitch from '@/components/nf-el-form/s-switch.vue'
+// import elarea from '@/components/nf-el-form/t-area.vue'
+// import elrange from '@/components/nf-el-form/n-range.vue'
+// import eldate from '@/components/nf-el-form/d-date.vue'
+// import eltime from '@/components/nf-el-form/d-time.vue'
+// import elradios from '@/components/nf-el-form/s-radios.vue'
+// import elcheckbox from '@/components/nf-el-form/s-checkbox.vue'
+// import elselect from '@/components/nf-el-form/s-select.vue'
+// import elswitch from '@/components/nf-el-form/s-switch.vue'
 
 export default {
   name: 'eleBase',
   components: {
     eltext,
-    elarea,
     elurl,
-    elnumber,
-    elrange,
-    eldate,
-    eltime,
-    elradios,
-    elcheckbox,
-    elselect,
-    elswitch
+    // elarea,
+    // elrange,
+    // eldate,
+    // eltime,
+    // elradios,
+    // elcheckbox,
+    // elselect,
+    // elswitch,
+    elnumber
 
   },
   setup () {

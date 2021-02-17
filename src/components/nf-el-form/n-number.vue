@@ -1,14 +1,19 @@
 <!--数字-->
 <template>
   <el-input-number
-    :placeholder="meta.placeholder"
-    :maxlength="meta.maxlength"
     v-model="value"
     @change="mySubmit"
-    :min="18"
-    :max="70"
+    :id="'c' + meta.controlId"
+    :name="'c' + meta.controlId"
+    :disabled="meta.disabled"
+    :readonly="meta.readonly"
+    :placeholder="meta.placeholder"
+    :title="meta.title"
+    :maxlength="meta.maxlength"
+    :min="meta.min"
+    :max="meta.max"
+    :step="meta.step"
     label="描述文字"
-    :step="1"
   >
   </el-input-number>
 </template>

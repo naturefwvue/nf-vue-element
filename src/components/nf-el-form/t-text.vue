@@ -10,9 +10,9 @@
     :maxlength="meta.maxlength"
     :minlength="meta.minlength"
     :placeholder="meta.placeholder"
+    :title="meta.title"
     :autofocus="meta.autofocus"
     :autocomplete="meta.autocomplete"
-    :title="meta.title"
   >
   </el-input>
   <!--

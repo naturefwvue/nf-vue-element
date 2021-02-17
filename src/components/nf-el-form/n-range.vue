@@ -3,6 +3,7 @@
   <el-slider
     v-model="value"
     @change="mySubmit"
+    :title="meta.title"
     :min="18"
     :max="70"
     label="描述文字"
