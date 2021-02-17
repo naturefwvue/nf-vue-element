@@ -3,13 +3,13 @@
   <el-date-picker
     v-model="value"
     type="date"
-    @change="myInput"
+    @change="mySubmit"
   >
   </el-date-picker>
 </template>
 
 <script>
-import inputManage from '../manage/inputManage.js'
+import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
@@ -20,11 +20,11 @@ export default {
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, myInput } = inputManage(props, context)
+    const { value, mySubmit } = controlManage(props, context)
 
     return {
       value,
-      myInput
+      mySubmit
     }
   }
 }

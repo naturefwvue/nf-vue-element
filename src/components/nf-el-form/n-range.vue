@@ -2,7 +2,7 @@
 <template>
   <el-slider
     v-model="value"
-    @change="myInput"
+    @change="mySubmit"
     :min="18"
     :max="70"
     label="描述文字"
@@ -12,22 +12,22 @@
 </template>
 
 <script>
-import inputManage from '../manage/inputManage.js'
+import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
   name: 'nf-el-from-range',
   props: {
-    modelValue: String,
+    modelValue: Number,
     meta: metaInput
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, myInput } = inputManage(props, context)
+    const { value, mySubmit } = controlManage(props, context)
 
     return {
       value,
-      myInput
+      mySubmit
     }
   }
 }

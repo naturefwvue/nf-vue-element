@@ -2,14 +2,20 @@
   <!--直接使用el-form-->
   <div style="width:500px;">
     <el-form ref="form" :model="model" label-width="80px">
-      <el-form-item label="活动名称">
-        <eltext v-model="model.name" :meta="metaText"/>
-      </el-form-item>
+      <el-row>
+        <el-col :span="10">
+          <el-form-item label="活动名称">
+            <eltext v-model="model.name" :meta="metaText"/>
+          </el-form-item>
+        </el-col>
+        <el-col :span="10">
+           <el-form-item label="年龄要求">
+            <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
+          </el-form-item>
+        </el-col>
+      </el-row>
       <el-form-item label="活动网址">
         <elurl v-model="model.url" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="年龄要求">
-        <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
       </el-form-item>
       <el-form-item label="年龄要求">
         <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
@@ -109,6 +115,7 @@ export default {
       controlId: 103,
       colName: 'controlType',
       controlType: 190,
+      defaultValue: '1',
       optionList: [],
       isClear: false,
       disabled: false,

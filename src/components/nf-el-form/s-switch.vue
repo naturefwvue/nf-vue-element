@@ -4,13 +4,13 @@
     v-model="value"
     active-text="按月付费"
     inactive-text=""
-    @change="myInput"
+    @change="mySubmit"
   >
   </el-switch>
 </template>
 
 <script>
-import inputManage from '../manage/inputManage.js'
+import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
@@ -21,11 +21,8 @@ export default {
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, myInput } = inputManage(props, context)
-
     return {
-      value,
-      myInput
+      ...controlManage(props, context)
     }
   }
 }

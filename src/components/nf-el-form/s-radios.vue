@@ -1,6 +1,6 @@
 <!--单选组-->
 <template>
-  <el-radio-group v-model="value" @change="myInput">
+  <el-radio-group v-model="value" @change="mySubmit">
     <el-radio :label="3">备选项</el-radio>
     <el-radio :label="6">备选项</el-radio>
     <el-radio :label="9">备选项</el-radio>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import inputManage from '../manage/inputManage.js'
+import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
@@ -19,11 +19,11 @@ export default {
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, myInput } = inputManage(props, context)
+    const { value, mySubmit } = controlManage(props, context)
 
     return {
       value,
-      myInput
+      mySubmit
     }
   }
 }

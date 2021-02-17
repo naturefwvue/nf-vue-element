@@ -3,7 +3,11 @@
   <el-input
     type="textarea"
     v-model="value"
-    @input="myInput"
+    @input="mySubmit"
+    :id="meta.controlId"
+    :name="'c' + meta.controlId"
+    :disabled="meta.disabled"
+    :readonly="meta.readonly"
     :rows="12"
     :autosize="{ minRows: 3, maxRows: 6 }"
     :show-word-limit="true"
@@ -14,22 +18,19 @@
 </template>
 
 <script>
-import inputManage from '../manage/inputManage.js'
+import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-textarea',
+  name: 'nf-el-from-area',
   props: {
     modelValue: String,
     meta: metaInput
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, myInput } = inputManage(props, context)
-
     return {
-      value,
-      myInput
+      ...controlManage(props, context)
     }
   }
 }

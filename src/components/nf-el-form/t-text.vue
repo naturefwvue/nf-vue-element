@@ -2,7 +2,7 @@
 <template>
   <el-input
     v-model="value"
-    @input="myInput"
+    @input="mySubmit"
     :id="meta.controlId"
     :name="'c' + meta.controlId"
     :disabled="meta.disabled"
@@ -24,22 +24,19 @@
 </template>
 
 <script>
-import inputManage from '../manage/inputManage.js'
+import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-text',
+  name: 'nf-el-from-text',
   props: {
     modelValue: String,
     meta: metaInput
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, myInput } = inputManage(props, context)
-
     return {
-      value,
-      myInput
+      ...controlManage(props, context)
     }
   }
 }
