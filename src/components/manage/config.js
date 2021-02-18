@@ -11,9 +11,11 @@ const formControlType = {
   108: 'text', // 弹窗选择记录
   110: 'date', // 日期 input-date
   111: 'datetime-local', // 日期时间
-  112: 'time', // 时间
-  113: 'week', // 年月
-  114: 'month', // 年周
+  112: 'time', // 时间，任意时间
+  113: 'time2', // 时间，选择固定选项
+  114: 'month', // 年月
+  115: 'week', // 年周
+  116: 'year', // 年
   120: 'number', // 数字
   121: 'range', // 滑块
   130: 'file', // 上传文件

@@ -1,93 +1,71 @@
 <template>
-  <!--直接使用el-form-->
-  <div style="width:500px;">
-    <el-form ref="form" :model="model" label-width="80px">
-      <el-row>
-        <el-col :span="10">
-          <el-form-item label="活动名称">
-            <eltext v-model="model.name" :meta="metaText"/>
-          </el-form-item>
-        </el-col>
-        <el-col :span="10">
-           <el-form-item label="年龄要求">
-            <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-form-item label="活动网址">
-        <elurl v-model="model.url" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <!--
-      <el-form-item label="年龄要求">
-        <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="活动区域">
-        <elselect v-model="model.select" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="活动日期">
-        <eldate v-model="model.date" :meta="metaText" @input="myChange"/> -
-        <eltime v-model="model.time" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="即时配送">
-        <elradios v-model="model.radio" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="活动性质">
-        <elcheckbox v-model="model.checks" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="特殊资源">
-        <elswitch v-model="model.switch" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item label="活动形式">
-        <elarea v-model="model.contact" :meta="metaText" @input="myChange"/>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
-      </el-form-item>-->
-    </el-form>
-    <component :is="'elurl'" v-model="model.url" :meta="metaText" @input="myChange"></component>
-  </div>
-  <div class="home">
-    <div style="text-align:left;padding-left:100px;">
-      表单值：<br>
+  <!--表单控件-->
+  <el-row :gutter="20">
+    <el-col :span="12">
+      <el-form ref="form" :model="model" label-width="80px">
+        <el-row>
+          <el-col :span="10">
+            <el-form-item label="活动名称">
+              <eltext v-model="model.name" :meta="metaText"/>
+            </el-form-item>
+          </el-col>
+          <el-col :span="10">
+            <el-form-item label="年龄要求">
+              <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-form-item label="活动日期">
+          <eldate v-model="model.date" :meta="metaDate" @input="myChange"/> -
+          <eltime v-model="model.time" :meta="metaTime" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动网址">
+          <elurl v-model="model.url" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="年龄要求">
+          <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动区域">
+          <elselect v-model="model.select" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="即时配送">
+          <elradios v-model="model.radio" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动性质">
+          <elcheckbox v-model="model.checks" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="特殊资源">
+          <elswitch v-model="model.switch" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动形式">
+          <elarea v-model="model.contact" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button>取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+    <el-col :span="11">
+        表单值：<br>
       <template v-for="(item, key) in model" :key="key">
         {{key}}：{{item}}<br>
       </template>
-    </div>
-  </div>
-  <!--使用el-form的v-for-->
-
+    </el-col>
+  </el-row>
+  <!--查询控件-->
+  <!--列表控件-->
+  <!--分页控件-->
 </template>
 
 <script>
 import { reactive, ref } from 'vue'
-import eltext from '@/components/nf-el-form/t-text.vue'
-import elurl from '@/components/nf-el-form/t-url.vue'
-import elnumber from '@/components/nf-el-form/n-number.vue'
-// import elarea from '@/components/nf-el-form/t-area.vue'
-// import elrange from '@/components/nf-el-form/n-range.vue'
-// import eldate from '@/components/nf-el-form/d-date.vue'
-// import eltime from '@/components/nf-el-form/d-time.vue'
-// import elradios from '@/components/nf-el-form/s-radios.vue'
-// import elcheckbox from '@/components/nf-el-form/s-checkbox.vue'
-// import elselect from '@/components/nf-el-form/s-select.vue'
-// import elswitch from '@/components/nf-el-form/s-switch.vue'
+import elFormConfig from '@/components/nf-el-form/map-el-form.js'
 
 export default {
   name: 'eleBase',
   components: {
-    eltext,
-    elurl,
-    // elarea,
-    // elrange,
-    // eldate,
-    // eltime,
-    // elradios,
-    // elcheckbox,
-    // elselect,
-    // elswitch,
-    elnumber
-
+    ...elFormConfig.formItemList
   },
   setup () {
     // 定义表单实体类
@@ -96,7 +74,7 @@ export default {
       url: '',
       name: '',
       contact: '',
-      date: null,
+      date: '2020w18',
       time: null,
       radio: 1,
       checks: [],
@@ -115,7 +93,7 @@ export default {
     const metaText = reactive({
       controlId: 103,
       colName: 'controlType',
-      controlType: 190,
+      controlType: 101,
       defaultValue: '1',
       optionList: [],
       isClear: false,
@@ -128,13 +106,33 @@ export default {
       readonly: false,
       ele: {}
     })
-
+    const metaDate = reactive({
+      controlId: 120,
+      colName: 'date',
+      controlType: 115,
+      defaultValue: '2020-1-8',
+      isClear: false,
+      disabled: false,
+      required: true,
+      placeholder: '请选择日期',
+      readonly: false
+    })
+    const metaTime = reactive({
+      controlId: 121,
+      colName: 'time',
+      controlType: 112,
+      defaultValue: '00:00:00',
+      isClear: false,
+      disabled: false,
+      required: true,
+      placeholder: '请选择日期',
+      readonly: false
+    })
     // 定义
     const currentTabComponent = ref('elurl')
 
     const myChange = (e) => {
-      // alert(e)
-      console.log('changele')
+      // console.log('changele')
     }
 
     return {
@@ -142,6 +140,8 @@ export default {
       model,
       formTitleStyle,
       metaText,
+      metaDate,
+      metaTime,
       myChange
     }
   }

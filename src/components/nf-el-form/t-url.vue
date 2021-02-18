@@ -43,11 +43,13 @@ import { reactive, watch } from 'vue'
  * 处理url的管理类
  * * 功能：
  * ** 提交拼接后的完整的url
- * ** 提供绑定控件值、事件
- * ** 修改时自动拆分属性
+ * ** 监听属性，拆分属性到url
  * * 参数：
  * ** value： control类的value
  * ** mySubmit： control类的mySubmit，直接就提交了
+ * * 返回
+ * ** 绑定控件的 url
+ * ** input事件的 urlSubmit
  */
 const urlManage = (value, mySubmit) => {
   // 把url分成三份处理

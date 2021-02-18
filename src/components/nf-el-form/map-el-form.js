@@ -1,7 +1,7 @@
 import { defineAsyncComponent } from 'vue'
 
 const formItemList = {
-  // 文本类
+  // 文本类 defineComponent
   eltext: defineAsyncComponent(() => import('./t-text.vue')),
   elarea: defineAsyncComponent(() => import('./t-area.vue')),
   elurl: defineAsyncComponent(() => import('./t-url.vue')),

@@ -3,7 +3,7 @@
   <el-input
     v-model="value"
     @input="mySubmit"
-    :id="meta.controlId"
+    :id="'c' + meta.controlId"
     :name="'c' + meta.controlId"
     :disabled="meta.disabled"
     :readonly="meta.readonly"
@@ -26,8 +26,9 @@
 <script>
 import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'nf-el-from-text',
   props: {
     modelValue: String,
@@ -39,5 +40,5 @@ export default {
       ...controlManage(props, context)
     }
   }
-}
+})
 </script>
