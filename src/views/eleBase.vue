@@ -26,13 +26,13 @@
           <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
         </el-form-item>
         <el-form-item label="活动区域">
-          <elselect v-model="model.select" :meta="metaText" @input="myChange"/>
+          <elselect v-model="model.select" :meta="metaSelect" @input="myChange"/>
         </el-form-item>
         <el-form-item label="即时配送">
-          <elradios v-model="model.radio" :meta="metaText" @input="myChange"/>
+          <elradios v-model="model.radio" :meta="metaSelect" @input="myChange"/>
         </el-form-item>
         <el-form-item label="活动性质">
-          <elcheckbox v-model="model.checks" :meta="metaText" @input="myChange"/>
+          <elcheckbox v-model="model.checks" :meta="metaSelect" @input="myChange"/>
         </el-form-item>
         <el-form-item label="特殊资源">
           <elswitch v-model="model.switch" :meta="metaText" @input="myChange"/>
@@ -106,6 +106,29 @@ export default {
       readonly: false,
       ele: {}
     })
+    // 下拉
+    const metaSelect = reactive({
+      controlId: 170,
+      colName: 'select',
+      controlType: 170,
+      defaultValue: '1',
+      optionList: [
+        { value: 1, label: '选项一' },
+        { value: 2, label: '选项二' },
+        { value: 3, label: '选项三' },
+        { value: 4, label: '选项四' },
+        { value: 5, label: '选项五' },
+        { value: 6, label: '选项六' },
+        { value: 7, label: '选项七' }
+      ],
+      isClear: false,
+      disabled: false,
+      required: true,
+      pattern: '',
+      title: '下拉列表框',
+      placeholder: '请选择'
+    })
+    // 日期
     const metaDate = reactive({
       controlId: 120,
       colName: 'date',
@@ -117,6 +140,7 @@ export default {
       placeholder: '请选择日期',
       readonly: false
     })
+    // 时间
     const metaTime = reactive({
       controlId: 121,
       colName: 'time',
@@ -140,6 +164,7 @@ export default {
       model,
       formTitleStyle,
       metaText,
+      metaSelect,
       metaDate,
       metaTime,
       myChange

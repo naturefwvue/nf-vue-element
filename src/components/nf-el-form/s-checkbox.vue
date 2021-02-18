@@ -1,16 +1,25 @@
 <!--多选组-->
 <template>
-  <el-checkbox-group v-model="checks" @change="mySubmit">
-    <el-checkbox :label="3">备选项</el-checkbox>
-    <el-checkbox :label="6">备选项</el-checkbox>
-    <el-checkbox :label="9">备选项</el-checkbox>
+  <el-checkbox-group
+    v-model="value"
+    @change="mySubmit"
+    :id="'c' + meta.controlId"
+    :name="'c' + meta.controlId"
+    :disabled="meta.disabled"
+    :placeholder="meta.placeholder"
+  >
+    <el-checkbox
+      v-for="item in meta.optionList"
+      :key="'check' + meta.controlId + item.value"
+      :label="item.value">
+        {{item.label}}
+    </el-checkbox>
   </el-checkbox-group>
 </template>
 
 <script>
 import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
-import { ref } from 'vue'
 
 export default {
   name: 'nf-el-from-checkbox',
@@ -18,16 +27,13 @@ export default {
     modelValue: String,
     meta: metaInput
   },
-  emits: ['input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['change', 'blur', 'focus'],
   setup (props, context) {
     const { value, mySubmit } = controlManage(props, context)
 
-    const checks = ref([])
-
     return {
       value,
-      mySubmit,
-      checks
+      mySubmit
     }
   }
 }

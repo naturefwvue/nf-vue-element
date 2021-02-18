@@ -1,9 +1,16 @@
 <!--下拉选择-->
 <template>
-<el-select v-model="value" placeholder="请选择">
+  <el-select
+    v-model="value"
+    @change="mySubmit"
+    :id="'c' + meta.controlId"
+    :name="'c' + meta.controlId"
+    :disabled="meta.disabled"
+    :placeholder="meta.placeholder"
+  >
     <el-option
-      v-for="item in meta.options"
-      :key="item.value"
+      v-for="item in meta.optionList"
+      :key="'select' + meta.controlId + item.value"
       :label="item.label"
       :value="item.value">
     </el-option>
@@ -20,7 +27,7 @@ export default {
     modelValue: String,
     meta: metaInput
   },
-  emits: ['input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['change', 'blur', 'focus'],
   setup (props, context) {
     const { value, mySubmit } = controlManage(props, context)
 

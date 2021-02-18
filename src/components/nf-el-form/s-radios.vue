@@ -1,9 +1,19 @@
 <!--单选组-->
 <template>
-  <el-radio-group v-model="value" @change="mySubmit">
-    <el-radio :label="3">备选项</el-radio>
-    <el-radio :label="6">备选项</el-radio>
-    <el-radio :label="9">备选项</el-radio>
+  <el-radio-group
+    v-model="value"
+    @change="mySubmit"
+    :id="'c' + meta.controlId"
+    :name="'c' + meta.controlId"
+    :disabled="meta.disabled"
+    :placeholder="meta.placeholder"
+  >
+    <el-radio
+      v-for="item in meta.optionList"
+      :key="'radio' + meta.controlId + item.value"
+      :label="item.value">
+        {{item.label}}
+    </el-radio>
   </el-radio-group>
 </template>
 
@@ -17,7 +27,7 @@ export default {
     modelValue: String,
     meta: metaInput
   },
-  emits: ['input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['change', 'blur', 'focus'],
   setup (props, context) {
     const { value, mySubmit } = controlManage(props, context)
 
