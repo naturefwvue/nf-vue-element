@@ -15,6 +15,24 @@
             </el-form-item>
           </el-col>
         </el-row>
+        <el-form-item label="活动性质">
+          <elcheckbox v-model="model.check" :meta="metaSelect" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="这是开关">
+          <elswitch v-model="model.switch" :meta="metaText" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="即时配送">
+          <elradios v-model="model.radio" :meta="metaSelect" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动性质">
+          <elcheckboxs v-model="model.checks" :meta="metaSelect" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动区域">
+          <elselect v-model="model.select" :meta="metaSelect" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="活动区域">
+          <elselwrite v-model="model.select" :meta="metaSelwrite" @input="myChange"/>
+        </el-form-item>
         <el-form-item label="活动日期">
           <eldate v-model="model.date" :meta="metaDate" @input="myChange"/> -
           <eltime v-model="model.time" :meta="metaTime" @input="myChange"/>
@@ -24,18 +42,6 @@
         </el-form-item>
         <el-form-item label="年龄要求">
           <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
-        </el-form-item>
-        <el-form-item label="活动区域">
-          <elselect v-model="model.select" :meta="metaSelect" @input="myChange"/>
-        </el-form-item>
-        <el-form-item label="即时配送">
-          <elradios v-model="model.radio" :meta="metaSelect" @input="myChange"/>
-        </el-form-item>
-        <el-form-item label="活动性质">
-          <elcheckbox v-model="model.checks" :meta="metaSelect" @input="myChange"/>
-        </el-form-item>
-        <el-form-item label="特殊资源">
-          <elswitch v-model="model.switch" :meta="metaText" @input="myChange"/>
         </el-form-item>
         <el-form-item label="活动形式">
           <elarea v-model="model.contact" :meta="metaText" @input="myChange"/>
@@ -59,7 +65,7 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import elFormConfig from '@/components/nf-el-form/map-el-form.js'
 
 export default {
@@ -74,12 +80,13 @@ export default {
       url: '',
       name: '',
       contact: '',
-      date: '2020w18',
+      date: '2020-1-1',
       time: null,
-      radio: 1,
+      check: false,
+      switch: true,
+      radio: null,
       checks: [],
-      select: 1,
-      switch: true
+      select: []
 
     })
 
@@ -125,14 +132,36 @@ export default {
       disabled: false,
       required: true,
       pattern: '',
-      title: '下拉列表框',
+      title: '我同意条款',
+      placeholder: '请选择'
+    })
+    // 下拉可写
+    const metaSelwrite = reactive({
+      controlId: 170,
+      colName: 'select11',
+      controlType: 170,
+      defaultValue: [],
+      optionList: [
+        { value: 1, label: '选项一' },
+        { value: 2, label: '选项二' },
+        { value: 3, label: '选项三' },
+        { value: 4, label: '选项四' },
+        { value: 5, label: '选项五' },
+        { value: 6, label: '选项六' },
+        { value: 7, label: '选项七' }
+      ],
+      isClear: false,
+      disabled: false,
+      required: true,
+      pattern: '',
+      title: '我同意条款',
       placeholder: '请选择'
     })
     // 日期
     const metaDate = reactive({
       controlId: 120,
       colName: 'date',
-      controlType: 115,
+      controlType: 110,
       defaultValue: '2020-1-8',
       isClear: false,
       disabled: false,
@@ -144,7 +173,7 @@ export default {
     const metaTime = reactive({
       controlId: 121,
       colName: 'time',
-      controlType: 112,
+      controlType: 115,
       defaultValue: '00:00:00',
       isClear: false,
       disabled: false,
@@ -153,18 +182,17 @@ export default {
       readonly: false
     })
     // 定义
-    const currentTabComponent = ref('elurl')
 
     const myChange = (e) => {
       // console.log('changele')
     }
 
     return {
-      currentTabComponent,
       model,
       formTitleStyle,
       metaText,
       metaSelect,
+      metaSelwrite,
       metaDate,
       metaTime,
       myChange

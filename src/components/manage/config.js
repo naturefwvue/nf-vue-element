@@ -11,22 +11,23 @@ const formControlType = {
   108: 'text', // 弹窗选择记录
   110: 'date', // 日期 input-date
   111: 'datetime-local', // 日期时间
-  112: 'time', // 时间，任意时间
-  113: 'time2', // 时间，选择固定选项
-  114: 'month', // 年月
-  115: 'week', // 年周
-  116: 'year', // 年
+  112: 'month', // 年月
+  113: 'week', // 年周
+  114: 'year', // 年
+  115: 'time', // 时间，任意时间
+  116: 'time2', // 时间，选择固定选项
   120: 'number', // 数字
   121: 'range', // 滑块
   130: 'file', // 上传文件
   131: 'file', // 上传图片
   140: 'fulltext', // 富文本编辑器
   150: 'checkbox', // 勾选
+  151: 'switch', // 开关
   152: 'checkboxs', // 多选组
   153: 'radios', // 单选组
-  170: 'select', // 下拉列表框 单选
-  171: 'selects', // 列表框 多选
-  172: 'selectMore' // 联动下拉列表框
+  160: 'select', // 下拉列表框 单选
+  161: 'selects', // 列表框 多选
+  162: 'selectMore' // 联动下拉列表框
 }
 
 // 表单域，文本类控件属性

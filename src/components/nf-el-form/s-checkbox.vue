@@ -1,6 +1,6 @@
-<!--多选组-->
+<!--勾选框-->
 <template>
-  <el-checkbox-group
+  <el-checkbox
     v-model="value"
     @change="mySubmit"
     :id="'c' + meta.controlId"
@@ -8,13 +8,8 @@
     :disabled="meta.disabled"
     :placeholder="meta.placeholder"
   >
-    <el-checkbox
-      v-for="item in meta.optionList"
-      :key="'check' + meta.controlId + item.value"
-      :label="item.value">
-        {{item.label}}
-    </el-checkbox>
-  </el-checkbox-group>
+    {{meta.title}}
+  </el-checkbox>
 </template>
 
 <script>
@@ -24,7 +19,7 @@ import { metaInput } from '../manage/config.js'
 export default {
   name: 'nf-el-from-checkbox',
   props: {
-    modelValue: String,
+    modelValue: Boolean,
     meta: metaInput
   },
   emits: ['change', 'blur', 'focus'],

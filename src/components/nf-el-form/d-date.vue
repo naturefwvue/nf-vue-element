@@ -25,9 +25,9 @@ const dateType = {
   100: 'dates/datetimerange/daterange/monthrange',
   110: 'date',
   111: 'datetime',
-  114: 'month',
-  115: 'week',
-  116: 'year'
+  112: 'month',
+  113: 'week',
+  114: 'year'
 }
 
 // 根据类型设置宽度
@@ -38,13 +38,13 @@ const style = {
   111: { // datetime
     width: '190px'
   },
-  114: { // month
+  112: { // month
     width: '140px'
   },
-  115: { // week
+  113: { // week
     width: '140px'
   },
-  116: { // year
+  114: { // year
     width: '140px'
   }
 }
@@ -53,9 +53,9 @@ const style = {
 const format = {
   110: 'YYYY-MM-DD',
   111: 'YYYY-MM-DD HH:mm:ss',
-  114: 'gggg年 MM月',
-  115: 'gggg 第ww周',
-  116: 'gggg 年'
+  112: 'gggg年 MM月',
+  113: 'gggg 第ww周',
+  114: 'gggg 年'
 }
 
 /**
@@ -75,7 +75,7 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
   // 日期控件用的v-model，便于做类型转换
   const mydate = ref(new Date(value.value))
 
-  if (controlType === 115) {
+  if (controlType === 113) {
     // 把周数转换成日期
     const arr = value.value.split('w')
     if (arr.length > 1) {
@@ -85,7 +85,7 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
 
   // 监听属性，设置给 mydate
   watch(() => value.value, (v1, v2) => {
-    if (controlType === 115) {
+    if (controlType === 113) {
       // 把周数转换成日期
       const arr = v1.split('w')
       if (arr.length > 1) {
@@ -115,10 +115,10 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
       case 111: // 日期 + 时间
         re = `${year}-${month}-${day} ${hour}:${mm}:${ss}`
         break
-      case 114: // 年 + 月
+      case 112: // 年 + 月
         re = `${year}-${month}`
         break
-      case 115: // 第几周。直接去dom找。没发现更好的方法
+      case 113: // 第几周。直接去dom找。没发现更好的方法
         setTimeout(() => {
           re = document.getElementsByName('c' + controlId)[0].value
           console.log('周1：', re)
@@ -127,7 +127,7 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
           mySubmit(re) // 提交给父组件
         }, 500)
         break
-      case 116: // 年
+      case 114: // 年
         re = year
         break
     }

@@ -1,19 +1,20 @@
-<!--数字滑块-->
+<!--多选组-->
 <template>
-  <el-slider
+  <el-checkbox-group
     v-model="value"
     @change="mySubmit"
     :id="'c' + meta.controlId"
     :name="'c' + meta.controlId"
     :disabled="meta.disabled"
     :placeholder="meta.placeholder"
-    :title="meta.title"
-    :min="meta.min"
-    :max="meta.max"
-    :step="meta.step"
-    label="描述文字"
   >
-  </el-slider>
+    <el-checkbox
+      v-for="item in meta.optionList"
+      :key="'check' + meta.controlId + item.value"
+      :label="item.value">
+        {{item.label}}
+    </el-checkbox>
+  </el-checkbox-group>
 </template>
 
 <script>
@@ -21,12 +22,12 @@ import controlManage from '../manage/controlManage.js'
 import { metaInput } from '../manage/config.js'
 
 export default {
-  name: 'nf-el-from-range',
+  name: 'nf-el-from-checkboxs',
   props: {
-    modelValue: Number,
+    modelValue: Object,
     meta: metaInput
   },
-  emits: ['input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['change', 'blur', 'focus'],
   setup (props, context) {
     const { value, mySubmit } = controlManage(props, context)
 

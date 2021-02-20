@@ -1,6 +1,6 @@
 <!--日期-->
 <template>
-  <el-time-picker v-if="meta.controlType === 112"
+  <el-time-picker v-if="meta.controlType === 115"
     style="width:130px;"
     v-model="mytime"
     @change="myChange"
@@ -11,7 +11,7 @@
     :placeholder="meta.placeholder"
   >
   </el-time-picker>
-  <el-time-select  v-if="meta.controlType === 113"
+  <el-time-select  v-if="meta.controlType === 116"
     style="width:100px;"
     v-model="mytime"
     @change="myChange"
@@ -55,7 +55,7 @@ const timeManage = (value, mySubmit, controlType) => {
 
   // 监听属性，设置给 mydate
   watch(() => value.value, (v1, v2) => {
-    if (controlType === 112) {
+    if (controlType === 115) {
       // 把周数转换成日期
       mytime.value = new Date('1900-1-1 ' + v1)
     } else {
@@ -67,7 +67,7 @@ const timeManage = (value, mySubmit, controlType) => {
   const myChange = (_val) => {
     const val = _val
 
-    if (controlType === 112) {
+    if (controlType === 115) {
       const hour = val.getHours().toString().padStart(2, '0')
       const mm = val.getMinutes().toString().padStart(2, '0')
       const ss = val.getSeconds().toString().padStart(2, '0')
