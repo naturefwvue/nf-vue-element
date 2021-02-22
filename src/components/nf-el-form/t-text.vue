@@ -13,6 +13,7 @@
     :title="meta.title"
     :autofocus="meta.autofocus"
     :autocomplete="meta.autocomplete"
+    size="mini"
   >
   </el-input>
   <!--

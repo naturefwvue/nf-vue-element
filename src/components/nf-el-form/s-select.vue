@@ -7,6 +7,7 @@
     :name="'c' + meta.controlId"
     :disabled="meta.disabled"
     :placeholder="meta.placeholder"
+    size="mini"
   >
     <el-option
       v-for="item in meta.optionList"

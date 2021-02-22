@@ -30,6 +30,7 @@ const controlManage = (props, context) => {
   // 向父组件提交事件
   const mySubmit = (val) => {
     context.emit('update:modelValue', val)
+    context.emit('myChange', val, props.meta.controlId, props.meta.colName)
     context.emit('input', val)
   }
 

@@ -4,12 +4,22 @@
     <router-link :to="{name:'eleBase'}">ele基础组件</router-link> |
     <router-link :to="{name:'eleForm'}">表单组件</router-link> |
     <router-link :to="{name:'eleFind'}">查询组件</router-link> |
-    <router-link :to="{name:'eleBase'}">列表组件</router-link> |
+    <router-link :to="{name:'eleGrid'}">列表组件</router-link> |
     <router-link :to="{name:'helpForm'}">表单辅助</router-link> |
   </div>
   <router-view/>
 </template>
 
+<script>
+import { provide, reactive } from 'vue'
+export default {
+  setup () {
+    provide('provideTest', reactive({
+      proTest: '注入测试'
+    }))
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

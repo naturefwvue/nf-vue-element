@@ -20,7 +20,7 @@
 <script>
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
-import elFormConfig from '@/components/nf-el-form/map-el-form.js'
+import elFormConfig from '@/components/nf-el-form/el-form-map.js'
 import platFormManage from '@/components/plat-help/js/formManage.js'
 
 // 定义样式

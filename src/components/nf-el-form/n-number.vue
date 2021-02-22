@@ -13,7 +13,7 @@
     :min="meta.min"
     :max="meta.max"
     :step="meta.step"
-    label="描述文字"
+    size="mini"
   >
   </el-input-number>
 </template>

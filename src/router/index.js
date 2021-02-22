@@ -23,6 +23,11 @@ const routes = [
     component: () => import('../views/eleFind.vue')
   },
   {
+    path: '/eleGrid',
+    name: 'eleGrid',
+    component: () => import('../views/eleGrid.vue')
+  },
+  {
     path: '/helpForm',
     name: 'helpForm',
     component: () => import('../views/helpForm.vue')
