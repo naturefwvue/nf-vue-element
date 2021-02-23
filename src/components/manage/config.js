@@ -31,7 +31,7 @@ const formControlType = {
 }
 
 // 表单域，文本类控件属性
-const metaText = {
+export const metaText = {
   type: Object,
   default: () => {
     return {

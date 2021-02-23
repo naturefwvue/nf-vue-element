@@ -1,18 +1,18 @@
 <!--单行文本-->
-<template>
+<template>{{show_word_limit}}
   <el-input
     v-model="value"
     @input="mySubmit"
-    :id="'c' + meta.controlId"
-    :name="'c' + meta.controlId"
-    :disabled="meta.disabled"
-    :readonly="meta.readonly"
-    :maxlength="meta.maxlength"
-    :minlength="meta.minlength"
-    :placeholder="meta.placeholder"
-    :title="meta.title"
-    :autofocus="meta.autofocus"
-    :autocomplete="meta.autocomplete"
+    :id="'c' + controlId"
+    :name="'c' + controlId"
+    :disabled="disabled"
+    :readonly="readonly"
+    :maxlength="maxlength"
+    :minlength="minlength"
+    :placeholder="placeholder"
+    :title="title"
+    :autofocus="autofocus"
+    :autocomplete="autocomplete"
     size="mini"
   >
   </el-input>
@@ -26,20 +26,26 @@
 
 <script>
 import controlManage from '../manage/controlManage.js'
-import { metaInput } from '../manage/config.js'
-import { defineComponent } from 'vue'
+// import metaText from '../manage/config.js'
+// import { defineComponent } from 'vue'
+// 引入组件需要的属性
+import { baseFormMeta, textMeta } from '../manage/formItemMeta.js'
 
-export default defineComponent({
+export default {
   name: 'nf-el-from-text',
   props: {
     modelValue: String,
-    meta: metaInput
+    ...baseFormMeta,
+    ...textMeta,
+    meta: Object
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
+    console.log('props', props)
+    console.log('baseFormMeta', baseFormMeta)
     return {
       ...controlManage(props, context)
     }
   }
-})
+}
 </script>

@@ -6,15 +6,18 @@
         <el-row>
           <el-col :span="10">
             <el-form-item label="活动名称">
-              <eltext v-model="model.name" :meta="metaText"/>
+              <eltext v-model="model.name" v-bind="metaText"/>
             </el-form-item>
           </el-col>
+          <!--
           <el-col :span="10">
             <el-form-item label="年龄要求">
               <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
             </el-form-item>
           </el-col>
+          -->
         </el-row>
+        <!--
         <el-form-item label="活动性质">
           <elcheckbox v-model="model.check" :meta="metaSelect" @input="myChange"/>
         </el-form-item>
@@ -47,9 +50,13 @@
           <elarea v-model="model.contact" :meta="metaText" @input="myChange"/>
         </el-form-item>
         <el-form-item>
+          <component :is="'el-input'" v-model="model.name" v-bind="{autofocus:true, maxlength: 10 }" ></component>
+        </el-form-item>
+        <el-form-item>
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
           <el-button>取消</el-button>
         </el-form-item>
+        -->
       </el-form>
     </el-col>
     <el-col :span="11">
@@ -59,9 +66,6 @@
       </template>
     </el-col>
   </el-row>
-  <!--查询控件-->
-  <!--列表控件-->
-  <!--分页控件-->
 </template>
 
 <script>
@@ -102,16 +106,14 @@ export default {
       colName: 'controlType',
       controlType: 101,
       defaultValue: '1',
-      optionList: [],
+      autofocus: true,
+      // optionList: [],
       isClear: false,
       disabled: false,
-      required: true,
-      pattern: '',
       title: '组件类型',
       placeholder: '请输入组件类型',
       maxlength: 100,
-      readonly: false,
-      ele: {}
+      readonly: false
     })
     // 下拉
     const metaSelect = reactive({

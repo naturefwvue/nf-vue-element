@@ -139,8 +139,9 @@ export default {
     ...elFormConfig.formItemList
   },
   setup () {
-    const test = inject('provideTest')
-    console.log('注入测试', test)
+    const userOnline = inject('userOnline')
+    console.log('注入测试：', userOnline)
+    userOnline.isOnline = true
 
     const model = reactive({})
     const partModel = reactive({})

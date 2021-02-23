@@ -11,14 +11,14 @@ import { ref, watch } from 'vue'
 */
 const controlManage = (props, context) => {
   // 用于绑定控件的值。
-  const value = ref(props.meta.defaultValue)
+  const value = ref('')
 
   // 获取父组件设置的属性
   const _value = props.modelValue
 
   // 设置控件值。如果有属性值（修改状态）则把属性值设置给控件值。
   if (!(_value === '' || _value === 0 || _value === null)) {
-    value.value = _value
+    // value.value = _value
   }
 
   // 监听 modelValue 属性，给 value 赋值

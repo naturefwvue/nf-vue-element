@@ -122,14 +122,14 @@
       "107": {  
         "controlId": 107,
         "colName": "disabled",
-        "label": "是否可用",
+        "label": "是否禁用",
         "controlType": 151,
         "defaultValue": true,
         "isClear": false,
         "title": "",
         "optionList": [{
           "value": 1,
-          "title": "是否可用"
+          "title": "是否禁用"
         }],
         "colCount": 1
       },

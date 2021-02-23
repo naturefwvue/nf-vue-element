@@ -12,11 +12,35 @@
 
 <script>
 import { provide, reactive } from 'vue'
+// import { useRouter } from 'vue-router'
+
 export default {
   setup () {
-    provide('provideTest', reactive({
-      proTest: '注入测试'
-    }))
+    console.log('App')
+    const userOnline = reactive({
+      isOnline: false,
+      userId: 1,
+      userCode: 'jyk',
+      userNike: '海洋',
+      departmentId: 123,
+      departmentName: '',
+      role: [1],
+      power: [1, 2, 3]
+    })
+    provide('userOnline', userOnline)
+    console.log('App2')
+
+    // 设置一个路由守卫
+    // const router = useRouter()
+    // router.beforeEach((to, from, next) => {
+    //   console.log('路由守卫里的：', userOnline)
+    //   if (to.name !== 'eleForm' && !userOnline.isOnline) {
+    //     alert('您还没有登录，请先登录！')
+    //    next({ name: 'eleForm' })
+    //  } else {
+    //    next()
+    //  }
+    // })
   }
 }
 </script>
