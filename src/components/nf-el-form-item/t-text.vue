@@ -1,16 +1,16 @@
 <!--单行文本-->
-<template>{{show_word_limit}}
+<template>
   <el-input
     v-model="value"
     @input="mySubmit"
     :id="'c' + controlId"
     :name="'c' + controlId"
     :disabled="disabled"
+    :placeholder="placeholder"
+    :title="title"
     :readonly="readonly"
     :maxlength="maxlength"
     :minlength="minlength"
-    :placeholder="placeholder"
-    :title="title"
     :autofocus="autofocus"
     :autocomplete="autocomplete"
     size="mini"
@@ -38,9 +38,10 @@ export default defineComponent({
     ...baseFormMeta, // 基础属性
     ...textMeta // 单行文本的属性
   },
-  emits: ['input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['myChange', 'update:modelValue', 'input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    console.log('props', props)
+    console.log('props-text', props)
+
     return {
       ...formItemManage(props, context)
     }

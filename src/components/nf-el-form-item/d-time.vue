@@ -9,6 +9,7 @@
     :disabled="disabled"
     :readonly="readonly"
     :placeholder="placeholder"
+    v-bind="$attrs"
   >
   </el-time-picker>
   <el-time-select  v-if="controlType === 116"
@@ -20,6 +21,7 @@
     :disabled="disabled"
     :readonly="readonly"
     :placeholder="placeholder"
+    v-bind="$attrs"
     start='07:30'
     step='00:15'
     end='18:30'
@@ -89,6 +91,7 @@ const timeManage = (value, mySubmit, controlType) => {
 
 export default defineComponent({
   name: 'el-from-time',
+  inheritAttrs: false, // 禁止Attribute 继承
   props: {
     modelValue: Object,
     ...baseFormMeta // 基础属性

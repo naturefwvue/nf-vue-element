@@ -6,12 +6,12 @@
     :id="'c' + controlId"
     :name="'c' + controlId"
     :disabled="disabled"
-    :readonly="readonly"
     :placeholder="placeholder"
     :title="title"
+    :readonly="readonly"
     :maxlength="maxlength"
-    :min="min"
     :max="max"
+    :min="min"
     :step="step"
     size="mini"
     controls-position="right"
@@ -33,8 +33,10 @@ export default defineComponent({
     ...baseFormMeta,
     ...numberMeta
   },
-  emits: ['input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['myChange', 'input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
+    console.log('props-number', props)
+
     return {
       ...formItemManage(props, context)
     }

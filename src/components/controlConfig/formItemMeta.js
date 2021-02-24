@@ -4,37 +4,46 @@
  * * 共用属性部分，基本上每个控件都需要。
  */
 export const baseFormMeta = {
-  controlId: { // 控件ID，必填
+  controlId: { // 101 控件ID，必填
     type: Number,
     required: true
   },
-  colName: { // 字段名称，必填
+  colName: { // 102 字段名称，必填
     type: String,
     required: true
   },
-  label: String, // 中文名称，标签
-  controlType: { // 控件类型编号
+  label: String, // 103 中文名称，标签
+  controlType: { // 104 控件类型编号
     type: Number,
     default: 101
   },
-  isClear: { // 连续添加时是否恢复默认值
+  isClear: { // 105 表单控件用 连续添加时是否恢复默认值
     type: Boolean,
     default: false
   },
-  defaultValue: { // 默认值
+  defaultValue: { // 106 默认值
     type: String,
     default: ''
   },
-  disabled: { // 是否禁用
+  autofocus: { // 107 表单控件设置
     type: Boolean,
     default: false
   },
-  placeholder: String,
-  title: String, // 提示信息
-  autofocus: { // off
+  disabled: { // 108 是否禁用
     type: Boolean,
     default: false
+  },
+  placeholder: String, // 109 占位提示信息
+  title: String, // 110 提示信息
+  size: { // 120 medium / small / mini 三选一
+    type: String,
+    default: 'mini',
+    validator: (value) => {
+      // 这个值必须匹配下列字符串中的一个
+      return ['medium', 'small', 'mini'].indexOf(value) !== -1
+    }
   }
+
 }
 
 /**

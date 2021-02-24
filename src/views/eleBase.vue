@@ -6,16 +6,14 @@
         <el-row>
           <el-col :span="10">
             <el-form-item label="活动名称">
-              <eltext v-model="model.name" v-bind="metaText"/>
+              <el-form-text v-model="model.name" v-bind="metaText"/>
             </el-form-item>
           </el-col>
-          <!--
           <el-col :span="10">
             <el-form-item label="年龄要求">
-              <elnumber v-model="model.age" :meta="metaText" @input="myChange"/>
+              <el-form-number v-model="model.age" v-bind="metaNumber" @input="myChange"/>
             </el-form-item>
           </el-col>
-          -->
         </el-row>
         <!--
         <el-form-item label="活动性质">
@@ -70,7 +68,7 @@
 
 <script>
 import { reactive } from 'vue'
-import elFormConfig from '@/components/nf-el-form-item/el-form-map.js'
+import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
 
 export default {
   name: 'eleBase',
@@ -102,6 +100,22 @@ export default {
 
     // 控件类型的属性
     const metaText = reactive({
+      controlId: 103,
+      colName: 'controlType',
+      controlType: 101,
+      defaultValue: '1',
+      isClear: false,
+      readonly: false,
+      disabled: false,
+      placeholder: '请输入组件类型',
+      title: '组件类型',
+      maxlength: 6,
+      minlength: 2,
+      autofocus: true,
+      'suffix-icon': 'el-icon-date'
+    })
+    // 控件类型的属性
+    const metaNumber = reactive({
       controlId: 103,
       colName: 'controlType',
       controlType: 101,
@@ -193,6 +207,7 @@ export default {
       model,
       formTitleStyle,
       metaText,
+      metaNumber,
       metaSelect,
       metaSelwrite,
       metaDate,

@@ -33,7 +33,7 @@
 
 <script>
 import { watch } from 'vue'
-import elFormConfig from '@/components/nf-el-form-item/el-form-map.js'
+import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
 import formManage from '@/components/controlManage/formManage.js'
 
 export default {
