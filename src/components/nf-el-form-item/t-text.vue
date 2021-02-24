@@ -17,35 +17,33 @@
   >
   </el-input>
   <!--
-    :show-word-limit="meta.ele.show_word_limit"
-    :clearable="meta.ele.clearable"
-    :validate_event="meta.ele.validate_event"
-    :resize="meta.ele.resize"
+    :show-word-limit="show_word_limit"
+    :clearable="clearable"
+    :validate_event="validate_event"
+    :resize="resize"
   -->
 </template>
 
 <script>
-import controlManage from '../manage/controlManage.js'
-// import metaText from '../manage/config.js'
-// import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
+// 引入表单子控件的管理类
+import formItemManage from '../controlManage/formItemManage.js'
 // 引入组件需要的属性
-import { baseFormMeta, textMeta } from '../manage/formItemMeta.js'
+import { baseFormMeta, textMeta } from '../controlConfig/formItemMeta.js'
 
-export default {
-  name: 'nf-el-from-text',
+export default defineComponent({
+  name: 'el-form-text',
   props: {
     modelValue: String,
-    ...baseFormMeta,
-    ...textMeta,
-    meta: Object
+    ...baseFormMeta, // 基础属性
+    ...textMeta // 单行文本的属性
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
     console.log('props', props)
-    console.log('baseFormMeta', baseFormMeta)
     return {
-      ...controlManage(props, context)
+      ...formItemManage(props, context)
     }
   }
-}
+})
 </script>

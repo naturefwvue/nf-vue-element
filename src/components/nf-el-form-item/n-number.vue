@@ -20,25 +20,24 @@
 </template>
 
 <script>
-import controlManage from '../manage/controlManage.js'
+import { defineComponent } from 'vue'
+// 引入表单子控件的管理类
+import formItemManage from '../controlManage/formItemManage.js'
 // 引入组件需要的属性
-import { baseFormMeta, numberMeta } from '../manage/formItemMeta.js'
+import { baseFormMeta, numberMeta } from '../controlConfig/formItemMeta.js'
 
-export default {
-  name: 'nf-el-from-number',
+export default defineComponent({
+  name: 'el-from-number',
   props: {
     modelValue: Number,
     ...baseFormMeta,
-    numberMeta
+    ...numberMeta
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, mySubmit } = controlManage(props, context)
-
     return {
-      value,
-      mySubmit
+      ...formItemManage(props, context)
     }
   }
-}
+})
 </script>

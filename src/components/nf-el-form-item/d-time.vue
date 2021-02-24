@@ -1,25 +1,25 @@
 <!--日期-->
 <template>
-  <el-time-picker v-if="meta.controlType === 115"
+  <el-time-picker v-if="controlType === 115"
     style="width:130px;"
     v-model="mytime"
     @change="myChange"
-    :id="'c' + meta.controlId"
-    :name="'c' + meta.controlId"
-    :disabled="meta.disabled"
-    :readonly="meta.readonly"
-    :placeholder="meta.placeholder"
+    :id="'c' + controlId"
+    :name="'c' + controlId"
+    :disabled="disabled"
+    :readonly="readonly"
+    :placeholder="placeholder"
   >
   </el-time-picker>
-  <el-time-select  v-if="meta.controlType === 116"
+  <el-time-select  v-if="controlType === 116"
     style="width:100px;"
     v-model="mytime"
     @change="myChange"
-    :id="'c' + meta.controlId"
-    :name="'c' + meta.controlId"
-    :disabled="meta.disabled"
-    :readonly="meta.readonly"
-    :placeholder="meta.placeholder"
+    :id="'c' + controlId"
+    :name="'c' + controlId"
+    :disabled="disabled"
+    :readonly="readonly"
+    :placeholder="placeholder"
     start='07:30'
     step='00:15'
     end='18:30'
@@ -28,9 +28,11 @@
 </template>
 
 <script>
-import controlManage from '../manage/controlManage.js'
-import { metaInput } from '../manage/config.js'
-import { ref, watch } from 'vue'
+import { ref, watch, defineComponent } from 'vue'
+// 引入表单子控件的管理类
+import formItemManage from '../controlManage/formItemManage.js'
+// 引入组件需要的属性
+import { baseFormMeta } from '../controlConfig/formItemMeta.js'
 
 /**
  * 日期管理类
@@ -85,21 +87,21 @@ const timeManage = (value, mySubmit, controlType) => {
   }
 }
 
-export default {
-  name: 'nf-el-from-time',
+export default defineComponent({
+  name: 'el-from-time',
   props: {
     modelValue: Object,
-    meta: metaInput
+    ...baseFormMeta // 基础属性
   },
   emits: ['change', 'blur', 'focus'],
   setup (props, context) {
-    const { value, mySubmit } = controlManage(props, context)
+    const { value, mySubmit } = formItemManage(props, context)
 
-    const { mytime, myChange } = timeManage(value, mySubmit, props.meta.controlType)
+    const { mytime, myChange } = timeManage(value, mySubmit, props.controlType)
     return {
       mytime,
       myChange
     }
   }
-}
+})
 </script>

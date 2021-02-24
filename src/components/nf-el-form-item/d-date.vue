@@ -1,24 +1,26 @@
 <!--日期-->
 <template>
-  <el-date-picker :style="style[meta.controlType]"
+  <el-date-picker :style="style[controlType]"
     v-model="mydate"
-    :type="dateType[meta.controlType]"
+    :type="dateType[controlType]"
     @change="myChange"
-    :id="'c' + meta.controlId"
-    :name="'c' + meta.controlId"
-    :disabled="meta.disabled"
-    :readonly="meta.readonly"
-    :placeholder="meta.placeholder"
-    :autofocus="meta.autofocus"
-    :format="format[meta.controlType]"
+    :id="'c' + controlId"
+    :name="'c' + controlId"
+    :disabled="disabled"
+    :readonly="readonly"
+    :placeholder="placeholder"
+    :autofocus="autofocus"
+    :format="format[controlType]"
   >
   </el-date-picker>
 </template>
 
 <script>
-import controlManage from '../manage/controlManage.js'
-import { metaInput } from '../manage/config.js'
-import { ref, watch } from 'vue'
+import { ref, watch, defineComponent } from 'vue'
+// 引入表单子控件的管理类
+import formItemManage from '../controlManage/formItemManage.js'
+// 引入组件需要的属性
+import { baseFormMeta } from '../controlConfig/formItemMeta.js'
 
 // 类型的字典
 const dateType = {
@@ -141,22 +143,22 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
   }
 }
 
-export default {
-  name: 'nf-el-from-date',
+export default defineComponent({
+  name: 'el-from-date',
   props: {
     modelValue: Object,
-    meta: metaInput
+    ...baseFormMeta // 基础属性
   },
   emits: ['change', 'blur', 'focus'],
   setup (props, context) {
-    const { value, mySubmit } = controlManage(props, context)
+    const { value, mySubmit } = formItemManage(props, context)
 
     return {
-      ...dateManage(value, mySubmit, props.meta.controlType, props.meta.controlId),
+      ...dateManage(value, mySubmit, props.controlType, props.controlId),
       dateType, // 类型：日期、日期时间、年月、年周
       format, // 格式化
       style // 控制宽度
     }
   }
-}
+})
 </script>

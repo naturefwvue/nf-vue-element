@@ -1,25 +1,20 @@
 import { ref, watch } from 'vue'
 
 /**
-* 控件的赋值、提交的统一管理函数
+* 表单子控件的管理类
 ** 属性：
-* ** props： 组件的属性，获取modelValue，和meta
+* ** props： 组件的属性，获取modelValue和meta属性
 * ** context： 上下文获取emit，提交数据
 ** 返回：
 * ** value：绑定到组件的值
 * ** mySubmit：向父组件提交的事件
 */
-const controlManage = (props, context) => {
+const formItemManage = (props, context) => {
   // 用于绑定控件的值。
   const value = ref('')
 
   // 获取父组件设置的属性
-  const _value = props.modelValue
-
-  // 设置控件值。如果有属性值（修改状态）则把属性值设置给控件值。
-  if (!(_value === '' || _value === 0 || _value === null)) {
-    // value.value = _value
-  }
+  value.value = props.modelValue
 
   // 监听 modelValue 属性，给 value 赋值
   watch(() => props.modelValue, (v1, v2) => {
@@ -29,9 +24,17 @@ const controlManage = (props, context) => {
 
   // 向父组件提交事件
   const mySubmit = (val) => {
+    // 修改 modelValue 属性
     context.emit('update:modelValue', val)
-    context.emit('myChange', val, props.meta.controlId, props.meta.colName)
+    // 提交 myChange 表单组件需要用，可以得到组件ID和字段名称，
+    // 用于区分是哪个组件触发的事件。
+    context.emit('myChange', val, props.controlId, props.colName)
+    // 文本类需要的事件
     context.emit('input', val)
+    // 选择类需要的事件
+    context.emit('change', val)
+    // 数据验证需要的事件
+    context.emit('blur', val)
   }
 
   return {
@@ -51,4 +54,4 @@ const controlManage = (props, context) => {
   }
 }
 
-export default controlManage
+export default formItemManage

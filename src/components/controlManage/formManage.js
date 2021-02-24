@@ -1,7 +1,7 @@
 import { reactive, watch } from 'vue'
 
 /**
- * 表单的管理类
+ * 表单控件的管理类
  * * 创建v-model
  * * 调整列数
  * * 合并

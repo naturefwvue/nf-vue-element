@@ -12,7 +12,6 @@
             placeholder:
           </el-col>
           <el-col :span="10">{{test}}
-            <input type="text" v-model="meta.placeholder"/>
           </el-col>
         </el-row>
           <el-row>
@@ -20,7 +19,6 @@
             type:
           </el-col>
           <el-col :span="10">
-            <nfselect v-model="meta.controlType" :meta="metaType"/>
           </el-col>
         </el-row>
         <el-row>
@@ -45,14 +43,10 @@
 <script>
 // @ is an alias to /src
 import { reactive, ref } from 'vue'
-import nftext from '@/components/nf-html/input-text.vue'
-import nfselect from '@/components/nf-html/select.vue'
 
 export default {
   name: 'Home',
   components: {
-    nftext,
-    nfselect
   },
   setup () {
     // 测试控件内部修改

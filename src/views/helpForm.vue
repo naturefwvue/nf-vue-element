@@ -21,7 +21,6 @@
         <div contenteditable="true">
           这里显示json<br>
           第二行
-          {{metaForm}}
         </div>
       </el-col>
     </el-row>
@@ -31,12 +30,12 @@
 <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import helpFormItem from '@/components/plat-help/formItem'
+// import helpFormItem from '@/components/plat-help/formItem'
 
 export default {
   name: 'formHelp',
   components: {
-    helpFormItem
+    // helpFormItem
   },
   setup () {
     const value = ref('1')

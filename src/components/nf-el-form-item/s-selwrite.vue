@@ -16,18 +16,21 @@
 </template>
 
 <script>
-import controlManage from '../manage/controlManage.js'
-import { metaInput } from '../manage/config.js'
+import { defineComponent } from 'vue'
+// 引入表单子控件的管理类
+import formItemManage from '../controlManage/formItemManage.js'
+// 引入组件需要的属性
+import { baseFormMeta } from '../controlConfig/formItemMeta.js'
 
-export default {
-  name: 'nf-el-from-selwrite',
+export default defineComponent({
+  name: 'el-from-selwrite',
   props: {
     modelValue: String,
-    meta: metaInput
+    ...baseFormMeta // 基础属性
   },
   emits: ['change', 'blur', 'focus'],
   setup (props, context) {
-    const { value, mySubmit } = controlManage(props, context)
+    const { value, mySubmit } = formItemManage(props, context)
 
     const options = {
       options: [{
@@ -49,5 +52,5 @@ export default {
       options
     }
   }
-}
+})
 </script>

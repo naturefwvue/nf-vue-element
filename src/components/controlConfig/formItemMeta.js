@@ -1,6 +1,4 @@
 
-// 表单控件子控件的共用属性
-
 /**
  * 表单子控件需要的属性。
  * * 共用属性部分，基本上每个控件都需要。
@@ -39,9 +37,8 @@ export const baseFormMeta = {
   }
 }
 
-// el-text 使用的属性
 /**
- * 单行文本用的属性
+ * el-text 单行文本用的属性
  */
 export const textMeta = {
   readonly: { // 只读

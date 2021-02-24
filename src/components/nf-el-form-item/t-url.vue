@@ -3,20 +3,20 @@
   <el-input
     v-model="url.value"
     @input="urlSubmit"
-    :id="meta.controlId"
-    :name="'c' + meta.controlId"
-    :disabled="meta.disabled"
-    :readonly="meta.readonly"
-    :maxlength="meta.maxlength"
-    :minlength="meta.minlength"
-    :placeholder="meta.placeholder"
-    :title="meta.title"
+    :id="controlId"
+    :name="'c' + controlId"
+    :disabled="disabled"
+    :readonly="readonly"
+    :maxlength="maxlength"
+    :minlength="minlength"
+    :placeholder="placeholder"
+    :title="title"
   >
     <template #prepend><!--前面的选项-->
       <el-select style="width: 90px;"
         v-model="url.http"
         @change="urlSubmit"
-        :disabled="meta.disabled"
+        :disabled="disabled"
       >
           <el-option label="Http://" value="Http://"></el-option>
           <el-option label="Https://" value="Https://"></el-option>
@@ -35,9 +35,11 @@
 </template>
 
 <script>
-import controlManage from '../manage/controlManage.js'
-import { metaInput } from '../manage/config.js'
-import { reactive, watch } from 'vue'
+import { reactive, watch, defineComponent } from 'vue'
+// 引入表单子控件的管理类
+import formItemManage from '../controlManage/formItemManage.js'
+// 引入组件需要的属性
+import { baseFormMeta } from '../controlConfig/formItemMeta.js'
 
 /**
  * 处理url的管理类
@@ -139,15 +141,15 @@ const urlManage = (value, mySubmit) => {
   }
 }
 
-export default {
-  name: 'nf-el-from-url',
+export default defineComponent({
+  name: 'el-form-url',
   props: {
     modelValue: String,
-    meta: metaInput
+    ...baseFormMeta // 基础属性
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    const { value, mySubmit } = controlManage(props, context)
+    const { value, mySubmit } = formItemManage(props, context)
 
     // const { url, querySearch, urlSubmit } = urlManage(value, mySubmit)
 
@@ -158,5 +160,5 @@ export default {
       // urlSubmit // 触发事件
     }
   }
-}
+})
 </script>

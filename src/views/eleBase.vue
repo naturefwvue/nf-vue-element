@@ -70,7 +70,7 @@
 
 <script>
 import { reactive } from 'vue'
-import elFormConfig from '@/components/nf-el-form/el-form-map.js'
+import elFormConfig from '@/components/nf-el-form-item/el-form-map.js'
 
 export default {
   name: 'eleBase',

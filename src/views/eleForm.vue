@@ -52,8 +52,8 @@
 
 <script>
 import { inject, reactive } from 'vue'
-import { getControlTypeOptionList } from '@/components/manage/config.js'
-import elFormConfig from '@/components/nf-el-form/el-form-map.js'
+import { getControlTypeOptionList } from '@/components/controlConfig/config.js'
+import elFormConfig from '@/components/nf-el-form-item/el-form-map.js'
 import elForm from '@/components/nf-el-form/el-form-div'
 // @ is an alias to /src
 
