@@ -3,14 +3,10 @@
   <el-input
     v-model="url.value"
     @input="urlSubmit"
-    :id="controlId"
+    @blur="myBlur"
+    :id="'c' + controlId"
     :name="'c' + controlId"
-    :disabled="disabled"
-    :readonly="readonly"
-    :maxlength="maxlength"
-    :minlength="minlength"
-    :placeholder="placeholder"
-    :title="title"
+    :size="size"
   >
     <template #prepend><!--前面的选项-->
       <el-select style="width: 90px;"

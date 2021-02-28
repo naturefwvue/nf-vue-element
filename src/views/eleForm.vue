@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { inject, reactive } from 'vue'
+import { reactive } from 'vue'
 import { getControlTypeOptionList } from '@/components/controlConfig/config.js'
 import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
 import elForm from '@/components/nf-el-form/el-form-div'
@@ -139,10 +139,6 @@ export default {
     ...elFormConfig.formItemList
   },
   setup () {
-    const userOnline = inject('userOnline')
-    console.log('注入测试：', userOnline)
-    userOnline.isOnline = true
-
     const model = reactive({})
     const partModel = reactive({})
     const { typeOptionList } = getControlTypeOptionList()

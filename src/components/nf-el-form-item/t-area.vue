@@ -4,15 +4,14 @@
     type="textarea"
     v-model="value"
     @input="mySubmit"
-    :id="controlId"
+    @blur="myBlur"
+    :id="'c' + controlId"
     :name="'c' + controlId"
-    :disabled="disabled"
-    :readonly="readonly"
-    :rows="12"
+    :size="size"
+    :rows="rows"
     :autosize="{ minRows: 3, maxRows: 6 }"
-    :show-word-limit="true"
-    :maxlength="maxlength"
-    :placeholder="placeholder"
+    :validate-event="validate_event"
+    :show-word-limit="show_word_limit"
   >
   </el-input>
 </template>
@@ -22,13 +21,14 @@ import { defineComponent } from 'vue'
 // 引入表单子控件的管理类
 import formItemManage from '../controlManage/formItemManage.js'
 // 引入组件需要的属性
-import { baseFormMeta } from '../controlConfig/formItemMeta.js'
+import { baseFormProps, areaProps } from '../controlConfig/formItemMeta.js'
 
 export default defineComponent({
   name: 'el-from-area',
   props: {
     modelValue: String,
-    ...baseFormMeta // 基础属性
+    ...baseFormProps, // 基础属性
+    ...areaProps // 多行文本的属性
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {

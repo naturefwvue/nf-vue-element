@@ -2,14 +2,12 @@
 <template>
   <el-date-picker :style="style[controlType]"
     v-model="mydate"
-    :type="dateType[controlType]"
     @change="myChange"
+    @blur="myBlur"
     :id="'c' + controlId"
     :name="'c' + controlId"
-    :disabled="disabled"
-    :readonly="readonly"
-    :placeholder="placeholder"
-    :autofocus="autofocus"
+    :size="size"
+    :type="dateType[controlType]"
     :format="format[controlType]"
   >
   </el-date-picker>
@@ -20,7 +18,7 @@ import { ref, watch, defineComponent } from 'vue'
 // 引入表单子控件的管理类
 import formItemManage from '../controlManage/formItemManage.js'
 // 引入组件需要的属性
-import { baseFormMeta } from '../controlConfig/formItemMeta.js'
+import { baseFormProps } from '../controlConfig/formItemMeta.js'
 
 // 类型的字典
 const dateType = {
@@ -91,7 +89,7 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
       // 把周数转换成日期
       const arr = v1.split('w')
       if (arr.length > 1) {
-        // mydate.value = new Date(new Date(arr[0] + '-1-1').valueOf() + (arr[1] - 1) * 7 * 24 * 3600000)
+        mydate.value = new Date(new Date(arr[0] + '-1-1').valueOf() + (arr[1] - 1) * 7 * 24 * 3600000)
       }
     } else {
       mydate.value = new Date(v1)
@@ -146,8 +144,8 @@ const dateManage = (value, mySubmit, controlType, controlId) => {
 export default defineComponent({
   name: 'el-from-date',
   props: {
-    modelValue: Object,
-    ...baseFormMeta // 基础属性
+    modelValue: [Date, String],
+    ...baseFormProps // 基础属性
   },
   emits: ['change', 'blur', 'focus'],
   setup (props, context) {

@@ -4,11 +4,10 @@
     style="width:130px;"
     v-model="mytime"
     @change="myChange"
+    @blur="myBlur"
     :id="'c' + controlId"
     :name="'c' + controlId"
-    :disabled="disabled"
-    :readonly="readonly"
-    :placeholder="placeholder"
+    :size="size"
     v-bind="$attrs"
   >
   </el-time-picker>
@@ -16,15 +15,11 @@
     style="width:100px;"
     v-model="mytime"
     @change="myChange"
+    @blur="myBlur"
     :id="'c' + controlId"
     :name="'c' + controlId"
-    :disabled="disabled"
-    :readonly="readonly"
-    :placeholder="placeholder"
+    :size="size"
     v-bind="$attrs"
-    start='07:30'
-    step='00:15'
-    end='18:30'
   >
 </el-time-select>
 </template>
@@ -34,7 +29,7 @@ import { ref, watch, defineComponent } from 'vue'
 // 引入表单子控件的管理类
 import formItemManage from '../controlManage/formItemManage.js'
 // 引入组件需要的属性
-import { baseFormMeta } from '../controlConfig/formItemMeta.js'
+import { baseFormProps } from '../controlConfig/formItemMeta.js'
 
 /**
  * 日期管理类
@@ -93,8 +88,8 @@ export default defineComponent({
   name: 'el-from-time',
   inheritAttrs: false, // 禁止Attribute 继承
   props: {
-    modelValue: Object,
-    ...baseFormMeta // 基础属性
+    modelValue: [Object, String],
+    ...baseFormProps // 基础属性
   },
   emits: ['change', 'blur', 'focus'],
   setup (props, context) {

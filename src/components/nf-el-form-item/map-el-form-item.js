@@ -22,8 +22,8 @@ import { defineAsyncComponent } from 'vue'
 const formItemList = {
   // 文本类 defineComponent
   'el-form-text': defineAsyncComponent(() => import('./t-text.vue')),
-  'el-form-form-area': defineAsyncComponent(() => import('./t-area.vue')),
-  'el-url': defineAsyncComponent(() => import('./t-url.vue')),
+  'el-form-area': defineAsyncComponent(() => import('./t-area.vue')),
+  'el-form-url': defineAsyncComponent(() => import('./t-url.vue')),
   // 数字
   'el-form-number': defineAsyncComponent(() => import('./n-number.vue')),
   'el-form-range': defineAsyncComponent(() => import('./n-range.vue')),

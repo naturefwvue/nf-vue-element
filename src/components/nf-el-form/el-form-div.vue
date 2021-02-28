@@ -1,10 +1,11 @@
 <template>
   <div >
     <el-form
-      ref="form"
+      :model="formModel"
+      :rules="rules"
+      ref="formModel"
       :inline="false"
       class="demo-form-inline"
-      :model="formModel"
       label-suffix="："
       label-width="130px"
       size="mini"
@@ -21,7 +22,7 @@
             <component
               :is="ctlList[getCtrMeta(ctrId).controlType]"
               v-model="formModel[getCtrMeta(ctrId).colName]"
-              :meta="getCtrMeta(ctrId)"
+              v-bind="getCtrMeta(ctrId)"
               @myChange="mySubmit">
             </component>
           </el-form-item>
@@ -76,12 +77,20 @@ export default {
       return props.meta.itemMeta[id] || {}
     }
 
+    // 表单验证的测试
+    const rules = {
+      colName: [
+        { required: true, message: '请输入活动名称', trigger: 'blur' },
+        { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+      ]
+    }
     return {
-      formModel,
-      formColSpan,
-      formColSort,
-      ctlList,
-      getCtrMeta,
+      formModel, // 实体类
+      rules, // 验证规则
+      formColSpan, // 一个子控件占几份
+      formColSort, // 排序依据
+      ctlList, // 子控件字典
+      getCtrMeta, // 返回子控件的meta
       mySubmit
     }
   }

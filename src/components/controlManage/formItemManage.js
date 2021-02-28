@@ -33,6 +33,9 @@ const formItemManage = (props, context) => {
     context.emit('input', val)
     // 选择类需要的事件
     context.emit('change', val)
+  }
+
+  const myBlur = (val) => {
     // 数据验证需要的事件
     context.emit('blur', val)
   }
@@ -50,7 +53,8 @@ const formItemManage = (props, context) => {
     ** 可以直接绑定到组件的事件，
     ** 也可以套个娃。
     */
-    mySubmit
+    mySubmit,
+    myBlur
   }
 }
 

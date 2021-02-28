@@ -3,49 +3,47 @@
   <el-row :gutter="20">
     <el-col :span="12">
       <el-form ref="form" :model="model" label-width="80px">
-        <el-row>
-          <el-col :span="10">
-            <el-form-item label="活动名称">
-              <el-form-text v-model="model.name" v-bind="metaText"/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="10">
-            <el-form-item label="年龄要求">
-              <el-form-number v-model="model.age" v-bind="metaNumber" @input="myChange"/>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <!--
-        <el-form-item label="活动性质">
-          <elcheckbox v-model="model.check" :meta="metaSelect" @input="myChange"/>
+        <el-form-item label="单行文本">
+          <el-form-text v-model="model.text" v-bind="metaText"/>
+        </el-form-item>
+        <el-form-item label="多行文本">
+          <el-form-area v-model="model.area" v-bind="metaArea" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-form-text v-model="model.psw" v-bind="metaPassword"/>
+        </el-form-item>
+        <el-form-item label="url">
+          <el-form-url v-model="model.url" v-bind="metaUrl" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="数字">
+          <el-form-number v-model="model.number" v-bind="metaNumber" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="滑块">
+          <el-form-range v-model="model.slider" v-bind="metaRange" @input="myChange"/>
         </el-form-item>
         <el-form-item label="这是开关">
-          <elswitch v-model="model.switch" :meta="metaText" @input="myChange"/>
+          <el-form-switch v-model="model.switch" v-bind="metaSwitch" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="即时配送">
-          <elradios v-model="model.radio" :meta="metaSelect" @input="myChange"/>
+        <el-form-item label="单选组">
+          <el-form-radios v-model="model.radio" v-bind="metaSelect" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="活动性质">
-          <elcheckboxs v-model="model.checks" :meta="metaSelect" @input="myChange"/>
+        <el-form-item label="多选组">
+          <el-form-checkboxs v-model="model.checks" v-bind="metaSelect" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="活动区域">
-          <elselect v-model="model.select" :meta="metaSelect" @input="myChange"/>
+        <el-form-item label="下拉单选">
+          <el-form-select v-model="model.selectId" v-bind="metaSelect" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="活动区域">
-          <elselwrite v-model="model.select" :meta="metaSelwrite" @input="myChange"/>
+        <el-form-item label="下拉多选">
+          <el-form-select v-model="model.selectMore" v-bind="metaSelect" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="活动日期">
-          <eldate v-model="model.date" :meta="metaDate" @input="myChange"/> -
-          <eltime v-model="model.time" :meta="metaTime" @input="myChange"/>
+        <el-form-item label="可填可选">
+          <el-form-selwrite v-model="model.selectwrite" v-bind="metaSelwrite" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="活动网址">
-          <elurl v-model="model.url" :meta="metaText" @input="myChange"/>
+        <el-form-item label="日期">
+          <el-form-date v-model="model.date" v-bind="metaDate" @input="myChange"/> -
         </el-form-item>
-        <el-form-item label="年龄要求">
-          <elrange v-model="model.age" :meta="metaText" @input="myChange"/>
-        </el-form-item>
-        <el-form-item label="活动形式">
-          <elarea v-model="model.contact" :meta="metaText" @input="myChange"/>
+        <el-form-item label="时间">
+          <el-form-time v-model="model.time" v-bind="metaTime" @input="myChange"/>
         </el-form-item>
         <el-form-item>
           <component :is="'el-input'" v-model="model.name" v-bind="{autofocus:true, maxlength: 10 }" ></component>
@@ -54,11 +52,10 @@
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
           <el-button>取消</el-button>
         </el-form-item>
-        -->
       </el-form>
     </el-col>
     <el-col :span="11">
-        表单值：<br>
+      表单值：<br>
       <template v-for="(item, key) in model" :key="key">
         {{key}}：{{item}}<br>
       </template>
@@ -70,6 +67,123 @@
 import { reactive } from 'vue'
 import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
 
+const meteList = {
+  // 单行文本的属性
+  metaText: reactive({
+    controlId: 101,
+    colName: 'name',
+    controlType: 101,
+    // defaultValue: '1',
+    // isClear: false,
+    // readonly: false,
+    // disabled: false,
+    // placeholder: '请输入姓名',
+    // title: '姓名',
+    // maxlength: 6,
+    // minlength: 2,
+    // autofocus: true,
+    'suffix-icon': 'el-icon-date'
+  }),
+  // 多行文本的属性
+  metaArea: reactive({
+    controlId: 100,
+    controlType: 100,
+    colName: 'name'
+  }),
+  // 密码的属性
+  metaPassword: reactive({
+    controlId: 103,
+    controlType: 101,
+    colName: 'name'
+  }),
+  // url的属性
+  metaUrl: reactive({
+    controlId: 103,
+    controlType: 101,
+    colName: 'name'
+  }),
+  // 数字的属性
+  metaNumber: reactive({
+    controlId: 103,
+    controlType: 101,
+    colName: 'age'
+  }),
+  // 滑块的属性
+  metaRange: reactive({
+    controlId: 103,
+    controlType: 101,
+    colName: 'age'
+  }),
+  // 开关的属性
+  metaSwitch: reactive({
+    controlId: 103,
+    controlType: 101,
+    colName: 'age'
+  }),
+  // 单选组、多选组、下拉的属性
+  metaSelect: reactive({
+    controlId: 152,
+    colName: 'select',
+    controlType: 152,
+    defaultValue: 1,
+    optionList: [
+      { value: 1, label: '选项一' },
+      { value: 2, label: '选项二' },
+      { value: 3, label: '选项三' },
+      { value: 4, label: '选项四' },
+      { value: 5, label: '选项五' },
+      { value: 6, label: '选项六' },
+      { value: 7, label: '选项七' }
+    ]
+  }),
+  // 下拉可写
+  metaSelwrite: reactive({
+    controlId: 170,
+    colName: 'select11',
+    controlType: 170,
+    defaultValue: [],
+    optionList: [
+      { value: 1, label: '选项一' },
+      { value: 2, label: '选项二' },
+      { value: 3, label: '选项三' },
+      { value: 4, label: '选项四' },
+      { value: 5, label: '选项五' },
+      { value: 6, label: '选项六' },
+      { value: 7, label: '选项七' }
+    ],
+    isClear: false,
+    disabled: false,
+    required: true,
+    pattern: '',
+    title: '我同意条款',
+    placeholder: '请选择'
+  }),
+  // 日期
+  metaDate: reactive({
+    controlId: 120,
+    colName: 'date',
+    controlType: 110,
+    defaultValue: '2020-1-8',
+    isClear: false,
+    disabled: false,
+    required: true,
+    placeholder: '请选择日期',
+    readonly: false
+  }),
+  // 时间
+  metaTime: reactive({
+    controlId: 121,
+    colName: 'time',
+    controlType: 115,
+    defaultValue: '00:00:00',
+    isClear: false,
+    disabled: false,
+    required: true,
+    placeholder: '请选择日期',
+    readonly: false
+  })
+}
+
 export default {
   name: 'eleBase',
   components: {
@@ -78,16 +192,21 @@ export default {
   setup () {
     // 定义表单实体类
     const model = reactive({
-      age: 1,
-      url: '',
-      name: '',
-      contact: '',
-      date: '2020-1-1',
-      time: null,
+      text: '', // 单行文本
+      area: '', // 多行文本
+      psw: '', // 密码
+      url: '', // 网址
+      number: 1, // 数字
+      slider: 1, // 滑块
+      switch: false, // 开关
+      radio: null, // 单选组
+      checks: [], // 多选组
+      selectId: null, // 下拉单选
+      selectMore: [], // 下拉单选多选
+      selectwrite: null, // 可选可填
       check: false,
-      switch: true,
-      radio: null,
-      checks: [],
+      date: '2020-1-1', // 日期
+      time: null, // 时间
       select: []
 
     })
@@ -98,105 +217,6 @@ export default {
       'padding-right': '10px'
     }
 
-    // 控件类型的属性
-    const metaText = reactive({
-      controlId: 103,
-      colName: 'controlType',
-      controlType: 101,
-      defaultValue: '1',
-      isClear: false,
-      readonly: false,
-      disabled: false,
-      placeholder: '请输入组件类型',
-      title: '组件类型',
-      maxlength: 6,
-      minlength: 2,
-      autofocus: true,
-      'suffix-icon': 'el-icon-date'
-    })
-    // 控件类型的属性
-    const metaNumber = reactive({
-      controlId: 103,
-      colName: 'controlType',
-      controlType: 101,
-      defaultValue: '1',
-      autofocus: true,
-      // optionList: [],
-      isClear: false,
-      disabled: false,
-      title: '组件类型',
-      placeholder: '请输入组件类型',
-      maxlength: 100,
-      readonly: false
-    })
-    // 下拉
-    const metaSelect = reactive({
-      controlId: 170,
-      colName: 'select',
-      controlType: 170,
-      defaultValue: '1',
-      optionList: [
-        { value: 1, label: '选项一' },
-        { value: 2, label: '选项二' },
-        { value: 3, label: '选项三' },
-        { value: 4, label: '选项四' },
-        { value: 5, label: '选项五' },
-        { value: 6, label: '选项六' },
-        { value: 7, label: '选项七' }
-      ],
-      isClear: false,
-      disabled: false,
-      required: true,
-      pattern: '',
-      title: '我同意条款',
-      placeholder: '请选择'
-    })
-    // 下拉可写
-    const metaSelwrite = reactive({
-      controlId: 170,
-      colName: 'select11',
-      controlType: 170,
-      defaultValue: [],
-      optionList: [
-        { value: 1, label: '选项一' },
-        { value: 2, label: '选项二' },
-        { value: 3, label: '选项三' },
-        { value: 4, label: '选项四' },
-        { value: 5, label: '选项五' },
-        { value: 6, label: '选项六' },
-        { value: 7, label: '选项七' }
-      ],
-      isClear: false,
-      disabled: false,
-      required: true,
-      pattern: '',
-      title: '我同意条款',
-      placeholder: '请选择'
-    })
-    // 日期
-    const metaDate = reactive({
-      controlId: 120,
-      colName: 'date',
-      controlType: 110,
-      defaultValue: '2020-1-8',
-      isClear: false,
-      disabled: false,
-      required: true,
-      placeholder: '请选择日期',
-      readonly: false
-    })
-    // 时间
-    const metaTime = reactive({
-      controlId: 121,
-      colName: 'time',
-      controlType: 115,
-      defaultValue: '00:00:00',
-      isClear: false,
-      disabled: false,
-      required: true,
-      placeholder: '请选择日期',
-      readonly: false
-    })
     // 定义
 
     const myChange = (e) => {
@@ -206,13 +226,8 @@ export default {
     return {
       model,
       formTitleStyle,
-      metaText,
-      metaNumber,
-      metaSelect,
-      metaSelwrite,
-      metaDate,
-      metaTime,
-      myChange
+      myChange,
+      ...meteList
     }
   }
 

@@ -8,9 +8,26 @@ export const baseFormProps = {
     type: Number,
     required: true
   },
-  colName: String, // 102 字段名称，必填，避免自动绑定
-  isClear: Boolean, // 103 连续添加是否清空，必填，避免自动绑定
+  // colName: { // 102 字段名称，必填
+  //  type: String,
+  //  required: true
+  // },
+  // label: String, // 103 中文名称，标签，表单控件必填
   controlType: Number, // 104 控件类型编号，必填，识别表单子控件的类型
+  // isClear: { // 105 表单控件用，必填， 连续添加时是否恢复默认值
+  //  type: Boolean,
+  //  default: false
+  // },
+  // defaultValue: { // 106 默认值
+  //  type: String,
+  //  default: ''
+  // },
+  // disabled: { // 108 是否禁用
+  //  type: Boolean,
+  //  default: false
+  // },
+  // placeholder: String, // 109 占位提示信息
+  // title: String, // 110 提示信息
   size: { // 109 medium / small / mini 三选一，不必填
     type: String,
     default: 'mini',
@@ -18,35 +35,24 @@ export const baseFormProps = {
       // 这个值必须匹配下列字符串中的一个
       return ['medium', 'small', 'mini'].indexOf(value) !== -1
     }
-  },
-  optionList: { // 备用选项
-    type: Array,
-    default: []
-  },
-  validate_event: { // 统一设置，不必填，输入时是否触发表单的校验
-    type: Boolean,
-    default: true
   }
-}
 
-/**
- * 多行文本的属性
- */
-export const areaProps = {
-  show_word_limit: { // 统一设置，不必填，是否显示输入字数统计 text和area有效
-    type: Boolean,
-    default: true
-  },
-  rows: { //
-    type: Number,
-    default: 3
-  }
 }
 
 /**
  * el-text 单行文本用的属性
  */
 export const textProps = {
+  // readonly: { // 只读
+  //  type: Boolean,
+  //  default: false
+  // },
+  // autocomplete: { // off
+  //  type: String,
+  //  default: 'off'
+  // },
+  // maxlength: Number, // 最大字符数
+  // minlength: Number, // 最小字符数
   show_word_limit: { // 统一设置，不必填，是否显示输入字数统计 text和area有效
     type: Boolean,
     default: true
@@ -55,7 +61,18 @@ export const textProps = {
     type: Boolean,
     default: true
   },
-  resize: String // 统一设置，不必填， none, both, horizontal, vertical
+  validate_event: { // 统一设置，不必填，输入时是否触发表单的校验
+    type: Boolean,
+    default: true
+  },
+  resize: { // 109 是否允许缩放  统一设置，不必填 none, both, horizontal, vertical 四选一，不必填
+    type: String,
+    default: 'none',
+    validator: (value) => {
+      // 这个值必须匹配下列字符串中的一个
+      return ['none', 'both', 'horizontal', 'vertical'].indexOf(value) !== -1
+    }
+  }
 }
 
 /**
@@ -82,7 +99,7 @@ export const numberProps = {
  * 滑块的属性
  */
 export const sliderProps = {
-  input_size: { // 统一设置，不必填，是否显示切换密码图标
+  'input-size': { // 统一设置，不必填，是否显示切换密码图标
     type: String,
     default: 'mini',
     validator: (value) => {

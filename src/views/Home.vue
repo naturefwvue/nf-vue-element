@@ -1,78 +1,25 @@
 <template>
   <div class="" style="text-align: left;">
     <el-row>
-      <el-col :span="9">
-        <el-row>
-          <el-col :span="20">
-            参数：
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="8">
-            placeholder:
-          </el-col>
-          <el-col :span="10">{{test}}
-          </el-col>
-        </el-row>
-          <el-row>
-          <el-col :span="8">
-            type:
-          </el-col>
-          <el-col :span="10">
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col>
-          </el-col>
-        </el-row>
+      <el-col :span="11">
+        共享数据：
       </el-col>
-      <el-col :span="9">
-        值：{{value}}<br>
-        <nftext v-model="value" :test="test" :meta="meta"/><br>
-      </el-col>
-      <el-col :span="5">
-        <template v-for="(item, key, index) in meta" :key="index">
-          {{index}}-{{key}}:{{item}}<br>
-        </template>
+      <el-col :span="11">
+        本组件数据：
       </el-col>
     </el-row>
-
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 export default {
   name: 'Home',
   components: {
   },
   setup () {
-    // 测试控件内部修改
-    const test = ref('111')
-    // 控件值
-    const value = ref('')
-    // 控件属性
-    const meta = reactive({
-      controlId: 1000,
-      colName: 'companyName',
-      controlType: 101,
-      isClear: true,
-      disabled: false,
-      required: true,
-      readonly: false,
-      pattern: '',
-      class: '',
-      placeholder: '请输入公司名称',
-      title: '公司名称',
-      autocomplete: 'on',
-      size: 30,
-      maxlength: 100,
-      optionList: [],
-      tdCount: 1
-    })
-
     // 控件类型的属性
     const metaType = reactive({
       controlId: 103,
@@ -119,9 +66,6 @@ export default {
     metaType.optionList = type
 
     return {
-      test,
-      value,
-      meta,
       metaType
     }
   }

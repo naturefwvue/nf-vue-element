@@ -6,29 +6,17 @@
     <router-link :to="{name:'eleFind'}">查询组件</router-link> |
     <router-link :to="{name:'eleGrid'}">列表组件</router-link> |
     <router-link :to="{name:'helpForm'}">表单辅助</router-link> |
+    <br>
   </div>
   <router-view/>
 </template>
 
 <script>
-import { provide, reactive } from 'vue'
 // import { useRouter } from 'vue-router'
 
 export default {
   setup () {
     console.log('App')
-    const userOnline = reactive({
-      isOnline: false,
-      userId: 1,
-      userCode: 'jyk',
-      userNike: '海洋',
-      departmentId: 123,
-      departmentName: '',
-      role: [1],
-      power: [1, 2, 3]
-    })
-    provide('userOnline', userOnline)
-    console.log('App2')
 
     // 设置一个路由守卫
     // const router = useRouter()
@@ -41,6 +29,9 @@ export default {
     //    next()
     //  }
     // })
+
+    return {
+    }
   }
 }
 </script>
