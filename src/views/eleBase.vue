@@ -2,15 +2,28 @@
   <!--表单控件-->
   <el-row :gutter="20">
     <el-col :span="12">
-      <el-form ref="form" :model="model" label-width="80px">
-        <el-form-item label="单行文本">
-          <el-form-text v-model="model.text" v-bind="metaText"/>
+      <el-form
+        ref="form"
+        :model="model"
+        label-width="80px"
+        :rules="rules"
+      >
+        <el-form-item label="单行文本"  prop="text">
+          <el-form-text v-model="model.text" v-bind="metaText">
+             <template #prepend>
+              <el-select v-model="select" placeholder="请选择">
+                <el-option label="餐厅名" value="1"></el-option>
+                <el-option label="订单号" value="2"></el-option>
+                <el-option label="用户电话" value="3"></el-option>
+              </el-select>
+            </template>
+          </el-form-text>
         </el-form-item>
         <el-form-item label="多行文本">
           <el-form-area v-model="model.area" v-bind="metaArea" @input="myChange"/>
         </el-form-item>
         <el-form-item label="密码">
-          <el-form-text v-model="model.psw" v-bind="metaPassword"/>
+          <el-form-password v-model="model.psw" v-bind="metaPassword"/>
         </el-form-item>
         <el-form-item label="url">
           <el-form-url v-model="model.url" v-bind="metaUrl" @input="myChange"/>
@@ -21,8 +34,11 @@
         <el-form-item label="滑块">
           <el-form-range v-model="model.slider" v-bind="metaRange" @input="myChange"/>
         </el-form-item>
-        <el-form-item label="这是开关">
+        <el-form-item label="开关">
           <el-form-switch v-model="model.switch" v-bind="metaSwitch" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="勾选">
+          <el-form-checkbox v-model="model.switch" v-bind="metaSwitch" @input="myChange"/>
         </el-form-item>
         <el-form-item label="单选组">
           <el-form-radios v-model="model.radio" v-bind="metaSelect" @input="myChange"/>
@@ -35,6 +51,9 @@
         </el-form-item>
         <el-form-item label="下拉多选">
           <el-form-select v-model="model.selectMore" v-bind="metaSelect" @input="myChange"/>
+        </el-form-item>
+        <el-form-item label="下拉级联">
+          <el-form-select-cascader v-model="model.selecCascader" v-bind="metaSelect" @input="myChange"/>
         </el-form-item>
         <el-form-item label="可填可选">
           <el-form-selwrite v-model="model.selectwrite" v-bind="metaSelwrite" @input="myChange"/>
@@ -151,24 +170,16 @@ const meteList = {
       { value: 6, label: '选项六' },
       { value: 7, label: '选项七' }
     ],
-    isClear: false,
-    disabled: false,
-    required: true,
-    pattern: '',
     title: '我同意条款',
     placeholder: '请选择'
   }),
   // 日期
   metaDate: reactive({
-    controlId: 120,
+    controlId: 110,
     colName: 'date',
     controlType: 110,
-    defaultValue: '2020-1-8',
-    isClear: false,
-    disabled: false,
-    required: true,
-    placeholder: '请选择日期',
-    readonly: false
+    defaultValue: '2018-1-8',
+    placeholder: '请选择日期'
   }),
   // 时间
   metaTime: reactive({
@@ -176,11 +187,7 @@ const meteList = {
     colName: 'time',
     controlType: 115,
     defaultValue: '00:00:00',
-    isClear: false,
-    disabled: false,
-    required: true,
-    placeholder: '请选择日期',
-    readonly: false
+    placeholder: '请选择日期'
   })
 }
 
@@ -189,7 +196,8 @@ export default {
   components: {
     ...elFormConfig.formItemList
   },
-  setup () {
+  setup (props, ctx) {
+    console.log('ctx', ctx)
     // 定义表单实体类
     const model = reactive({
       text: '', // 单行文本
@@ -203,13 +211,22 @@ export default {
       checks: [], // 多选组
       selectId: null, // 下拉单选
       selectMore: [], // 下拉单选多选
+      selecCascader: [], // 下拉级联
       selectwrite: null, // 可选可填
       check: false,
       date: '2020-1-1', // 日期
       time: null, // 时间
-      select: []
+      select: [],
+      myName: ''
 
     })
+
+    const rules = {
+      text: [
+        { required: true, message: '请输入活动名称', trigger: 'blur' },
+        { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+      ]
+    }
 
     // 定义样式
     const formTitleStyle = {
@@ -225,6 +242,7 @@ export default {
 
     return {
       model,
+      rules,
       formTitleStyle,
       myChange,
       ...meteList

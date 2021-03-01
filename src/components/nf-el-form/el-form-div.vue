@@ -17,7 +17,10 @@
           :key="'form_'+index"
           :span="formColSpan[ctrId]"
         >
-          <el-form-item :label="getCtrMeta(ctrId).label">
+          <el-form-item
+            :label="getCtrMeta(ctrId).label"
+            :prop="getCtrMeta(ctrId).colName"
+          >
             <!--表单item组件，采用动态组件的方式-->
             <component
               :is="ctlList[getCtrMeta(ctrId).controlType]"

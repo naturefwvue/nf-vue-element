@@ -3,27 +3,29 @@ import { defineAsyncComponent } from 'vue'
 /**
  * 组件里面注册控件用
  * * 文本
- * ** eltext 单行文本、电话、邮件、搜索
- * ** elarea 多行文本
- * ** elurl
+ * ** el-form-text 单行文本、电话、邮件、搜索
+ * ** el-form-area 多行文本
+ * ** el-form-password 密码
+ * ** el-form-url
  * * 数字
- * ** elnumber 数字
- * ** elrange 滑块
+ * ** el-form-number 数字
+ * ** el-form-range 滑块
  * * 日期
- * ** eldate 日期、年月、年周、年
- * ** eltime 时间
+ * ** el-form-date 日期、年月、年周、年
+ * ** el-form-time 时间
  * * 选择
- * ** elcheckbox 勾选
- * ** elswitch 开关
- * ** elcheckboxs 多选组
- * ** elradios 单选组
- * ** elselect 下拉选择
+ * ** el-form-checkbox 勾选
+ * ** el-form-switch 开关
+ * ** el-form-checkboxs 多选组
+ * ** el-form-radios 单选组
+ * ** el-form-select 下拉选择
  */
 const formItemList = {
   // 文本类 defineComponent
   'el-form-text': defineAsyncComponent(() => import('./t-text.vue')),
   'el-form-area': defineAsyncComponent(() => import('./t-area.vue')),
   'el-form-url': defineAsyncComponent(() => import('./t-url.vue')),
+  'el-form-password': defineAsyncComponent(() => import('./t-password.vue')),
   // 数字
   'el-form-number': defineAsyncComponent(() => import('./n-number.vue')),
   'el-form-range': defineAsyncComponent(() => import('./n-range.vue')),
@@ -36,7 +38,9 @@ const formItemList = {
   'el-form-checkboxs': defineAsyncComponent(() => import('./s-checkboxs.vue')),
   'el-form-radios': defineAsyncComponent(() => import('./s-radios.vue')),
   'el-form-select': defineAsyncComponent(() => import('./s-select.vue')),
-  'el-form-selwrite': defineAsyncComponent(() => import('./s-selwrite.vue'))
+  'el-form-selwrite': defineAsyncComponent(() => import('./s-selwrite.vue')),
+  'el-form-select-cascader': defineAsyncComponent(() => import('./s-select-cascader.vue'))
+
 }
 
 /**
@@ -46,7 +50,7 @@ const formItemListKey = {
   // 文本类
   100: formItemList['el-form-area'], // 多行文本
   101: formItemList['el-form-text'], // 单行文本
-  102: formItemList['el-form-text'], // 密码
+  102: formItemList['el-form-password'], // 密码
   103: formItemList['el-form-text'], // 电话
   104: formItemList['el-form-text'], // 邮件
   105: formItemList['el-form-url'], // url
@@ -69,7 +73,7 @@ const formItemListKey = {
   153: formItemList['el-form-radios'], // 单选组
   160: formItemList['el-form-select'], // 下拉
   161: formItemList['el-form-selwrite'], // 下拉多选
-  162: formItemList['el-form-select'] // 下拉联动
+  162: formItemList['el-form-select-cascader'] // 下拉联动
 
 }
 

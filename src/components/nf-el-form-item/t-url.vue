@@ -13,6 +13,7 @@
         v-model="url.http"
         @change="urlSubmit"
         :disabled="disabled"
+        :size="size"
       >
           <el-option label="Http://" value="Http://"></el-option>
           <el-option label="Https://" value="Https://"></el-option>
@@ -25,6 +26,7 @@
         :fetch-suggestions="querySearch"
         @select="urlSubmit"
         @change="urlSubmit"
+        :size="size"
       ></el-autocomplete>
     </template>
   </el-input>
