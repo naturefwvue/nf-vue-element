@@ -5,7 +5,17 @@
       <el-col :span="13">
         <div style="padding-left:20px;">
           列数：<el-slider v-model="meta.formColCount" :min="1" :max="5"></el-slider>
-          <elForm v-model="model" v-model:partModel="partModel" :meta="meta"/>
+          <elForm
+            v-model="model"
+            v-model:partModel="partModel"
+            :meta="meta">
+              <template v-slot:103="">
+                <h1>这是外面传建立的控件</h1>
+              </template>
+              <template v-slot:104="">
+                <h1>这是外面传建立的控件333</h1>
+              </template>
+          </elForm>
         </div>
       </el-col>
       <el-col :span="3">

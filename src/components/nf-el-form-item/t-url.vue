@@ -37,7 +37,7 @@ import { reactive, watch, defineComponent } from 'vue'
 // 引入表单子控件的管理类
 import formItemManage from '../controlManage/formItemManage.js'
 // 引入组件需要的属性
-import { baseFormMeta } from '../controlConfig/formItemMeta.js'
+import { baseFormProps } from '../controlConfig/formItemMeta.js'
 
 /**
  * 处理url的管理类
@@ -143,7 +143,7 @@ export default defineComponent({
   name: 'el-form-url',
   props: {
     modelValue: String,
-    ...baseFormMeta // 基础属性
+    ...baseFormProps // 基础属性
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {

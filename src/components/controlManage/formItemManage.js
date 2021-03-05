@@ -1,14 +1,12 @@
 import { ref, watch } from 'vue'
 
 /**
-* 表单子控件的管理类
-** 属性：
-* ** props： 组件的属性，获取modelValue和meta属性
-* ** context： 上下文获取emit，提交数据
-** 返回：
-* ** value：绑定到组件的值
-* ** mySubmit：向父组件提交的事件
-*/
+ * 表单子控件的管理类
+ * @param {*} props 组件的属性，获取modelValue和meta属性
+ * @param {*} context 上下文获取emit，提交数据
+ * @returns {*} value：绑定到组件的值
+ * @returns {*} mySubmit：向父组件提交的事件
+ */
 const formItemManage = (props, context) => {
   // 用于绑定控件的值。
   const value = ref('')

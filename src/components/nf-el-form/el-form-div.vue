@@ -21,6 +21,9 @@
             :label="getCtrMeta(ctrId).label"
             :prop="getCtrMeta(ctrId).colName"
           >
+            <template v-if="ctrId === 103 || ctrId === 104">
+              <slot :name="ctrId">父组件没有设置插槽</slot>
+            </template>
             <!--表单item组件，采用动态组件的方式-->
             <component
               :is="ctlList[getCtrMeta(ctrId).controlType]"

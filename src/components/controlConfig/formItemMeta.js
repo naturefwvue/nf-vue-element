@@ -1,6 +1,7 @@
 
 /**
  * 表单子控件需要的属性。
+ * @this controlId 控件ID
  * * 共用属性部分，基本上每个控件都需要。
  */
 export const baseFormProps = {
