@@ -9,11 +9,13 @@
             v-model="model"
             v-model:partModel="partModel"
             :meta="meta">
-              <template v-slot:103="">
-                <h1>这是外面传建立的控件</h1>
+              <template v-slot:102="">
+                <h3>这是外面建立的子控件</h3>
+                <el-input v-model="model.colName" placeholder="请输入内容"></el-input>
               </template>
               <template v-slot:104="">
-                <h1>这是外面传建立的控件333</h1>
+                <h3>这是外面建立的另一个子控件</h3>
+                <input type="text">
               </template>
           </elForm>
         </div>
@@ -161,6 +163,11 @@ export default {
     // 设置组件类型
     meta.itemMeta[103].optionList = typeOptionList
     console.log('meta', meta)
+
+    // 设置使用插槽的表单子控件
+    meta.itemMeta[102].controlId = 102
+    meta.itemMeta[102].controlType = 1
+    // meta.itemMeta[104].controlType = 1
 
     // 实现拖拽排序的功能
     const {

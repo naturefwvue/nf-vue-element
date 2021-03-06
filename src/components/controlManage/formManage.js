@@ -1,12 +1,17 @@
 import { reactive, watch } from 'vue'
 
 /**
- * 表单控件的管理类
+ * @function 表单控件的管理类
+ * @description 创建v-model，创建局部model，设置行列、排序相关的处理
+ * @param { object } props 组件参数
+ * @param { object } context 上下文
+ * @returns { function } 表单管理类
+ * * formModel 表单v-model
  * * 创建v-model
  * * 调整列数
  * * 合并
  */
-const formManage = (props, context) => {
+export default function formManage (props, context) {
   // 定义 完整的 v-model
   const formModel = reactive({})
   // 定义局部的 model
@@ -103,6 +108,8 @@ const formManage = (props, context) => {
 
   // 向父组件提交 model
   const mySubmit = (val, controlId, colName) => {
+    // 手动设置
+    // formModel[colName] = val
     context.emit('update:modelValue', formModel)
     // 同步到部分model
     if (typeof formPartModel[colName] !== 'undefined') {
@@ -206,5 +213,3 @@ const formManage = (props, context) => {
     mySubmit // 提交
   }
 }
-
-export default formManage

@@ -48,8 +48,6 @@
         "disabled": false,
         "required": true,
         "readonly": false,
-        "pattern": "",
-        "class": "",
         "placeholder": "请输入字段名称",
         "title": "",
         "autocomplete": "off",

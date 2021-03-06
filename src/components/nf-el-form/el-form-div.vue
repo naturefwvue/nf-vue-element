@@ -3,7 +3,7 @@
     <el-form
       :model="formModel"
       :rules="rules"
-      ref="formModel"
+      ref="formControl"
       :inline="false"
       class="demo-form-inline"
       label-suffix="："
@@ -21,28 +21,37 @@
             :label="getCtrMeta(ctrId).label"
             :prop="getCtrMeta(ctrId).colName"
           >
-            <template v-if="ctrId === 103 || ctrId === 104">
+            <!--判断要不要加载插槽-->
+            <template v-if="getCtrMeta(ctrId).controlType === 1">
               <slot :name="ctrId">父组件没有设置插槽</slot>
             </template>
             <!--表单item组件，采用动态组件的方式-->
-            <component
-              :is="ctlList[getCtrMeta(ctrId).controlType]"
-              v-model="formModel[getCtrMeta(ctrId).colName]"
-              v-bind="getCtrMeta(ctrId)"
-              @myChange="mySubmit">
-            </component>
+            <template v-else>
+              <component
+                :is="ctlList[getCtrMeta(ctrId).controlType]"
+                v-model="formModel[getCtrMeta(ctrId).colName]"
+                v-bind="getCtrMeta(ctrId)"
+                @myChange="mySubmit">
+              </component>
+            </template>
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
+    <el-button @click="resetForm">重置</el-button>
   </div>
 </template>
 
 <script>
-import { watch } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
 import formManage from '@/components/controlManage/formManage.js'
 
+/**
+ * @function div格式的表单控件
+ * @description 可以依据json动态生成表单，可以多行多列、排序、插槽、验证等
+ * @returns {*} Vue组件
+ */
 export default {
   name: 'el-form-div',
   components: {
@@ -90,7 +99,20 @@ export default {
         { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
       ]
     }
+    // 获取 $ref
+    const formControl = ref(null)
+    onMounted(() => {
+      console.log('表单dom', formControl)
+    })
+
+    const resetForm = () => {
+      // 清空表单
+      formControl.value.resetFields()
+    }
+
     return {
+      resetForm, // 重置表单
+      formControl, // 获取表单dom
       formModel, // 实体类
       rules, // 验证规则
       formColSpan, // 一个子控件占几份

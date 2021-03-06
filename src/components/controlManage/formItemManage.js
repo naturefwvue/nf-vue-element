@@ -30,7 +30,7 @@ const formItemManage = (props, context) => {
     // 文本类需要的事件
     context.emit('input', val)
     // 选择类需要的事件
-    // context.emit('change', val)
+    context.emit('change', val)
   }
 
   const myBlur = (val) => {

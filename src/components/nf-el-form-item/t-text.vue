@@ -31,7 +31,7 @@ export default defineComponent({
     ...baseFormProps, // 基础属性
     ...textProps // 单行文本的属性
   },
-  emits: ['myChange', 'update:modelValue', 'input', 'change', 'blur', 'focus', 'clear'],
+  emits: ['myChange', 'input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
     console.log('props-text', props)
     console.log('props-ctx', context)
