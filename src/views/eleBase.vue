@@ -84,7 +84,7 @@
 
 <script>
 import { reactive } from 'vue'
-import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
+import { formItemList } from '@/components/nf-el-form-item/map-el-form-item.js'
 
 const meteList = {
   // 单行文本的属性
@@ -194,7 +194,7 @@ const meteList = {
 export default {
   name: 'eleBase',
   components: {
-    ...elFormConfig.formItemList
+    ...formItemList
   },
   setup (props, ctx) {
     console.log('ctx', ctx)

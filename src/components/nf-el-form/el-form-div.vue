@@ -44,7 +44,7 @@
 
 <script>
 import { watch, ref, onMounted } from 'vue'
-import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
+import { formItemList, formItemListKey, formItemComponents } from '@/components/nf-el-form-item/map-el-form-item.js'
 import formManage from '@/components/controlManage/formManage.js'
 
 /**
@@ -55,7 +55,7 @@ import formManage from '@/components/controlManage/formManage.js'
 export default {
   name: 'el-form-div',
   components: {
-    ...elFormConfig.formItemList
+    ...formItemComponents()
   },
   props: {
     modelValue: Object,
@@ -64,7 +64,8 @@ export default {
   },
   setup (props, context) {
     // 控件字典
-    const ctlList = elFormConfig.formItemListKey
+    const ctlList = formItemListKey
+    console.log(formItemList)
 
     // 表单管理类
     const {

@@ -63,9 +63,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, onBeforeMount } from 'vue'
 import { getControlTypeOptionList } from '@/components/controlConfig/config.js'
-import elFormConfig from '@/components/nf-el-form-item/map-el-form-item.js'
+import { formItemList } from '@/components/nf-el-form-item/map-el-form-item.js'
 import elForm from '@/components/nf-el-form/el-form-div'
 // @ is an alias to /src
 
@@ -148,9 +148,26 @@ export default {
   name: 'eleBase',
   components: {
     elForm,
-    ...elFormConfig.formItemList
+    ...formItemList
+  },
+  beforeCreate () {
+    // alert('22')
+  },
+  provide: {
+    sysCom: {
+      key: 600,
+      biaoqian: 'input',
+      kind: 1, //
+      com: {
+        'input-1': 'aa'
+      }
+    }
   },
   setup () {
+    onBeforeMount(() => {
+      // 注入需要加载的组件
+    })
+
     const model = reactive({})
     const partModel = reactive({})
     const { typeOptionList } = getControlTypeOptionList()

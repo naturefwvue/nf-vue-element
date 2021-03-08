@@ -1,4 +1,4 @@
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, inject } from 'vue'
 
 /**
  * 组件里面注册控件用
@@ -20,7 +20,7 @@ import { defineAsyncComponent } from 'vue'
  * ** el-form-radios 单选组
  * ** el-form-select 下拉选择
  */
-const formItemList = {
+export const formItemList = {
   // 文本类 defineComponent
   'el-form-text': defineAsyncComponent(() => import('./t-text.vue')),
   'el-form-area': defineAsyncComponent(() => import('./t-area.vue')),
@@ -46,7 +46,7 @@ const formItemList = {
 /**
  * 动态组件的字典，便于v-for循环里面设置控件
  */
-const formItemListKey = {
+export const formItemListKey = {
   // 文本类
   100: formItemList['el-form-area'], // 多行文本
   101: formItemList['el-form-text'], // 单行文本
@@ -77,7 +77,52 @@ const formItemListKey = {
 
 }
 
-export default {
-  formItemList,
-  formItemListKey
+const keyControl = {
+  100: 'el-form-area',
+  101: 'el-form-text'
+}
+
+export function formItemComponents () {
+  const com = {
+    'el-form-text': defineAsyncComponent(() => import('./t-text.vue')),
+    'el-form-area': defineAsyncComponent(() => import('./t-area.vue')),
+    'el-form-url': defineAsyncComponent(() => import('./t-url.vue')),
+    'el-form-password': defineAsyncComponent(() => import('./t-password.vue')),
+    // 数字
+    'el-form-number': defineAsyncComponent(() => import('./n-number.vue')),
+    'el-form-range': defineAsyncComponent(() => import('./n-range.vue')),
+    // 日期、时间
+    'el-form-date': defineAsyncComponent(() => import('./d-date.vue')),
+    'el-form-time': defineAsyncComponent(() => import('./d-time.vue')),
+    // 选择、开关
+    'el-form-checkbox': defineAsyncComponent(() => import('./s-checkbox.vue')),
+    'el-form-switch': defineAsyncComponent(() => import('./s-switch.vue')),
+    'el-form-checkboxs': defineAsyncComponent(() => import('./s-checkboxs.vue')),
+    'el-form-radios': defineAsyncComponent(() => import('./s-radios.vue')),
+    'el-form-select': defineAsyncComponent(() => import('./s-select.vue')),
+    'el-form-selwrite': defineAsyncComponent(() => import('./s-selwrite.vue')),
+    'el-form-select-cascader': defineAsyncComponent(() => import('./s-select-cascader.vue'))
+  }
+
+  console.log(keyControl)
+
+  /**
+   * 需要一个编号，一个标签，一个动态注册的方法
+   * 类型：加载全局注册的组件；加载动态加载的组件
+   */
+  const aa = {
+    key: 500,
+    biaoqian: 'input',
+    kind: 1, //
+    com: {
+      'input-1': 'aa'
+    }
+  }
+  console.log(aa)
+
+  const canshu = inject('sysCom')
+  if (typeof canshu !== 'undefined') {
+    console.log(canshu)
+  }
+  return com
 }
