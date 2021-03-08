@@ -108,6 +108,7 @@ export default function formManage (props, context) {
 
   // 向父组件提交 model
   const mySubmit = (val, controlId, colName) => {
+    context.emit('mychange', val, controlId, colName, formModel, formPartModel)
     // 手动设置
     // formModel[colName] = val
     context.emit('update:modelValue', formModel)

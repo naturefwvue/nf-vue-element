@@ -51,7 +51,6 @@
         "placeholder": "请输入字段名称",
         "title": "",
         "autocomplete": "off",
-        "size": 20,
         "maxlength": 100,
         "colCount": 1
       },
@@ -100,7 +99,6 @@
         "placeholder": "请输入默认值",
         "title": "",
         "autocomplete": "on",
-        "size": 20,
         "maxlength": 100,
         "colCount": 1
       },
@@ -162,7 +160,6 @@
         "placeholder": "请输入替换文字",
         "title": "",
         "autocomplete": "off",
-        "size": 20,
         "maxlength": 100
       },
       "113": {  
@@ -181,7 +178,6 @@
         "placeholder": "请输入提示",
         "title": "",
         "autocomplete": "off",
-        "size": 20,
         "maxlength": 100
       },
       "114": {  
@@ -349,7 +345,6 @@
         "placeholder": "请输入备选标识",
         "title": "",
         "autocomplete": "on",
-        "size": 20,
         "maxlength": 100
       },
       "123": {  
@@ -368,7 +363,6 @@
         "placeholder": "请输入备选项",
         "title": "",
         "autocomplete": "on",
-        "size": 20,
         "maxlength": 100
       } 
     }

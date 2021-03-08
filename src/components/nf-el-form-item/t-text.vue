@@ -11,9 +11,6 @@
     :clearable="clearable"
     :resize="resize"
   >
-    <template #prepend>
-      <slot name="prepend"></slot>
-    </template>
   </el-input>
 </template>
 

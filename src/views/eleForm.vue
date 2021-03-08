@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <el-row :gutter="20">
-      <!--不循环row，直接循环col，放不下会自动往下串行。-->
       <el-col :span="13">
         <div style="padding-left:20px;">
           列数：<el-slider v-model="meta.formColCount" :min="1" :max="5"></el-slider>
