@@ -1,32 +1,31 @@
-<template>生成表单子控件的meta
-  <div class="home">
-    <el-row :gutter="20">
-      <el-col :span="13">
-        <div style="padding-left:20px;">
-          <elForm
-            v-model:modelValue="model"
-            v-model:partModel="partModel"
-            :meta="meta"
-            @mychange="formChange"
-          >
-          </elForm>
-        </div>
-      </el-col>
-      <el-col :span="11">
-        完整的 model 值：<br><br>
-        <template v-for="(item, key) in model" :key="key">
-          {{key}}：{{item}}<br>
-        </template>
-        <br>
-        <hr>
-        相应的 model 值：<br><br>
-        <template v-for="(item, key) in partModel" :key="key">
-          {{key}}：{{item}}<br>
-        </template>22<br>
-        {{model}}
-      </el-col>
-    </el-row>
-  </div>
+<template>
+  <el-card class="box-card">
+    <template #header>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span>子控件的meta</span>
+      </div>
+    </template>
+    <elForm
+      v-model:modelValue="model"
+      v-model:partModel="partModel"
+      :meta="meta"
+      @mychange="formChange"
+    >
+    </elForm>
+  </el-card>
+  <!--
+    完整的 model 值：<br><br>
+    <template v-for="(item, key) in model" :key="key">
+      {{key}}：{{item}}<br>
+    </template>
+    <br>
+    <hr>
+    相应的 model 值：<br><br>
+    <template v-for="(item, key) in partModel" :key="key">
+      {{key}}：{{item}}<br>
+    </template>22<br>
+    {{model}}
+  -->
 </template>
 
 <script>

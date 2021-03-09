@@ -1,26 +1,28 @@
 <template>
   <div class="home">
-    表单json的辅助工具
+    表单 meta 的辅助工具
   </div>
   <div>
-    <el-row>
-      <el-col :span="4">
-        <div>
-          表单：表单的配置
+    <el-row :gutter="30">
+      <el-col :span="7">
+        <el-card class="box-card">
+          <template #header>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span>表单的meta</span>
+            </div>
+          </template>
           <form-meta-edit/>
-        </div>
+        </el-card>
         <div>
           字段：字段列表，点击右面显示具体属性
         </div>
       </el-col>
       <el-col :span="11">
-        配置
         <form-item-meta-edit/>
       </el-col>
-      <el-col :span="9">
-        json：
+      <el-col :span="6">
+        js版 json版：完全版 标准版 精简版
         <div contenteditable="true">
-          这里显示json<br>
           <json-format :json="currItemMeta.allItemMeta"/>
         </div>
       </el-col>
@@ -37,12 +39,12 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { manageFormMetaHelp } from '@/store/manage/manage-form'
 import formMetaEdit from '@/components/plat-help/form/form-meta-help'
 import formItemMetaEdit from '@/components/plat-help/form/form-item-meta-help'
-import josnFormat from '@/components/showjson/json-format'
+import josnFormat from '@/components/plat-help/showjson/json-format'
 
 export default {
   name: 'formHelp',
@@ -61,6 +63,13 @@ export default {
     // 当前表单子控件meta
     const currItemMeta = getCurrFormItemMeta()
     console.log('当前表单子控件meta', currItemMeta)
+
+    // const ref1 = ref(0)
+    const ref2 = ref({ value: 0 })
+    const ret1 = reactive({ value: 0 })
+
+    console.log('--------------------')
+    console.log(ref2, ret1)
 
     return {
       currItemMeta, // 当前表单子控件meta
