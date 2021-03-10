@@ -50,16 +50,17 @@ import formManage from '@/components/controlManage/formManage.js'
 /**
  * @function div格式的表单控件
  * @description 可以依据json动态生成表单，可以多行多列、排序、插槽、验证等
- * @returns {*} Vue组件
+ * @returns {*} Vue组件，表单控件
  */
 export default {
   name: 'el-form-div',
   components: {
-    ...formItemComponents()
+    ...formItemComponents() // 动态加载表单子控件
   },
   props: {
-    modelValue: Object,
-    partModel: Object,
+    modelValue: Object, // 完整的model
+    partModel: Object, // 根据选项过滤后的model
+    miniModel: Object, // 精简的model
     meta: Object
   },
   setup (props, context) {
@@ -70,6 +71,7 @@ export default {
     // 表单管理类
     const {
       formModel, // 依据meta，创建 Model
+      // formMiniModel, // 精简的model
       formColSpan, // 依据meta，创建 span
       formColSort,
       setFormColSpan,

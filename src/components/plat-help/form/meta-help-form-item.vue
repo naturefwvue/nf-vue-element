@@ -8,6 +8,7 @@
     <elForm
       v-model:modelValue="model"
       v-model:partModel="partModel"
+      v-model:miniModel="miniModel"
       :meta="meta"
       @mychange="formChange"
     >
@@ -47,6 +48,7 @@ export default {
   setup () {
     const model = ref({})
     const partModel = ref({})
+    const miniModel = ref({})
     const { typeOptionList } = getControlTypeOptionList()
 
     // 读取json，获得配置。
@@ -73,14 +75,16 @@ export default {
 
     const formChange = (val, controlId, colName, formModel, formPartModel) => {
       // console.log(val, controlId, colName)
-      currItemmeta.allItemMeta = model
-      currItemmeta.partItemMeta = partModel
+      currItemmeta.allItemMeta = model.value
+      currItemmeta.partItemMeta = partModel.value
+      currItemmeta.miniItemMeta = miniModel.value
     }
 
     return {
       formChange, // 表单控件里面的子控件的事件
       model,
       partModel,
+      miniModel,
       meta,
       spanChange // 重新渲染表单
     }

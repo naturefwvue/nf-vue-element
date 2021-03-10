@@ -118,8 +118,18 @@ export default function formManage (props, context) {
     // 同步到部分model
     if (typeof formPartModel[colName] !== 'undefined') {
       formPartModel[colName] = formModel[colName]
+      // 设置精简版
+      if (formModel[colName] === formItemMeta[controlId].defaultValue) {
+        delete formMiniModel[colName]
+      } else {
+        formMiniModel[colName] = formModel[colName]
+      }
     }
+
+    // 提交部分model
     context.emit('update:partModel', formPartModel)
+    // 提交精简的model，formMiniModel
+    context.emit('update:miniModel', formMiniModel)
   }
 
   // 依据用户选项，创建对应的 model
@@ -128,10 +138,24 @@ export default function formManage (props, context) {
     for (const key in formPartModel) {
       delete formPartModel[key]
     }
+    for (const key in formMiniModel) {
+      delete formMiniModel[key]
+    }
     // 建立新属性
     for (let i = 0; i < array.length; i++) {
       const colName = formItemMeta[array[i]].colName
       formPartModel[colName] = formModel[colName]
+    }
+    for (let i = 0; i < array.length; i++) {
+      const colName = formItemMeta[array[i]].colName
+      const value = formModel[colName]
+      const defaultValue = formItemMeta[array[i]].defaultValue
+      // 值不为空，不和默认值相同，才赋值
+      if (value === '') {
+      } else if (typeof defaultValue !== 'undefined' && value === defaultValue) {
+      } else {
+        formMiniModel[colName] = value
+      }
     }
   }
 

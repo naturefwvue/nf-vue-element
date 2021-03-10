@@ -11,9 +11,15 @@
   <div>
     子控件值：{{value}}
   </div>
-  js版 json版：完全版 标准版 精简版
-  <div contenteditable="true">
-    <json-format :json="currItemMeta.allItemMeta"/>
+  <div style="margin: 5px">
+    <el-radio-group v-model="metaClass" size="mini">
+      <el-radio-button label="allItemMeta">全部</el-radio-button>
+      <el-radio-button label="partItemMeta">标准版</el-radio-button>
+      <el-radio-button label="miniItemMeta">精简版</el-radio-button>
+    </el-radio-group>
+  </div>
+  <div>
+    <json-format :json="currItemMeta[metaClass]"/>
   </div>
 </template>
 
@@ -51,7 +57,11 @@ export default {
     const currItemMeta = getCurrFormItemMeta()
     // console.log('当前表单子控件meta--------', currItemMeta)
 
+    // meta的类别
+    const metaClass = ref('partItemMeta')
+
     return {
+      metaClass, // meta的类别，全部、标准、精简
       currItemMeta, // 当前表单子控件meta
       ctlList, // 控件字典
       model,
