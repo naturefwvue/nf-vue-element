@@ -32,7 +32,6 @@ export default defineComponent({
   },
   emits: ['change', 'blur', 'focus'],
   setup (props, context) {
-    console.log('select-props', props)
     return {
       ...formItemManage(props, context)
     }

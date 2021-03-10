@@ -44,7 +44,7 @@
 
 <script>
 import { watch, ref, onMounted } from 'vue'
-import { formItemList, formItemListKey, formItemComponents } from '@/components/nf-el-form-item/map-el-form-item.js'
+import { formItemListKey, formItemComponents } from '@/components/nf-el-form-item/map-el-form-item.js'
 import formManage from '@/components/controlManage/formManage.js'
 
 /**
@@ -65,7 +65,7 @@ export default {
   setup (props, context) {
     // 控件字典
     const ctlList = formItemListKey
-    console.log(formItemList)
+    // console.log(formItemList)
 
     // 表单管理类
     const {
@@ -103,7 +103,7 @@ export default {
     // 获取 $ref
     const formControl = ref(null)
     onMounted(() => {
-      console.log('表单dom', formControl)
+      // console.log('表单dom', formControl)
     })
 
     const resetForm = () => {

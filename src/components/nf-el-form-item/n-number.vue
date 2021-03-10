@@ -1,6 +1,7 @@
 <!--数字-->
 <template>
   <el-input-number
+    style="width:110px"
     v-model="value"
     @change="mySubmit"
     @blur="myBlur"
@@ -28,8 +29,6 @@ export default defineComponent({
   },
   emits: ['myChange', 'input', 'change', 'blur', 'focus'],
   setup (props, context) {
-    console.log('props-number', props)
-
     return {
       ...formItemManage(props, context)
     }

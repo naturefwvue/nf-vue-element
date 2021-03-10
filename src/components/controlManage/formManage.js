@@ -17,6 +17,9 @@ export default function formManage (props, context) {
   // 定义局部的 model
   const formPartModel = reactive({})
 
+  // 精简的 model，去掉空白和默认值相同的
+  const formMiniModel = reactive({})
+
   // 确定一个组件占用几个格子
   const formColSpan = reactive({})
   // 定义排序依据
@@ -205,6 +208,7 @@ export default function formManage (props, context) {
     // 对象
     formModel, // v-model createModel()
     formPartModel, // 用户选择的组件的 model
+    formMiniModel, // 局部的基础上去掉空白和默认值相同的
     formColSpan, // 确定组件占位
     formColSort, // 确定组件排序
     // 函数

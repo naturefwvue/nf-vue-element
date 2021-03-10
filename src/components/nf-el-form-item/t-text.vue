@@ -30,8 +30,8 @@ export default defineComponent({
   },
   emits: ['myChange', 'input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    console.log('props-text', props)
-    console.log('props-ctx', context)
+    // console.log('props-text', props)
+    // console.log('props-ctx', context)
 
     return {
       ...formItemManage(props, context)

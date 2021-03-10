@@ -29,8 +29,6 @@ export default defineComponent({
   },
   // emits: ['myChange', 'update:modelValue', 'input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
-    console.log('props-text', props)
-
     return {
       ...formItemManage(props, context)
     }

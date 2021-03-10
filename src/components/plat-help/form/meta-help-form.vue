@@ -16,12 +16,12 @@ import { manageFormMetaHelp } from '@/store/manage/manage-form'
 import elForm from '@/components/nf-el-form/el-form-div'
 
 /**
- * 表单meta的help
- * ** 设置表单的相关信息
- * ** 设置表单里的字段
+ * 表单meta的 辅助工具
+ * ** 设置表单自己的props
+ * ** 设置表单的子控件的列表
  */
 export default {
-  name: 'form-meta-help',
+  name: 'meta-help-form',
   components: {
     elForm
   },

@@ -77,10 +77,10 @@ export const formItemListKey = {
 
 }
 
-const keyControl = {
-  100: 'el-form-area',
-  101: 'el-form-text'
-}
+// const keyControl = {
+//  100: 'el-form-area',
+//  101: 'el-form-text'
+// }
 
 export function formItemComponents () {
   const com = {
@@ -104,13 +104,12 @@ export function formItemComponents () {
     'el-form-select-cascader': defineAsyncComponent(() => import('./s-select-cascader.vue'))
   }
 
-  console.log(keyControl)
+  // console.log(keyControl)
 
   /**
    * 需要一个编号，一个标签，一个动态注册的方法
    * 类型：加载全局注册的组件；加载动态加载的组件
-   */
-  const aa = {
+   const aa = {
     key: 500,
     biaoqian: 'input',
     kind: 1, //
@@ -118,7 +117,8 @@ export function formItemComponents () {
       'input-1': 'aa'
     }
   }
-  console.log(aa)
+  // console.log(aa)
+  */
 
   const canshu = inject('sysCom')
   if (typeof canshu !== 'undefined') {
