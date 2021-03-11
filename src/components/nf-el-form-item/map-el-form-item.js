@@ -1,4 +1,4 @@
-import { defineAsyncComponent, inject } from 'vue'
+import { defineAsyncComponent } from 'vue'
 
 /**
  * 组件里面注册控件用
@@ -105,7 +105,7 @@ export function formItemComponents () {
   }
 
   // console.log(keyControl)
-
+  // alert('动态加载组件')
   /**
    * 需要一个编号，一个标签，一个动态注册的方法
    * 类型：加载全局注册的组件；加载动态加载的组件
@@ -120,9 +120,9 @@ export function formItemComponents () {
   // console.log(aa)
   */
 
-  const canshu = inject('sysCom')
-  if (typeof canshu !== 'undefined') {
-    console.log(canshu)
-  }
+  // const canshu = inject('sysCom')
+  // if (typeof canshu !== 'undefined') {
+  //   console.log(canshu)
+  // }
   return com
 }

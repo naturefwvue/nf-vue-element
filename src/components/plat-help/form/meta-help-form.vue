@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span=24>
-      表单meta{{model}}
+      表单meta
       <elForm
         v-model="model"
         :meta="formMeta">

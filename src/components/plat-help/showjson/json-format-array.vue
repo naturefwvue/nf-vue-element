@@ -1,55 +1,29 @@
 <template>
   <!--json的格式化显示-->
   <div>
-    <div style="margin: 5px">
-      <el-radio-group v-model="jsonType" size="mini">
-        <el-radio-button :label="1">js</el-radio-button>
-        <el-radio-button :label="2">json</el-radio-button>
-      </el-radio-group>
-    </div>
-    <el-card class="box-card" contenteditable="true">
-      <!--开头-->
-      <template v-if="jsonType === 1">
-        const meta_{{json.colName}} = reactive({
-      </template>
-      <template v-if="jsonType === 2">
-        "{{json.controlId}}": {
-      </template>
-      <!--循环内容-->
-      <div
-        class="text item"
-        v-for="(value, key, index) in json"
-        :key="'jsonformat_' + index"
-      >
-        <!--key 的格式化-->
-        <template v-if="jsonType === 1">
-          &nbsp;&nbsp;{{key}}:
-        </template>
-        <template v-if="jsonType === 2">
-          &nbsp;&nbsp;"{{key}}":
-        </template>
-        <!--array 的格式化-->
+    <!--数组循环开始-->
+    <!--循环内容-->
+    <div
+      class="text item"
+      v-for="(value, key, index) in json"
+      :key="'jsonformat_' + index"
+    >
+       <!--array 的格式化-->
         <template v-if="valueIsArray(value)">[
           <json-format-array :json="value" :jsonType="jsonType"/>
-          ]
+          ],
         </template>
         <!--object 的格式化-->
-        <template v-else-if="typeof value === 'object'">
-          <json-format-object :json="value" :jsonType="jsonType"/>,
+        <template v-else-if="typeof value === 'object'">{
+          <json-format-object :json="value" :jsonType="jsonType"/>
+          },
         </template>
         <!--基础类型-->
         <template v-else>
           &nbsp;{{showBytype(value)}},
         </template>
-      </div>
-      <!--结尾-->
-      <template v-if="jsonType === 1">
-        })
-      </template>
-      <template v-if="jsonType === 2">
-        }
-      </template>
-    </el-card>
+    </div>
+    <!--数组循环结束-->
   </div>
 </template>
 
@@ -59,26 +33,24 @@ import josnFormat1 from '@/components/plat-help/showjson/json-format-object'
 import josnFormat2 from '@/components/plat-help/showjson/json-format-array'
 
 /**
- * json的格式化显示
+ * 数组类型的json的格式化
  */
 export default {
-  name: 'josn-format',
+  name: 'josn-format-array1',
   components: {
     'json-format-object': josnFormat1,
     'json-format-array': josnFormat2
   },
   props: {
-    json: Object
+    json: Object, // 要格式化的json
+    jsonType: Number // json的输出格式，1：js；2：json文件
   },
   setup (props) {
     const value = ref(props)
 
-    // meta的格式，1：js；2：json文件
-    const jsonType = ref(1)
-
     // 根据类型返回适合的格式
     const showBytype = (value) => {
-      const yinhao = jsonType.value === 2 ? '"' : '\''
+      const yinhao = props.jsonType === 2 ? '"' : '\''
       let re = ''
       switch (typeof value) {
         case 'string':
@@ -114,7 +86,6 @@ export default {
 
     return {
       valueIsArray, // 判断是不是数组
-      jsonType, // meta的格式
       showBytype, // 判断类型，然后按照类型做转换
       value
     }

@@ -16,10 +16,9 @@
           v-for="(ctrId, index) in formColSort"
           :key="'form_'+index"
           :span="formColSpan[ctrId]"
-        >
+        ><!--:prop="getCtrMeta(ctrId).colName"-->
           <el-form-item
             :label="getCtrMeta(ctrId).label"
-            :prop="getCtrMeta(ctrId).colName"
           >
             <!--判断要不要加载插槽-->
             <template v-if="getCtrMeta(ctrId).controlType === 1">

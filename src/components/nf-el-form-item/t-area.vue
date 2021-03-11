@@ -9,7 +9,7 @@
     :name="'c' + controlId"
     :size="size"
     :rows="rows"
-    :autosize="{ minRows: 3, maxRows: 6 }"
+    :autosize="{ minRows: 3, maxRows: rows + 3 }"
     :validate-event="validate_event"
     :show-word-limit="show_word_limit"
   >
@@ -32,6 +32,7 @@ export default defineComponent({
   },
   emits: ['input', 'change', 'blur', 'focus', 'clear'],
   setup (props, context) {
+    console.log('对行文本框的属性：', props)
     return {
       ...formItemManage(props, context)
     }

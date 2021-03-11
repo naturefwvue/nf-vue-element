@@ -113,13 +113,17 @@ export default function formManage (props, context) {
   const mySubmit = (val, controlId, colName) => {
     context.emit('mychange', val, controlId, colName, formModel, formPartModel)
     // 手动设置
-    // formModel[colName] = val
+    // 提交完整的
     context.emit('update:modelValue', formModel)
+
     // 同步到部分model
     if (typeof formPartModel[colName] !== 'undefined') {
       formPartModel[colName] = formModel[colName]
       // 设置精简版
-      if (formModel[colName] === formItemMeta[controlId].defaultValue) {
+      if (formModel[colName] === formItemMeta[controlId].defaultValue ||
+        formModel[colName] === 0 ||
+        formModel[colName] === '' ||
+        formModel[colName] === null) {
         delete formMiniModel[colName]
       } else {
         formMiniModel[colName] = formModel[colName]

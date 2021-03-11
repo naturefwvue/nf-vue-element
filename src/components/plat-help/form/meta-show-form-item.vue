@@ -28,7 +28,7 @@ import { ref } from 'vue'
 import { manageFormMetaHelp } from '@/store/manage/manage-form'
 import { formItemListKey, formItemComponents } from '@/components/nf-el-form-item/map-el-form-item.js'
 
-import josnFormat from '@/components/plat-help/showjson/json-format'
+import josnFormat from '@/components/plat-help/json-format/json-format'
 
 /**
  * 显示子控件，显示json

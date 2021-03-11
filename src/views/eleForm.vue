@@ -150,7 +150,7 @@ export default {
     ...formItemList
   },
   beforeCreate () {
-    // alert('22')
+    // alert('beforeCreate')
   },
   provide: {
     sysCom: {

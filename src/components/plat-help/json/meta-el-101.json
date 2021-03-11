@@ -1,0 +1,63 @@
+{
+  "formMeta": {
+    "name": "基于element的input的扩展属性，单行文本用",
+    "formColCount": 1,
+    "colOrder": [
+      201, 202, 203, 205
+    ],
+    "formColShow": {
+    },
+    "ruleMeta": {
+    },
+    "itemMeta": {
+      "201": {  
+        "controlId": 201,
+        "colName": "id",
+        "label": "表单编号",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": "1000",
+        "placeholder": "表单编号",
+        "min": 1000,
+        "max": 9999,
+        "step": 1,
+        "colCount": 1
+      },
+      "202": {  
+        "controlId": 202,
+        "colName": "colName",
+        "label": "表单名称",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "placeholder": "请输入表单名称",
+        "maxlength": 100,
+        "colCount": 1
+      },
+      "203": {  
+        "controlId": 203,
+        "colName": "allColumn",
+        "label": "字段ID集合",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "placeholder": "请输入字段ID集合",
+        "maxlength": 100,
+        "colCount": 1
+      },
+      "205": {  
+        "controlId": 205,
+        "colName": "colCount",
+        "label": "表单列数",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "placeholder": "请输入列数",
+        "min": 1,
+        "max": 7,
+        "step": 1,
+        "colCount": 1
+      }
+    }
+  }
+}
