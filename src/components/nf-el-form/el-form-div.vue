@@ -79,7 +79,7 @@ export default {
     } = formManage(props, context)
 
     // 监听列数的变化
-    watch(() => props.meta.formColCount, (v1, v2) => {
+    watch(() => props.meta.baseMeta.formColCount, (v1, v2) => {
       setFormColSpan()
     })
     // 监听reload
