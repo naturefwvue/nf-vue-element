@@ -1,5 +1,5 @@
 <template>
-  <!--key 的格式化-->
+  <!--key 的格式化，判断是不是数组-->
   <template v-if="!isArray || valueIsArray(value)">
     <template v-if="jsonType === 1">
       &nbsp;&nbsp;{{mykey}}:
@@ -14,31 +14,38 @@
       v-for="(value1, key1, index) in value"
       :key="'jsonformatitem_' + index"
     >
-      <json-format-item :isArray="true" :mykey="key1" :value="value1" :jsonType="jsonType"/>
+      <json-format-item
+        :isArray="true"
+        :mykey="key1"
+        :value="value1"
+        :jsonType="jsonType"/>
+        <template v-if="index + 1 < value.length">,</template>
     </template>
-    &nbsp;&nbsp;],
+    &nbsp;&nbsp;]
   </template>
    <!--object 的格式化-->
-  <template v-else-if="typeof value === 'object'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+  <template v-else-if="typeof value === 'object'">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
     <template
       v-for="(value1, key1, index) in value"
       :key="'jsonformatitem_' + index"
-      >
-      <json-format-item
+      ><json-format-item
         :isArray="false"
         :mykey="key1"
         :value="value1"
         :jsonType="jsonType"
       />
-    </template>},<br>
+      <template v-if="index + 1 < propertyCount">,</template>
+    </template>&nbsp;}<br>
   </template>
   <!--基础类型-->
   <template v-else>
-    &nbsp;{{showBytype(value)}},
+    &nbsp;{{showBytype(value)}}
   </template>
 </template>
 
 <script>
+import { computed } from 'vue'
 import josnFormat from '@/components/plat-help/json-format/json-format-item'
 
 /**
@@ -72,7 +79,7 @@ export default {
           re = value
           break
         case 'undefined':
-          re = value
+          re = null
           break
       }
       return re
@@ -80,22 +87,22 @@ export default {
 
     // 判断是不是数组
     const valueIsArray = (value) => {
-      if (typeof value === 'undefined') return false
-      if (value === null) return false
-      if (value === '') return false
-
-      const re = value &&
-        typeof value === 'object' &&
-        typeof value.length === 'number' &&
-        typeof value.splice === 'function' &&
-        // 判断length属性是否是可枚举的 对于数组 将得到false
-        // eslint-disable-next-line no-prototype-builtins
-        !(value.propertyIsEnumerable('length'))
-
-      return re
+      return Object.prototype.toString.call(value) === '[object Array]'
     }
 
+    // 获取json的属性的数量，处理最后一个逗号
+    const propertyCount = computed(() => {
+      // console.log('computed', props.json)
+      let count = 0
+      // eslint-disable-next-line no-unused-vars
+      for (const key in props.value) {
+        count++
+      }
+      return count
+    })
+
     return {
+      propertyCount, // 获取json的属性的数量
       showBytype, // 显示值
       valueIsArray // 判断是不是数组
     }

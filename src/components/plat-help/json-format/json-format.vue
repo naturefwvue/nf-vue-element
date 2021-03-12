@@ -7,6 +7,13 @@
     </el-radio-group>
   </div>
   <el-card class="box-card" contenteditable="true">
+    <!--开头-->
+    <template v-if="jsonType === 1">
+      const props_{{json.colName}} = reactive({
+    </template>
+    <template v-if="jsonType === 2">
+      "{{json.controlId}}": {
+    </template>
     <div
       class="text item"
       v-for="(value, key, index) in json"
@@ -18,12 +25,20 @@
         :jsonType="jsonType"
         :isArray="valueIsArray(value)"
         />
+        <template v-if="index + 1 < propertyCount">,</template>
     </div>
+    <!--结尾-->
+    <template v-if="jsonType === 1">
+      })
+    </template>
+    <template v-if="jsonType === 2">
+      }
+    </template>
   </el-card>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import josnFormat from '@/components/plat-help/json-format/json-format-item'
 
 /**
@@ -42,22 +57,22 @@ export default {
 
     // 判断是不是数组
     const valueIsArray = (value) => {
-      if (typeof value === 'undefined') return false
-      if (value === null) return false
-      if (value === '') return false
-
-      const re = value &&
-        typeof value === 'object' &&
-        typeof value.length === 'number' &&
-        typeof value.splice === 'function' &&
-        // 判断length属性是否是可枚举的 对于数组 将得到false
-        // eslint-disable-next-line no-prototype-builtins
-        !(value.propertyIsEnumerable('length'))
-
-      return re
+      return Object.prototype.toString.call(value) === '[object Array]'
     }
 
+    // 获取json的属性的数量，处理最后一个逗号
+    const propertyCount = computed(() => {
+      // console.log('computed', props.json)
+      let count = 0
+      // eslint-disable-next-line no-unused-vars
+      for (const key in props.json) {
+        count++
+      }
+      return count
+    })
+
     return {
+      propertyCount, // 获取json的属性的数量
       valueIsArray, // 判断是不是数组
       jsonType // meta的格式
     }
