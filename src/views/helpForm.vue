@@ -28,30 +28,39 @@
     </el-row>
     <el-row>
       <!--显示表单控件和json-->
-      <el-col :span=11>
-        表单控件展示
+      <el-col :span="7">
+        model数据
       </el-col>
       <el-col :span=11>
-        model数据
+        表单控件展示ee
+        <meta-el-form/>
+      </el-col>
+      <el-col :span=6>
+        json数据
+        <meta-show-form/>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { manageFormMetaHelp } from '@/store/manage/manage-form'
 import metaHelpForm from '@/components/plat-help/form/meta-help-form'
 import metaHelpFormItem from '@/components/plat-help/form/meta-help-form-item'
 import metaShowFormItem from '@/components/plat-help/form/meta-show-form-item'
+import metaShowForm from '@/components/plat-help/form/meta-show-form'
+import metaelForm from '@/components/plat-help/form/meta-form'
 
 export default {
   name: 'formHelp',
   components: {
     'meta-help-form': metaHelpForm, // 编辑表单控件的meta
     'meta-help-form-item': metaHelpFormItem, // 编辑选中的表单子控件的meta
-    'meta-show-form-item': metaShowFormItem // 根据子控件的meta渲染dom
+    'meta-show-form-item': metaShowFormItem, // 根据子控件的meta渲染dom
+    'meta-show-form': metaShowForm, // 根据子控件的meta渲染dom
+    'meta-el-form': metaelForm // 根据子控件的meta渲染dom
   },
   setup () {
     const value = ref('1')
@@ -63,13 +72,6 @@ export default {
     // 当前表单子控件meta
     const currItemMeta = getCurrFormItemMeta()
     // console.log('当前表单子控件meta', currItemMeta)
-
-    // const ref1 = ref(0)
-    const ref2 = ref({ value: 0 })
-    const ret1 = reactive({ value: 0 })
-
-    console.log('--------------------')
-    console.log(ref2, ret1)
 
     return {
       currItemMeta, // 当前表单子控件meta

@@ -1,38 +1,48 @@
 <template>
   <!--按照meta显示子控件-->
-  <div>
+  <div>333
   </div>
   js版 json版：完全版 标准版 精简版22
   <div contenteditable="true">
-    <json-format :json="formMeta"/>
+    <elForm
+      v-model="model"
+      v-model:partModel="partModel"
+      :meta="formMeta">
+    </elForm>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
 import { manageFormMetaHelp } from '@/store/manage/manage-form'
+import { formItemList } from '@/components/nf-el-form-item/map-el-form-item.js'
 
-import josnFormat from '@/components/plat-help/json-format/json-format'
+import elForm from '@/components/nf-el-form/el-form-div'
 
 /**
- * 显示表单控件，显示表单的json
- * ** 按照meta动态渲染表单控件
- * ** 显示meta，js 格式和json文件格式
+ * 按照表单的json渲染表单
 */
 export default {
-  name: 'meta-show-form',
+  name: 'meta-form',
   components: {
-    'json-format': josnFormat
+    elForm,
+    ...formItemList
   },
   setup () {
     const value = ref(0)
 
+    // 表单的model
+    const model = ref({})
+    const partModel = ref({})
+
     // 整个表单的meta
     const { getFormMeta } = manageFormMetaHelp()
-    console.log('状态里的formmeta--------', getFormMeta())
     const formMeta = getFormMeta()
+    console.log('整个表单的meta--------', formMeta)
 
     return {
+      model,
+      partModel,
       formMeta, // 当前表单子控件meta
       value
     }

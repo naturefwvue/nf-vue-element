@@ -14,6 +14,15 @@
     >
       <!--插槽实现备选项-->
       <template v-slot:123="">
+        <el-input-number
+          style="width:100px"
+          controls-position="right"
+          v-model="optionCount"
+          @input="addOption"
+          :min="0"
+          :max="100"
+          label="备选项的数量">
+        </el-input-number>
         <el-table
           stripe
           border
@@ -30,7 +39,7 @@
                   controls-position="right"
                   v-model="scope.row.value"
                   @input="optionInput"
-                  :min="1"
+                  :min="0"
                   :max="100"
                   label="备选项的编号">
                 </el-input-number>
@@ -63,6 +72,8 @@
       </template>
     </elForm>
   </el-card>
+  <el-form-item-extend>
+  </el-form-item-extend>
   <!--
     完整的 model 值：<br><br>
     <template v-for="(item, key) in model" :key="key">
@@ -83,6 +94,7 @@ import { reactive, ref } from 'vue'
 import { getControlTypeOptionList } from '@/components/controlConfig/config.js'
 import { manageFormMetaHelp } from '@/store/manage/manage-form'
 import elForm from '@/components/nf-el-form/el-form-div'
+import elFormExtend from '@/components/plat-help/form/meta-help-form-extend'
 
 /**
  * 管理备选项
@@ -96,15 +108,12 @@ const optionListManage = (model1, model2, model3) => {
   const optionItem = reactive([
     {
       value: 1,
-      label: '11'
-    },
-    {
-      value: 2,
-      label: '22'
+      label: ''
     }
   ])
+
   // 备选项的数量
-  const optionCount = ref(1)
+  const optionCount = ref(optionItem.length)
 
   // 同步数据
   const optionInput = (val) => {
@@ -113,16 +122,44 @@ const optionListManage = (model1, model2, model3) => {
     model3.value.optionList = optionItem
   }
 
+  // 添加新的选项
+  const addOption = (val) => {
+    if (val < optionItem.length) {
+      for (let i = 0; i < optionItem.length - val; i++) {
+        for (let i = optionItem.length - 1; i > 0; i--) {
+          if (optionItem[i].label === '') {
+            // delete optionItem[i]
+            i = 0
+          }
+        }
+      }
+    }
+    for (let i = optionItem.length; i < val; i++) {
+      optionItem.push(
+        {
+          value: i + 1,
+          label: ''
+        }
+      )
+    }
+    optionInput() // 同步
+  }
+
   // 删掉一个备选项
   const handleDelete = (index, row) => {
     console.log(index, row)
+    delete optionItem[index]
+    // optionItem.length = optionItem.length - 1
+    optionInput() // 同步
+    optionCount.value = optionCount.value - 1
   }
 
   return {
-    optionItem,
-    optionCount,
-    optionInput,
-    handleDelete
+    optionItem, // 备选项目列表
+    optionCount, // 备选项的数量
+    optionInput, // 同步完整版、标准版和简洁版的数据
+    addOption, // 添加新的选项
+    handleDelete // 删掉指定的选项
   }
 }
 
@@ -134,6 +171,7 @@ const optionListManage = (model1, model2, model3) => {
 export default {
   name: 'meta-help-form-item',
   components: {
+    'el-form-item-extend': elFormExtend,
     elForm // 表单控件
   },
   setup () {
@@ -176,6 +214,7 @@ export default {
       optionItem,
       optionCount,
       optionInput,
+      addOption, // 添加新的选项
       handleDelete
     } = optionListManage(model, partModel, miniModel)
 
@@ -184,6 +223,7 @@ export default {
       optionItem,
       optionCount,
       optionInput,
+      addOption, // 添加新的选项
       handleDelete,
       // 表单控件里面的子控件的事件
       formChange,

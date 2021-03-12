@@ -24,6 +24,7 @@
         :value="value"
         :jsonType="jsonType"
         :isArray="valueIsArray(value)"
+        space="&nbsp;&nbsp;"
         />
         <template v-if="index + 1 < propertyCount">,</template>
     </div>

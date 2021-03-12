@@ -27,12 +27,12 @@ export default {
   },
   setup () {
     // 获取状态管理里面的表单meta
-    const { getFormMeta } = manageFormMetaHelp()
+    const { getFormBaseMeta } = manageFormMetaHelp()
 
     // 绑定表单控件的model
     const model = reactive({})
     // 状态管理里的表单meta的数据
-    const formModel = getFormMeta()
+    const formModel = getFormBaseMeta()
     console.log('状态里的formmeta', formModel)
 
     // 加载编辑表单需要的meta

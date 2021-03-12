@@ -10,17 +10,24 @@ export function manageFormMetaHelp () {
   const store = useStore()
 
   /**
-   * 返回表单meta
+   * 返回整个表单的meta
    */
   const getFormMeta = () => {
     return store.state.form.formMeta
   }
 
   /**
+   * 返回表单自己的meta
+   */
+  const getFormBaseMeta = () => {
+    return store.state.form.formMeta.baseMeta
+  }
+
+  /**
    * 返回表单子控件的meta，多个
    */
-  const getformItemMeta = () => {
-    return store.state.form.formItemMeta
+  const getFormItemMeta = () => {
+    return store.state.form.formMeta.formItemMeta
   }
 
   /**
@@ -32,7 +39,8 @@ export function manageFormMetaHelp () {
 
   return {
     getFormMeta, // 获取表单的meta
-    getformItemMeta, // 获取表单子控件的meta
+    getFormBaseMeta, // 返回表单自己的meta
+    getFormItemMeta, // 获取表单子控件的meta
     getCurrFormItemMeta // 当前表单子控件的数据
   }
 }

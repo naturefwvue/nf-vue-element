@@ -1,9 +1,11 @@
 {
   "formMeta": {
-    "formColCount": 1,
-    "colOrder": [
-      201, 202, 203, 205
-    ],
+    "baseMeta": {
+      "formColCount": 1,
+      "colOrder": [
+        201, 202, 203, 205
+      ]
+    },
     "formColShow": {
     },
     "ruleMeta": {

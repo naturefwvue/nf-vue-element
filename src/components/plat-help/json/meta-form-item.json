@@ -1,5 +1,6 @@
 {
-    "formMeta": {
+  "formMeta": {
+    "baseMeta": {
       "formColCount": 2,
       "colOrder": [
         101, 103, 102, 105,
@@ -9,428 +10,427 @@
         107, 109, 104, 114,
         112, 113,
         123
-      ],
-      "formColShow": {
-        "103": {
-          "100" : [
-            101, 103, 102, 105, 
-            120, 121, 
-            130, 131, 
-            107, 109, 104, 114,
-            112, 113
-          ],
-          "101" : [
-            101, 103, 102, 105, 
-            130, 131, 
-            107, 109, 104, 114,
-            112, 113,
-            123
-          ],
-          "102" : [
-            101, 103, 102, 105, 
-            130, 131, 
-            107, 104,
-            112, 113,
-            123
-          ],
-          "103" : [
-            101, 103, 102, 105, 
-            130, 131, 
-            107, 109, 104, 114,
-            112, 113
-          ],
-          "104" : [
-            101, 103, 102, 105, 
-            130, 131, 
-            107, 109, 104, 114,
-            112, 113
-          ],
-          "105" : [
-            101, 103, 102, 105, 
-            130, 131, 
-            107, 109, 104, 114,
-            112, 113
-          ],
-          "110" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "111" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "112" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "113" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "114" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "115" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "116" : [
-            101, 103, 102, 105, 
-            107, 109, 104,
-            112, 113
-          ],
-          "120" : [
-            101, 103, 102, 105, 
-            117, 118, 119,
-            107, 104,
-            112, 113
-          ],
-          "121" : [
-            101, 103, 102, 105, 
-            117, 118, 119,
-            107, 104,
-            112, 113
-          ],
-          "150": [
-            101, 103, 102, 105,
-            107, 104,
-            112, 113
-          ],
-          "151": [
-            101, 103, 102, 105,
-            107, 104,
-            112, 113
-          ],
-          "152": [
-            101, 103, 102, 105,
-            107, 104,
-            112, 113,
-            123
-          ],
-          "153": [
-            101, 103, 102, 105,
-            107, 104,
-            112, 113,
-            123
-          ],
-          "160": [
-            101, 103, 102, 105,
-            107, 104,
-            112, 113,
-            123
-          ],
-          "162": [
-            101, 103, 102, 105,
-            107, 104,
-            112, 113,
-            123
-          ],
-          "1031" : [101, 103, 102, 105, 105]
-        } 
+      ]
+    },
+    "formColShow": {
+      "103": {
+        "100" : [
+          101, 103, 102, 105, 
+          120, 121, 
+          130, 131, 
+          107, 109, 104, 114,
+          112, 113
+        ],
+        "101" : [
+          101, 103, 102, 105, 
+          130, 131, 
+          107, 109, 104, 114,
+          112, 113
+        ],
+        "102" : [
+          101, 103, 102, 105, 
+          130, 131, 
+          107, 104,
+          112, 113
+        ],
+        "103" : [
+          101, 103, 102, 105, 
+          130, 131, 
+          107, 109, 104, 114,
+          112, 113
+        ],
+        "104" : [
+          101, 103, 102, 105, 
+          130, 131, 
+          107, 109, 104, 114,
+          112, 113
+        ],
+        "105" : [
+          101, 103, 102, 105, 
+          130, 131, 
+          107, 109, 104, 114,
+          112, 113
+        ],
+        "110" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "111" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "112" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "113" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "114" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "115" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "116" : [
+          101, 103, 102, 105, 
+          107, 109, 104,
+          112, 113
+        ],
+        "120" : [
+          101, 103, 102, 105, 
+          117, 118, 119,
+          107, 104,
+          112, 113
+        ],
+        "121" : [
+          101, 103, 102, 105, 
+          117, 118, 119,
+          107, 104,
+          112, 113
+        ],
+        "150": [
+          101, 103, 102, 105,
+          107, 104,
+          112, 113
+        ],
+        "151": [
+          101, 103, 102, 105,
+          107, 104,
+          112, 113
+        ],
+        "152": [
+          101, 103, 102, 105,
+          107, 104,
+          112, 113,
+          123
+        ],
+        "153": [
+          101, 103, 102, 105,
+          107, 104,
+          112, 113,
+          123
+        ],
+        "160": [
+          101, 103, 102, 105,
+          107, 104,
+          112, 113,
+          123
+        ],
+        "162": [
+          101, 103, 102, 105,
+          107, 104,
+          112, 113,
+          123
+        ],
+        "1031" : [101, 103, 102, 105, 105]
+      } 
+    },
+    "ruleMeta": {
+    },
+    "itemMeta": {
+      "101": {  
+        "controlId": 101,
+        "colName": "controlId",
+        "label": "编号",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": "1000",
+        "placeholder": "编号",
+        "title": "编号",
+        "min": 1000,
+        "max": 9999,
+        "step": 1,
+        "colCount": -2
       },
-      "ruleMeta": {
+      "102": {  
+        "controlId": 102,
+        "colName": "colName",
+        "label": "字段名称",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "placeholder": "请输入字段名称",
+        "title": "字段名称",
+        "autocomplete": "off",
+        "maxlength": 100,
+        "colCount": 1
       },
-      "itemMeta": {
-        "101": {  
-          "controlId": 101,
-          "colName": "controlId",
-          "label": "编号",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": "1000",
-          "placeholder": "编号",
-          "title": "编号",
-          "min": 1000,
-          "max": 9999,
-          "step": 1,
-          "colCount": -2
-        },
-        "102": {  
-          "controlId": 102,
-          "colName": "colName",
-          "label": "字段名称",
-          "controlType": 101,
-          "isClear": false,
-          "defaultValue": "",
-          "placeholder": "请输入字段名称",
-          "title": "字段名称",
-          "autocomplete": "off",
-          "maxlength": 100,
-          "colCount": 1
-        },
-        "103": {  
-          "controlId": 103,
-          "colName": "controlType",
-          "label": "控件类型",
-          "controlType": 160,
-          "optionList":[],
-          "isClear": false,
-          "required": true,
-          "title": "控件类型",
-          "placeholder": "请选择控件类型",
-          "colCount": -2
-        },
-        "104": {  
-          "controlId": 104,
-          "colName": "isClear",
-          "label": "是否清空",
-          "controlType": 151,
-          "isClear": true,
-          "defaultValue": true,
-          "title": "是否清空",
-          "autocomplete": "off",
-          "optionList": [{
-            "value": 1,
-            "title": "添加新纪录是否清空？"
-          }],
-          "colCount": 1
-        },
-        "105": {  
-          "controlId": 105,
-          "colName": "defaultValue",
-          "label": "默认值",
-          "controlType": 101,
-          "isClear": false,
-          "defaultValue": "",
-          "required": true,
-          "placeholder": "请输入默认值",
-          "title": "",
-          "autocomplete": "on",
-          "maxlength": 100,
-          "colCount": 1
-        },
-        "106": {  
-          "controlId": 106,
-          "colName": "autofocus",
-          "label": "焦点",
-          "controlType": 151,
-          "isClear": false,
-          "defaultValue": false,
-          "title": "",
-          "optionList": [{
-            "value": 1,
-            "title": "是否自动获得焦点"
-          }],
-          "colCount": -2
-        },
-        "107": {  
-          "controlId": 107,
-          "colName": "disabled",
-          "label": "是否禁用",
-          "controlType": 151,
-          "defaultValue": false,
-          "isClear": false,
-          "title": "",
-          "optionList": [{
-            "value": 1,
-            "title": "是否禁用"
-          }],
-          "colCount": -2
-        },
-        "109": {  
-          "controlId": 109,
-          "colName": "readonly",
-          "label": "只读",
-          "controlType": 151,
-          "isClear": false,
-          "defaultValue": false,
-          "title": "",
-          "optionList": [{
-            "value": 1,
-            "title": "是否只读"
-          }],
-          "colCount": -2
-        },
-        "112": {  
-          "controlId": 112,
-          "colName": "placeholder",
-          "label": "占位文字",
-          "controlType": 101,
-          "isClear": false,
-          "defaultValue": "",
-          "required": true,
-          "placeholder": "请输入替换文字",
-          "title": "",
-          "autocomplete": "off",
-          "maxlength": 100
-        },
-        "113": {  
-          "controlId": 113,
-          "colName": "title",
-          "label": "提示文字",
-          "controlType": 101,
-          "isClear": false,
-          "defaultValue": "",
-          "required": true,
-          "placeholder": "请输入提示",
-          "title": "",
-          "autocomplete": "off",
-          "maxlength": 100
-        },
-        "114": {  
-          "controlId": 114,
-          "colName": "autocomplete",
-          "label": "是否历史记录",
-          "controlType": 153,
-          "isClear": false,
-          "defaultValue": "off",
-          "title": "",
-          "autocomplete": "off",
-          "optionList": [
-            {
-              "value": "on",
-              "label": "打开"
-            },
-            {
-              "value": "off",
-              "label": "关闭"
-            }]
-        },
-        "115": {  
-          "controlId": 115,
-          "colName": "size",
-          "label": "字符宽度",
-          "controlType": 151,
-          "isClear": false,
-          "defaultValue": "",
-          "required": true,
-          "min": "1",
-          "max": "100",
-          "step": "1",
-          "placeholder": "请输入字符宽度",
-          "title": "字符宽度",
-          "autocomplete": "on"
-        },
-        "130": {  
-          "controlId": 130,
-          "colName": "maxlength",
-          "label": "最大字符数量",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 1,
-          "min": 1,
-          "max": 10000,
-          "step": 1,
-          "placeholder": "请输入最大字符数",
-          "title": "最大字符数",
-          "colCount": -2
-        },
-        "131": {  
-          "controlId": 131,
-          "colName": "minlength",
-          "label": "最少字符数量",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 1,
-          "min": 1,
-          "max": 1000,
-          "step": 1,
-          "placeholder": "请输入最小字符数",
-          "title": "最小字符数",
-          "colCount": -2
-        },
-        "117": {  
-          "controlId": 117,
-          "colName": "min",
-          "label": "最小数字",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 1,
-          "min": 1,
-          "max": 100,
-          "step": 1,
-          "placeholder": "请输入最小值",
-          "title": "最小值",
-          "colCount": -3
-        },
-        "118": {  
-          "controlId": 118,
-          "colName": "max",
-          "label": "最大数字",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 1,
-          "min": 1,
-          "max": 999999,
-          "step": 1,
-          "placeholder": "请输入最大值",
-          "title": "最大值",
-          "colCount": -3
-        },
-        "119": {  
-          "controlId": 119,
-          "colName": "step",
-          "label": "步长",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 1,
-          "min": 1,
-          "max": 100,
-          "step": 1,
-          "placeholder": "请输入步长",
-          "title": "步长",
-          "colCount": 2
-        },
-        "120": {  
-          "controlId": 120,
-          "colName": "rows",
-          "label": "行数",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 2,
-          "min": 2,
-          "max": 50,
-          "step": 1,
-          "placeholder": "请输入行数",
-          "title": "行数",
-          "autocomplete": "off",
-          "colCount": -2
-        },
-        "121": {  
-          "controlId": 121,
-          "colName": "cols",
-          "label": "列数",
-          "controlType": 120,
-          "isClear": false,
-          "defaultValue": 1,
-          "min": 1,
-          "max": 500,
-          "step": 1,
-          "placeholder": "请输入列数",
-          "autocomplete": "off",
-          "colCount": -2
-        },
-        "122": {  
-          "controlId": 122,
-          "colName": "optionKey",
-          "label": "备选key",
-          "controlType": 101,
-          "isClear": false,
-          "defaultValue": "",
-          "placeholder": "请输入备选标识",
-          "autocomplete": "on",
-          "maxlength": 100
-        },
-        "123": {  
-          "controlId": 123,
-          "colName": "optionList",
-          "label": "备选项",
-          "controlType": 1,
-          "isClear": false,
-          "defaultValue": "",
-          "placeholder": "请输入备选项",
-          "autocomplete": "on",
-          "maxlength": 100,
-          "colCount": 2
-        } 
-      }
+      "103": {  
+        "controlId": 103,
+        "colName": "controlType",
+        "label": "控件类型",
+        "controlType": 160,
+        "optionList":[],
+        "isClear": false,
+        "required": true,
+        "title": "控件类型",
+        "placeholder": "请选择控件类型",
+        "colCount": -2
+      },
+      "104": {  
+        "controlId": 104,
+        "colName": "isClear",
+        "label": "是否清空",
+        "controlType": 151,
+        "isClear": true,
+        "defaultValue": true,
+        "title": "是否清空",
+        "autocomplete": "off",
+        "optionList": [{
+          "value": 1,
+          "title": "添加新纪录是否清空？"
+        }],
+        "colCount": 1
+      },
+      "105": {  
+        "controlId": 105,
+        "colName": "defaultValue",
+        "label": "默认值",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "required": true,
+        "placeholder": "请输入默认值",
+        "title": "",
+        "autocomplete": "on",
+        "maxlength": 100,
+        "colCount": 1
+      },
+      "106": {  
+        "controlId": 106,
+        "colName": "autofocus",
+        "label": "焦点",
+        "controlType": 151,
+        "isClear": false,
+        "defaultValue": false,
+        "title": "",
+        "optionList": [{
+          "value": 1,
+          "title": "是否自动获得焦点"
+        }],
+        "colCount": -2
+      },
+      "107": {  
+        "controlId": 107,
+        "colName": "disabled",
+        "label": "是否禁用",
+        "controlType": 151,
+        "defaultValue": false,
+        "isClear": false,
+        "title": "",
+        "optionList": [{
+          "value": 1,
+          "title": "是否禁用"
+        }],
+        "colCount": -2
+      },
+      "109": {  
+        "controlId": 109,
+        "colName": "readonly",
+        "label": "只读",
+        "controlType": 151,
+        "isClear": false,
+        "defaultValue": false,
+        "title": "",
+        "optionList": [{
+          "value": 1,
+          "title": "是否只读"
+        }],
+        "colCount": -2
+      },
+      "112": {  
+        "controlId": 112,
+        "colName": "placeholder",
+        "label": "占位文字",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "required": true,
+        "placeholder": "请输入替换文字",
+        "title": "",
+        "autocomplete": "off",
+        "maxlength": 100
+      },
+      "113": {  
+        "controlId": 113,
+        "colName": "title",
+        "label": "提示文字",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "required": true,
+        "placeholder": "请输入提示",
+        "title": "",
+        "autocomplete": "off",
+        "maxlength": 100
+      },
+      "114": {  
+        "controlId": 114,
+        "colName": "autocomplete",
+        "label": "是否历史记录",
+        "controlType": 153,
+        "isClear": false,
+        "defaultValue": "off",
+        "title": "",
+        "autocomplete": "off",
+        "optionList": [
+          {
+            "value": "on",
+            "label": "打开"
+          },
+          {
+            "value": "off",
+            "label": "关闭"
+          }]
+      },
+      "115": {  
+        "controlId": 115,
+        "colName": "size",
+        "label": "字符宽度",
+        "controlType": 151,
+        "isClear": false,
+        "defaultValue": "",
+        "required": true,
+        "min": "1",
+        "max": "100",
+        "step": "1",
+        "placeholder": "请输入字符宽度",
+        "title": "字符宽度",
+        "autocomplete": "on"
+      },
+      "130": {  
+        "controlId": 130,
+        "colName": "maxlength",
+        "label": "最大字符数量",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "min": 1,
+        "max": 10000,
+        "step": 1,
+        "placeholder": "请输入最大字符数",
+        "title": "最大字符数",
+        "colCount": -2
+      },
+      "131": {  
+        "controlId": 131,
+        "colName": "minlength",
+        "label": "最少字符数量",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "min": 1,
+        "max": 1000,
+        "step": 1,
+        "placeholder": "请输入最小字符数",
+        "title": "最小字符数",
+        "colCount": -2
+      },
+      "117": {  
+        "controlId": 117,
+        "colName": "min",
+        "label": "最小数字",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "placeholder": "请输入最小值",
+        "title": "最小值",
+        "colCount": -3
+      },
+      "118": {  
+        "controlId": 118,
+        "colName": "max",
+        "label": "最大数字",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "min": 1,
+        "max": 999999,
+        "step": 1,
+        "placeholder": "请输入最大值",
+        "title": "最大值",
+        "colCount": -3
+      },
+      "119": {  
+        "controlId": 119,
+        "colName": "step",
+        "label": "步长",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "placeholder": "请输入步长",
+        "title": "步长",
+        "colCount": 2
+      },
+      "120": {  
+        "controlId": 120,
+        "colName": "rows",
+        "label": "行数",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 2,
+        "min": 2,
+        "max": 50,
+        "step": 1,
+        "placeholder": "请输入行数",
+        "title": "行数",
+        "autocomplete": "off",
+        "colCount": -2
+      },
+      "121": {  
+        "controlId": 121,
+        "colName": "cols",
+        "label": "列数",
+        "controlType": 120,
+        "isClear": false,
+        "defaultValue": 1,
+        "min": 1,
+        "max": 500,
+        "step": 1,
+        "placeholder": "请输入列数",
+        "autocomplete": "off",
+        "colCount": -2
+      },
+      "122": {  
+        "controlId": 122,
+        "colName": "optionKey",
+        "label": "备选key",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "placeholder": "请输入备选标识",
+        "autocomplete": "on",
+        "maxlength": 100
+      },
+      "123": {  
+        "controlId": 123,
+        "colName": "optionList",
+        "label": "备选项",
+        "controlType": 1,
+        "isClear": false,
+        "defaultValue": "",
+        "placeholder": "请输入备选项",
+        "autocomplete": "on",
+        "maxlength": 100,
+        "colCount": 2
+      } 
     }
   }
+}
   

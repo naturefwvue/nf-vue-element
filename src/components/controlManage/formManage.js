@@ -24,9 +24,12 @@ export default function formManage (props, context) {
   const formColSpan = reactive({})
   // 定义排序依据
   const formColSort = reactive([])
+
   // 获取表单meta
   const formMeta = props.meta
   console.log('formMeta', formMeta)
+  // 获取表单自己的属性
+  const baseMeta = formMeta.baseMeta
   // 表单元素meta
   const formItemMeta = formMeta.itemMeta
   // 表单验证meta，备用
@@ -165,7 +168,7 @@ export default function formManage (props, context) {
 
   // 根据配置里面的colCount，设置 formColSpan
   const setFormColSpan = () => {
-    const formColCount = formMeta.formColCount // 列数
+    const formColCount = baseMeta.formColCount // 列数
     const moreColSpan = 24 / formColCount // 一个格子占多少份
 
     if (formColCount === 1) {
@@ -206,7 +209,7 @@ export default function formManage (props, context) {
   setFormColSpan()
 
   // 设置组件的显示顺序
-  const setFormColSort = (array = formMeta.colOrder) => {
+  const setFormColSort = (array = baseMeta.colOrder) => {
     formColSort.length = 0
     formColSort.push(...array)
   }
