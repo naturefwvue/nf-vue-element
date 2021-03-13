@@ -27,7 +27,7 @@ export function manageFormMetaHelp () {
    * 返回表单子控件的meta，多个
    */
   const getFormItemMeta = () => {
-    return store.state.form.formMeta.formItemMeta
+    return store.state.form.formMeta.itemMeta
   }
 
   /**

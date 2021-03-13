@@ -84,11 +84,13 @@ export default {
     })
     // 监听reload
     watch(() => props.meta.reload, (v1, v2) => {
+      Object.assign(formModel, props.meta.modelValue)
+      Object.assign(formModel, props.meta.partModel)
+      Object.assign(formModel, props.meta.miniModel)
       setFormColSpan()
       setFormColSort()
     })
 
-    // 监听组件值的变化，
     // 依据ID获取组件的meta，因为model不支持【】嵌套
     const getCtrMeta = (id) => {
       return props.meta.itemMeta[id] || {}

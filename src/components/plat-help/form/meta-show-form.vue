@@ -2,7 +2,6 @@
   <!--按照meta显示子控件-->
   <div>
   </div>
-  js版 json版：完全版 标准版 精简版22
   <div contenteditable="true">
     <json-format :json="formMeta"/>
   </div>

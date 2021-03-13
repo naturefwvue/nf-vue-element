@@ -1,8 +1,9 @@
-import { reactive, watch } from 'vue'
+import { reactive, watch, unref } from 'vue'
+import createModel from '@/components/controlManage/modelManage'
 
 /**
  * @function 表单控件的管理类
- * @description 创建v-model，创建局部model，设置行列、排序相关的处理
+ * @description 创建 v-model，创建局部model，设置行列、排序相关的处理
  * @param { object } props 组件参数
  * @param { object } context 上下文
  * @returns { function } 表单管理类
@@ -16,8 +17,7 @@ export default function formManage (props, context) {
   const formModel = reactive({})
   // 定义局部的 model
   const formPartModel = reactive({})
-
-  // 精简的 model，去掉空白和默认值相同的
+  // 定义精简的 model，去掉空白和默认值相同的
   const formMiniModel = reactive({})
 
   // 确定一个组件占用几个格子
@@ -25,105 +25,48 @@ export default function formManage (props, context) {
   // 定义排序依据
   const formColSort = reactive([])
 
-  // 获取表单meta
+  // 获取表单meta（渲染表单控件用）
   const formMeta = props.meta
-  console.log('formMeta', formMeta)
+  // console.log('formMeta', formMeta)
   // 获取表单自己的属性
-  const baseMeta = formMeta.baseMeta
-  // 表单元素meta
-  const formItemMeta = formMeta.itemMeta
+  const formProps = formMeta.baseMeta
+  // 表单子控件的属性
+  const formItemProps = formMeta.itemMeta
   // 表单验证meta，备用
   // const formRuleMeta = formMeta.ruleMeta
 
-  // 根据表单元素meta，创建 v-model
-  const createModel = () => {
-    // 依据meta，创建module
-    for (const key in formItemMeta) {
-      const m = formItemMeta[key]
-      // 根据控件类型设置属性值
-      switch (m.controlType) {
-        case 100: // 文本类
-        case 101:
-        case 102:
-        case 103:
-        case 104:
-        case 105:
-        case 106:
-        case 107:
-        case 130:
-        case 131:
-          formModel[m.colName] = ''
-          break
-        case 110: // 日期
-        case 111: // 日期时间
-        case 112: // 年月
-        case 114: // 年
-        case 113: // 年周
-          formModel[m.colName] = null
-          break
-        case 115: // 任意时间
-          formModel[m.colName] = '00:00:00'
-          break
-        case 116: // 选择时间
-          formModel[m.colName] = '00:00'
-          break
-        case 120: // 数字
-        case 121:
-          formModel[m.colName] = 0
-          break
-        case 150: // 勾选
-        case 151: // 开关
-          formModel[m.colName] = false
-          break
-        case 153: // 单选组
-        case 160: // 下拉单选
-        case 162: // 下拉联动
-          formModel[m.colName] = null
-          break
-        case 152: // 多选组
-        case 161: // 下拉多选
-          formModel[m.colName] = []
-          break
-      }
-      // 看看有没有设置默认值
-      if (typeof m.defaultValue !== 'undefined') {
-        switch (m.defaultValue) {
-          case '':
-            break
-          case '{}':
-            formModel[m.colName] = {}
-            break
-          case '[]':
-            formModel[m.colName] = []
-            break
-          case 'date':
-            formModel[m.colName] = new Date()
-            break
-          default:
-            formModel[m.colName] = m.defaultValue
-            break
-        }
-      }
-    }
-    // 同步父组件的v-model
-    context.emit('update:modelValue', formModel)
-    return formModel
-  }
-  // 先运行一次
-  createModel()
+  // 判断是不是修改和查看状态，是的话设置要修改的model值
+  // if (formProps.state !== 'add') {
+  // 接收属性值
+  Object.assign(formModel, unref(props.modelValue))
+  Object.assign(formPartModel, unref(props.partModel))
+  Object.assign(formMiniModel, unref(props.miniModel))
+  // }
+
+  // 监听属性变化
+  watch(() => props.modelValue, (v1, v2) => {
+    Object.assign(formModel, unref(props.modelValue))
+  })
+  watch(() => props.partModel, (v1, v2) => {
+    Object.assign(formPartModel, unref(props.partModel))
+  })
+  watch(() => props.miniModel, (v1, v2) => {
+    Object.assign(formMiniModel, unref(props.miniModel))
+  })
 
   // 向父组件提交 model
   const mySubmit = (val, controlId, colName) => {
     context.emit('mychange', val, controlId, colName, formModel, formPartModel)
     // 手动设置
     // 提交完整的
-    context.emit('update:modelValue', formModel)
+    // context.emit('update:modelValue', formModel)
+    Object.assign(props.modelValue, formModel)
 
     // 同步到部分model
     if (typeof formPartModel[colName] !== 'undefined') {
       formPartModel[colName] = formModel[colName]
       // 设置精简版
-      if (formModel[colName] === formItemMeta[controlId].defaultValue ||
+      if (formModel[colName] === formItemProps[controlId].defaultValue ||
         formModel[colName] === 0 ||
         formModel[colName] === '' ||
         formModel[colName] === null) {
@@ -150,13 +93,13 @@ export default function formManage (props, context) {
     }
     // 建立新属性
     for (let i = 0; i < array.length; i++) {
-      const colName = formItemMeta[array[i]].colName
+      const colName = formItemProps[array[i]].colName
       formPartModel[colName] = formModel[colName]
     }
     for (let i = 0; i < array.length; i++) {
-      const colName = formItemMeta[array[i]].colName
+      const colName = formItemProps[array[i]].colName
       const value = formModel[colName]
-      const defaultValue = formItemMeta[array[i]].defaultValue
+      const defaultValue = formItemProps[array[i]].defaultValue
       // 值不为空，不和默认值相同，才赋值
       if (value === '') {
       } else if (typeof defaultValue !== 'undefined' && value === defaultValue) {
@@ -168,13 +111,13 @@ export default function formManage (props, context) {
 
   // 根据配置里面的colCount，设置 formColSpan
   const setFormColSpan = () => {
-    const formColCount = baseMeta.formColCount // 列数
+    const formColCount = formProps.formColCount // 列数
     const moreColSpan = 24 / formColCount // 一个格子占多少份
 
     if (formColCount === 1) {
     // 一列的情况
-      for (const key in formItemMeta) {
-        const m = formItemMeta[key]
+      for (const key in formItemProps) {
+        const m = formItemProps[key]
         if (typeof m.colCount === 'undefined') {
           formColSpan[m.controlId] = moreColSpan
         } else {
@@ -189,8 +132,8 @@ export default function formManage (props, context) {
       }
     } else {
       // 多列的情况
-      for (const key in formItemMeta) {
-        const m = formItemMeta[key]
+      for (const key in formItemProps) {
+        const m = formItemProps[key]
         if (typeof m.colCount === 'undefined') {
           formColSpan[m.controlId] = moreColSpan
         } else {
@@ -209,7 +152,7 @@ export default function formManage (props, context) {
   setFormColSpan()
 
   // 设置组件的显示顺序
-  const setFormColSort = (array = baseMeta.colOrder) => {
+  const setFormColSort = (array = formProps.colOrder) => {
     formColSort.length = 0
     formColSort.push(...array)
   }
@@ -220,7 +163,7 @@ export default function formManage (props, context) {
   if (typeof formMeta.formColShow !== 'undefined') {
     for (const key in formMeta.formColShow) {
       const ctl = formMeta.formColShow[key]
-      const colName = formItemMeta[key].colName
+      const colName = formItemProps[key].colName
       watch(() => formModel[colName], (v1, v2) => {
         if (typeof ctl[v1] === 'undefined') {
           // 没有设定，显示默认组件

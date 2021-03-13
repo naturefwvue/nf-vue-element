@@ -74,6 +74,9 @@
   </el-card>
   <el-form-item-extend>
   </el-form-item-extend>
+  <div>
+    <el-button type="primary" @click="submit">确定</el-button>
+  </div>
   <!--
     完整的 model 值：<br><br>
     <template v-for="(item, key) in model" :key="key">
@@ -90,7 +93,7 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, unref, watch } from 'vue'
 import { getControlTypeOptionList } from '@/components/controlConfig/config.js'
 import { manageFormMetaHelp } from '@/store/manage/manage-form'
 import elForm from '@/components/nf-el-form/el-form-div'
@@ -197,11 +200,21 @@ export default {
     }
 
     // 获取状态管理里面的当前表单子控件的meta信息
-    const { getCurrFormItemMeta } = manageFormMetaHelp()
+    const { getCurrFormItemMeta, getFormItemMeta } = manageFormMetaHelp()
     // 当前表单子控件meta
     const currItemmeta = getCurrFormItemMeta()
     // console.log('当前表单子控件meta', currItemmeta)
+    const formItemMeta = getFormItemMeta()
 
+    // 监听当前子控件的ID
+    watch(() => currItemmeta.id, (v1, v2) => {
+      model.value = currItemmeta.allItemMeta
+      partModel.value = currItemmeta.partItemMeta
+      miniModel.value = currItemmeta.miniItemMeta
+      spanChange()
+    })
+
+    // 同步到当前的子控件
     const formChange = (val, controlId, colName, formModel, formPartModel) => {
       // console.log(val, controlId, colName)
       currItemmeta.allItemMeta = model.value
@@ -218,6 +231,11 @@ export default {
       handleDelete
     } = optionListManage(model, partModel, miniModel)
 
+    // 把表单子控件的属性设置到状态里面
+    const submit = () => {
+      Object.assign(formItemMeta[currItemmeta.id], unref(miniModel))
+    }
+
     return {
       // 备选项
       optionItem,
@@ -231,6 +249,7 @@ export default {
       partModel, // 部分meta
       miniModel, // 精简meta
       metaBaseProps, // 基础属性表单需要的meta
+      submit, // 把表单自己的属性设置到状态里面
       spanChange // 重新渲染表单
     }
   }

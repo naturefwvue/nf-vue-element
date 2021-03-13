@@ -20,13 +20,13 @@
         "defaultValue": "1000",
         "placeholder": "表单编号",
         "min": 1000,
-        "max": 9999,
+        "max": 99999,
         "step": 1,
         "colCount": 1
       },
       "202": {  
         "controlId": 202,
-        "colName": "colName",
+        "colName": "name",
         "label": "表单名称",
         "controlType": 101,
         "isClear": false,
@@ -37,8 +37,19 @@
       },
       "203": {  
         "controlId": 203,
-        "colName": "allColumn",
+        "colName": "colOrder",
         "label": "字段ID集合",
+        "controlType": 101,
+        "isClear": false,
+        "defaultValue": "",
+        "placeholder": "请输入字段ID集合",
+        "maxlength": 100,
+        "colCount": 1
+      },
+      "204": {  
+        "controlId": 204,
+        "colName": "state",
+        "label": "表单状态",
         "controlType": 101,
         "isClear": false,
         "defaultValue": "",
@@ -48,7 +59,7 @@
       },
       "205": {  
         "controlId": 205,
-        "colName": "colCount",
+        "colName": "formColCount",
         "label": "表单列数",
         "controlType": 120,
         "isClear": false,

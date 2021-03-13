@@ -30,12 +30,27 @@ export default {
           minlength: 2,
           autofocus: true,
           colCount: 1
+        },
+        102: {
+          controlId: 102,
+          colName: 'name1',
+          controlType: 101,
+          defaultValue: '1',
+          isClear: false,
+          readonly: false,
+          disabled: false,
+          placeholder: '请输入姓名',
+          title: '姓名',
+          maxlength: 6,
+          minlength: 2,
+          autofocus: true,
+          colCount: 1
         }
       }
     },
     // 当前编辑的表单子控件的meta
     currFormItem: {
-      id: 0, // 当前编辑的表单子控件的meta
+      id: 101, // 当前编辑的表单子控件的meta
       allItemMeta: {}, // 完整的子控件meta
       partItemMeta: {}, // 标准的子控件meta
       miniItemMeta: {} // 最简的子控件meta

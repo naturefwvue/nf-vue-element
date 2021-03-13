@@ -19,23 +19,23 @@
           </elForm>
         </div>
       </el-col>
-      <el-col :span="3">
+      <el-col :span="5">
         完整的 model 值：<br><br>
         <template v-for="(item, key) in model" :key="key">
           {{key}}：{{item}}<br>
         </template>
         <br>
         <hr>
-        相应的 model 值：<br><br>
+        局部的 model 值：<br><br>
         <template v-for="(item, key) in partModel" :key="key">
           {{key}}：{{item}}<br>
         </template>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="6">
         <!--排序-->
         <div @dragover="allowDrop($event)">
           <div :style="styleCol"
-            v-for="(id, index) in meta.colOrder"
+            v-for="(id, index) in meta.baseMeta.colOrder"
             :key="index"
             draggable="true"
             @dragstart="myDrag(id, index)"
@@ -62,9 +62,10 @@
 </template>
 
 <script>
-import { reactive, onBeforeMount } from 'vue'
+import { reactive, onBeforeMount, ref } from 'vue'
 import { getControlTypeOptionList } from '@/components/controlConfig/config.js'
 import { formItemList } from '@/components/nf-el-form-item/map-el-form-item.js'
+import createModel from '@/components/controlManage/modelManage'
 import elForm from '@/components/nf-el-form/el-form-div'
 // @ is an alias to /src
 
@@ -167,8 +168,7 @@ export default {
       // 注入需要加载的组件
     })
 
-    const model = reactive({})
-    const partModel = reactive({})
+    const partModel = ref({})
     const { typeOptionList } = getControlTypeOptionList()
 
     // 读取json，获得配置。
@@ -184,6 +184,10 @@ export default {
     meta.itemMeta[102].controlId = 102
     meta.itemMeta[102].controlType = 1
     // meta.itemMeta[104].controlType = 1
+
+    // 依据meta 创建model
+    const model = createModel(meta.itemMeta)
+    model.defaultValue = '外面设置的初始值'
 
     // 实现拖拽排序的功能
     const {
