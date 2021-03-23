@@ -1,6 +1,10 @@
 # nf-vue-element-plus
 
-基于element Plus的二次封装，为文档驱动提供基础控件。
+基于element Plus的二次封装，为文档驱动提供基础控件。  
+因为总是连接不上，所以搬到gitee：  
+
+https://gitee.com/naturefw/nf-vue-element  
+
 
 ## 安装
 
